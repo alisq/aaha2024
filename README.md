@@ -4,8 +4,12 @@ https://miro.com/app/board/uXjVPfJF-mc=/
 
 **cms**  
 https://aaha-db.iamasq.works  
-donald  
-ali  
+usernames: donald, ali  
+passwords provided  
+
+**JSON feeds**  
+Demands: https://aaha-db.iamasq.works/JSON/demands, https://aaha-db.iamasq.works/JSON/demands/fr, https://aaha-db.iamasq.works/JSON/demands/en
+
 
 **Design**  
 Figma redesigned menu (ali/donald)  
