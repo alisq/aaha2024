@@ -8,8 +8,8 @@ usernames: donald, ali
 passwords provided  
 
 **JSON feeds**  
-Demands: https://aaha-db.iamasq.works/JSON/demands, https://aaha-db.iamasq.works/JSON/demands/fr, https://aaha-db.iamasq.works/JSON/demands/en
-
+Demands: https://aaha-db.iamasq.works/JSON/demands (/en /fr)  
+Members: https://aaha-db.iamasq.works/JSON/members (/en /fr)  
 
 **Design**  
 Figma redesigned menu (ali/donald)  
