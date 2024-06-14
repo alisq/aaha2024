@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        label {
+            display:inline-block;
+            width:200px;
+            padding-bottom:1em;
+        }    
+
+        input,
+        textarea {
+            font-size: 20px;
+            padding:0.25em;
+            width:400px;
+        }
+
+        .split {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+        }
+
+        #json_dump {
+            width:80%;
+            height:500px;
+        }
+    </style>
+
+</head>
+<body>
+       
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+        <script>
+
+let lang = 'fr';
+
+let demands;
+let d;
+fetch('./demands.json')
+   .then(response => response.json())
+   .then(json => {
+    demands = [...json]
+
+
+
+    for(i=0;i<demands.length;i++) {
+        console.log(demands[i].gallery)
+
+        for (j=0;j<demands[i].gallery.length;j++) {
+            console.log(demands[i].gallery[j])
+            
+            
+            l = `https://server-aaha.codepanel.in/${demands[i].gallery[j].uri}`
+            $("body").append(`<a href=${l}>${l}</a><br />`)
+            l = `${demands[i].gallery[j][lang].alt}<br /><br />`
+            $("body").append(`${l}`)
+
+        }
+        linkurl =  ""
+        if (lang == 'en') {
+            linkurl = `https://aaha-db.iamasq.works/node/${i+1}/edit`
+        } else {
+            linkurl = `https://aaha-db.iamasq.works/${lang}/node/${i+1}/edit`
+        }
+
+            d = `
+            <strong>${demands[i][lang].title}</strong><br />
+            <a href="${linkurl}">${linkurl}</a><br />
+            <textarea height="20">${demands[i].field_demand_no}</textarea><br />
+            <br /><br />`
+
+            $("body").append(d)
+
+
+    }
+
+    
+})
+
+
+   
+
+
+
+
+
+
+function loadJSON() {
+
+    console.log(demands)
+
+}
+
+
+$(document).on('focus','textarea',function(){
+    $(this).select();
+})
+
+            
+        </script>
+
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
