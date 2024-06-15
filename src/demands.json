@@ -13,7 +13,13 @@
       "advocate": "Sarah Silva, Hiyam Housing, Squamish Nation",
       "architect": "Simoogit Saa Bax, Patrick R. Stewart Architect, Nisga'a Nation",
       "banner_caption": "Photograph by  Nisga’a Lisims Government / Gary Fiegehen",
-      "actions":[{"label":"Sign","body":" the form  to stay up to date about the campaign","link":"https://docs.google.com/forms/d/1A4sRDWE8gjoyg1w0XlH9CImhx4BbAv9yCo67JPOkVkc/viewform?edit_requested=true#responses"}]
+      "actions": [
+        {
+          "label": "Sign",
+          "body": " the form  to stay up to date about the campaign",
+          "link": "https://docs.google.com/forms/d/1A4sRDWE8gjoyg1w0XlH9CImhx4BbAv9yCo67JPOkVkc/viewform?edit_requested=true#responses"
+        }
+      ]
     },
     "fr": {
       "title": "La restitution des terres ancestrales",
@@ -25,7 +31,13 @@
       "advocate": "Sarah Silva, Hiy̓ám̓ ta Housing, Squamish Nation",
       "architect": "Simoogit Saa Bax Patrick R. Stewart Architecte et Nation Nisga’a",
       "banner_caption": "Photographe :  Gouvernement Nisga'a Lisims / Gary Fiegehen",
-      "actions":[{"label":"Signez","body":"  le formulaire ci-dessous pour rester informé de la campagne","link":"https://docs.google.com/forms/d/1A4sRDWE8gjoyg1w0XlH9CImhx4BbAv9yCo67JPOkVkc/viewform?edit_requested=true#responses"}]
+      "actions": [
+        {
+          "label": "Signez",
+          "body": "  le formulaire ci-dessous pour rester informé de la campagne",
+          "link": "https://docs.google.com/forms/d/1A4sRDWE8gjoyg1w0XlH9CImhx4BbAv9yCo67JPOkVkc/viewform?edit_requested=true#responses"
+        }
+      ]
     },
     "banner": "landback_banner.jpg",
     "demand_num": "0",
@@ -112,7 +124,13 @@
       "advocate": "",
       "architect": "Ouri Scott, Urban Arts Architecture Inc.",
       "banner_caption": "Photograph by  Jiah Dzentu Sibbeston",
-      "actions":[{"label": "join", "body": " Women’s National Housing and Homelessness Network","link":"https://womenshomelessness.us13.list-manage.com/subscribe?u=eb98321480904e87694833b72&id=f5d1ae4674"}]
+      "actions": [
+        {
+          "label": "join",
+          "body": " Women’s National Housing and Homelessness Network",
+          "link": "https://womenshomelessness.us13.list-manage.com/subscribe?u=eb98321480904e87694833b72&id=f5d1ae4674"
+        }
+      ]
     },
     "fr": {
       "title": "Des logements sur le territoire",
@@ -124,7 +142,13 @@
       "advocate": "",
       "architect": "Ouri Scott, Urban Arts Architecture Inc., Tłı̨chǫ Dene",
       "banner_caption": "Photographe : Jiah Dzentu Sibbeston ",
-      "actions":[{"label": "Rejoignez","body": "Women’s National Housing and Homelessness Network","link":"https://womenshomelessness.us13.list-manage.com/subscribe?u=eb98321480904e87694833b72&id=f5d1ae4674"}]
+      "actions": [
+        {
+          "label": "Rejoignez",
+          "body": "Women’s National Housing and Homelessness Network",
+          "link": "https://womenshomelessness.us13.list-manage.com/subscribe?u=eb98321480904e87694833b72&id=f5d1ae4674"
+        }
+      ]
     },
     "banner": "on_the_land_banner.jpg",
     "demand_num": "1",
@@ -365,7 +389,13 @@
       "advocate": "Lancelot Coar and Shawn Bailey, University of Manitoba ",
       "architect": "David T Fortin Architect Inc, Grounded Architecture Inc., SOLO Architecture ",
       "banner_caption": "Housing as Cosmology. The water’s edge in the Opaskwayak Cree Nation territory shows the interconnectedness of all living beings. ",
-      "actions":[{"label": "donate","body": " to One House Many Nations de Idle No More","link":"https://www.ohmn.ca/contact-us/donate"}]
+      "actions": [
+        {
+          "label": "donate",
+          "body": " to One House Many Nations de Idle No More",
+          "link": "https://www.ohmn.ca/contact-us/donate"
+        }
+      ]
     },
     "fr": {
       "title": "Pavillons pour la construction d’habitations au sein des Premières Nations",
@@ -377,7 +407,13 @@
       "advocate": "Lancelot Coar et Shawn Bailey, Université du Manitoba",
       "architect": "David T Fortin Architect Inc, Grounded Architecture Inc., SOLO Architecture ",
       "banner_caption": "Le logement comme cosmologie. Le bord de l'eau sur le territoire de la Nation des Cris de Opaskwayak montre l'interdépendance de tous les êtres vivants. ",
-      "actions":[{"label": "Faire un don","body": "à One House Many Nations de Idle No More","link":"https://www.ohmn.ca/contact-us/donate"}]
+      "actions": [
+        {
+          "label": "Faire un don",
+          "body": "à One House Many Nations de Idle No More",
+          "link": "https://www.ohmn.ca/contact-us/donate"
+        }
+      ]
     },
     "banner": "home_building_lodges_banner.jpg",
     "demand_num": "2",
@@ -574,7 +610,17 @@
       "advocate": "CP Planning (Community in Public)",
       "architect": "SOCA (Studio of Contemporary Architecture)",
       "banner_caption": "",
-      "actions":[{"label": "donate","body": " to Black Futures Community Development Fund "},{"label":"Subscribe","body":" to CP Planning's Mailing list","link":"https://cpplanning.ca"}]
+      "actions": [
+        {
+          "label": "donate",
+          "body": " to Black Futures Community Development Fund "
+        },
+        {
+          "label": "Subscribe",
+          "body": " to CP Planning's Mailing list",
+          "link": "https://cpplanning.ca"
+        }
+      ]
     },
     "fr": {
       "title": "Une architecture réparatrice",
@@ -586,7 +632,17 @@
       "advocate": "CP Planning (Community in Public)",
       "architect": "SOCA (Studio of Contemporary Architecture)",
       "banner_caption": "",
-      "actions":[{"label": "Faire un don","body": " à ds de développement communautaire Black Futures"},{"label":"S'abonner", "body": " à la liste de diffusion par courriel de CP Planning","link":"https://cpplanning.ca"}]
+      "actions": [
+        {
+          "label": "Faire un don",
+          "body": " à ds de développement communautaire Black Futures"
+        },
+        {
+          "label": "S'abonner",
+          "body": " à la liste de diffusion par courriel de CP Planning",
+          "link": "https://cpplanning.ca"
+        }
+      ]
     },
     "banner": "reparative_banner.jpg",
     "demand_num": "3",
@@ -827,7 +883,38 @@
       "advocate": "Gentrification Tax Action",
       "architect": "LGA Architectural Partners, tuf lab, Blackwell, The HIDI Group, Vermeulen Quantity Surveyors  ",
       "banner_caption": "A street perspective view of an apartment building on Jameson Ave. with new housing additions superimposed in red, with activists in the foreground calling for new affordable housing now.",
-      "actions":[{"label":"Pay","body":" the voluntary Gentrification Tax.", "link":"https://gentrification.tax/pay.html"},{"label":"Pay","body":" when you are selling a property", "link":"https://gentrification.tax/pay.html"},{"label":"Offset","body":" the tax in advance", "link":"https://gentrification.tax/pay.html"},{"label":"Join","body":" a working committee, become a member and sign up for the newsletter of Parkdale Neighborhood Land Trust.","link":"https://pnlt.ca/getinvolved/membership/"},{"label":"Donate","body":" to Parkdale Neighborhood Land Trust","link":"https://pnlt.ca/donate/"},{"label":"Access","body":" resources about Parkdale and Community Land Trusts","link":"https://pnlt.ca/clt/"}]
+      "actions": [
+        {
+          "label": "Pay",
+          "body": " the voluntary Gentrification Tax.",
+          "link": "https://gentrification.tax/pay.html"
+        },
+        {
+          "label": "Pay",
+          "body": " when you are selling a property",
+          "link": "https://gentrification.tax/pay.html"
+        },
+        {
+          "label": "Offset",
+          "body": " the tax in advance",
+          "link": "https://gentrification.tax/pay.html"
+        },
+        {
+          "label": "Join",
+          "body": " a working committee, become a member and sign up for the newsletter of Parkdale Neighborhood Land Trust.",
+          "link": "https://pnlt.ca/getinvolved/membership/"
+        },
+        {
+          "label": "Donate",
+          "body": " to Parkdale Neighborhood Land Trust",
+          "link": "https://pnlt.ca/donate/"
+        },
+        {
+          "label": "Access",
+          "body": " resources about Parkdale and Community Land Trusts",
+          "link": "https://pnlt.ca/clt/"
+        }
+      ]
     },
     "fr": {
       "title": "Une taxe sur l’embourgeoisement",
@@ -839,7 +926,38 @@
       "advocate": "Gentrification Tax Action",
       "architect": "LGA Architectural Partners, tuf lab, Blackwell, The HIDI Group, Vermeulen Quantity Surveyors  ",
       "banner_caption": "Vue d’un immeuble d’appartements de l’avenue Jameson, sur lequel sont superposées, en rouge, de nouvelles annexes de logement. À l’avant-plan, des activistes militent pour la création immédiate de logements abordables. ",
-      "actions":[{"label":"Payer","body":" la taxe volontaire de gentrification", "link":"https://gentrification.tax/pay.html"},{"label":"Payer","body":" lors de la vente d'un bien immobilier", "link":"https://gentrification.tax/pay.html"},{"label":"Compenser","body":" la taxe à l'avance", "link":"https://gentrification.tax/pay.html"},{"label":"Rejoignez","body":" un comité de travail, devenez membre, et abonnez-vous à la lettre d'information de Parkdale Neighborhood Land Trust.","link":"https://pnlt.ca/getinvolved/membership/"},{"label":"Faire un don","body":" à la Parkdale Neighborhood Land Trust","link":"https://pnlt.ca/donate/"},{"label":"Accéder","body":" à des ressources sur Parkdale et les organisme foncier solidaire ","link":"https://pnlt.ca/clt/"}]
+      "actions": [
+        {
+          "label": "Payer",
+          "body": " la taxe volontaire de gentrification",
+          "link": "https://gentrification.tax/pay.html"
+        },
+        {
+          "label": "Payer",
+          "body": " lors de la vente d'un bien immobilier",
+          "link": "https://gentrification.tax/pay.html"
+        },
+        {
+          "label": "Compenser",
+          "body": " la taxe à l'avance",
+          "link": "https://gentrification.tax/pay.html"
+        },
+        {
+          "label": "Rejoignez",
+          "body": " un comité de travail, devenez membre, et abonnez-vous à la lettre d'information de Parkdale Neighborhood Land Trust.",
+          "link": "https://pnlt.ca/getinvolved/membership/"
+        },
+        {
+          "label": "Faire un don",
+          "body": " à la Parkdale Neighborhood Land Trust",
+          "link": "https://pnlt.ca/donate/"
+        },
+        {
+          "label": "Accéder",
+          "body": " à des ressources sur Parkdale et les organisme foncier solidaire ",
+          "link": "https://pnlt.ca/clt/"
+        }
+      ]
     },
     "banner": "gentrification_tax_banner.jpg",
     "demand_num": "4",
@@ -1058,7 +1176,18 @@
       "advocate": "Affordable Housing Association of Nova Scotia",
       "architect": "FBM architecture • interior design • planning",
       "banner_caption": "A community block-party is taking place at the Gerald B. Gray Memorial Arena building. Surrounding the building is a new mix of affordable and market-rate housing. The arena building has been transformed into an open space for various community-driven programs and has a food market that welcomes everybody. This is now a vibrant neighbourhood for living, working, growing food, and playing. The buildings in the background show the surrounding context. A diverse group of people are spending time together on the front steps of the project built on surplus land alongside the arena.\t",
-      "actions":[{"label":"Contribute","body":" to This Should Be Housing collective map ","link":"https://thisshouldbehousing.com/"},{"label":"Follow","body":" the Navigator Street Outreach Program’s Twitter ","link":"https://twitter.com/StreetoutreachR"}]
+      "actions": [
+        {
+          "label": "Contribute",
+          "body": " to This Should Be Housing collective map ",
+          "link": "https://thisshouldbehousing.com/"
+        },
+        {
+          "label": "Follow",
+          "body": " the Navigator Street Outreach Program’s Twitter ",
+          "link": "https://twitter.com/StreetoutreachR"
+        }
+      ]
     },
     "fr": {
       "title": "Des propriétés excédentaires pour le logement ",
@@ -1070,7 +1199,18 @@
       "advocate": "Affordable Housing Association of Nova Scotia",
       "architect": "FBM architecture • interior design • planning",
       "banner_caption": "Une fête de quartier communautaire a lieu autour de la Gerald B. Gray Memorial Arena. L’immeuble, qui est entouré d’un nouvel ensemble de logements abordables et de logements au prix courant, a été transformé en un espace ouvert destiné à divers programmes communautaires. On y trouve un marché d’alimentation ouvert à tout le monde. Il s’agit maintenant d’un quartier vivant où il faut bon vivre, travailler, jardiner et s’amuser. Les immeubles de l’arrière-plan illustrent l’environnement du projet. Un groupe diversifié est réuni dans l’escalier de la façade, qui s’installe sur une parcelle de terrain excédentaire entourant l’aréna. ",
-      "actions":[{"label":"Contribuer","body":" à la carte collective This Should Be Housing  ","link":"https://thisshouldbehousing.com/"},{"label":"Suivez","body":"  le programme Navigator Street Outreach sur Twitter ","link":"https://twitter.com/StreetoutreachR"}]
+      "actions": [
+        {
+          "label": "Contribuer",
+          "body": " à la carte collective This Should Be Housing  ",
+          "link": "https://thisshouldbehousing.com/"
+        },
+        {
+          "label": "Suivez",
+          "body": "  le programme Navigator Street Outreach sur Twitter ",
+          "link": "https://twitter.com/StreetoutreachR"
+        }
+      ]
     },
     "banner": "surplus_properties_banner.jpg",
     "demand_num": "5",
@@ -1311,7 +1451,18 @@
       "advocate": "Toronto Tiny Shelters",
       "architect": "SvN Architects and Planners",
       "banner_caption": "Leaving a tent and entering an intentional cabin community.",
-      "actions":[{"label":"Donate","body":" and to and volunteer at A Better Tent City Waterloo Region ","link":"https://www.abettertentcity.org/checkout/donate?donatePageId=62c79d59a996d7031439781f"},{"label":"Watch","body":" Someone Lives Here by Zack Russell ","link":"https://hotdocs.ca/whats-on/films/someone-lives-here"}]
+      "actions": [
+        {
+          "label": "Donate",
+          "body": " and to and volunteer at A Better Tent City Waterloo Region ",
+          "link": "https://www.abettertentcity.org/checkout/donate?donatePageId=62c79d59a996d7031439781f"
+        },
+        {
+          "label": "Watch",
+          "body": " Someone Lives Here by Zack Russell ",
+          "link": "https://hotdocs.ca/whats-on/films/someone-lives-here"
+        }
+      ]
     },
     "fr": {
       "title": "Des communautés intentionnelles pour les personnes sans logement",
@@ -1323,7 +1474,18 @@
       "advocate": "Toronto Tiny Shelters",
       "architect": "SvN Architects + Planners",
       "banner_caption": "Quitter une tente pour s’installer dans une communauté intentionnelle de maisonnettes.",
-      "actions":[{"label":"Faites un don","body":" et faites du bénévolat à A Better Tent City Waterloo Region  ","link":"https://www.abettertentcity.org/checkout/donate?donatePageId=62c79d59a996d7031439781f"},{"label":"Regardez","body":" Someone Lives Here par Zack Russell ","link":"https://hotdocs.ca/whats-on/films/someone-lives-here"}]
+      "actions": [
+        {
+          "label": "Faites un don",
+          "body": " et faites du bénévolat à A Better Tent City Waterloo Region  ",
+          "link": "https://www.abettertentcity.org/checkout/donate?donatePageId=62c79d59a996d7031439781f"
+        },
+        {
+          "label": "Regardez",
+          "body": " Someone Lives Here par Zack Russell ",
+          "link": "https://hotdocs.ca/whats-on/films/someone-lives-here"
+        }
+      ]
     },
     "banner": "intentional_communities_banner.jpg",
     "demand_num": "6",
@@ -1564,7 +1726,33 @@
       "advocate": "Canadian Cohousing Network",
       "architect": "Haeccity Studio Architecture",
       "banner_caption": "A community of diverse residents gathers for a collective meal amid buildings with connecting paths, shared gardens, play areas and amenity spaces.",
-      "actions":[{"label":"Read","body":" and share the Manual of Co","link":"https://www.haeccity.com/wlog/cocomo"},{"label":"Subscribe","body":", join, or donate to the Canadian Cohousing Network  ","link":"https://cohousing.ca/"},{"label":"Buy","body":" or rent in an existing Cohousing project","link":"https://cohousing.ca/classifieds/"},{"label":"Find","body":" a Housing Co-op in BC","link":"https://www.chf.bc.ca/find-co-op/"},{"label":"Organize","body":" a collaborative meal with a group of people and chat about what living more collaboratively could look like and share photos of it with #collectiveownership","link":""}]
+      "actions": [
+        {
+          "label": "Read",
+          "body": " and share the Manual of Co",
+          "link": "https://www.haeccity.com/wlog/cocomo"
+        },
+        {
+          "label": "Subscribe",
+          "body": ", join, or donate to the Canadian Cohousing Network  ",
+          "link": "https://cohousing.ca/"
+        },
+        {
+          "label": "Buy",
+          "body": " or rent in an existing Cohousing project",
+          "link": "https://cohousing.ca/classifieds/"
+        },
+        {
+          "label": "Find",
+          "body": " a Housing Co-op in BC",
+          "link": "https://www.chf.bc.ca/find-co-op/"
+        },
+        {
+          "label": "Organize",
+          "body": " a collaborative meal with a group of people and chat about what living more collaboratively could look like and share photos of it with #collectiveownership",
+          "link": ""
+        }
+      ]
     },
     "fr": {
       "title": "La propriété collective",
@@ -1576,7 +1764,33 @@
       "advocate": "Réseau canadien de cohabitation",
       "architect": "Haeccity Studio Architecture",
       "banner_caption": "Un groupe diversifié de résidentes et de résidents se réunit pour un repas collectif sur une place entourée d’immeubles, de sentiers, de zones de jeu et d’espaces communs.",
-      "actions":[{"label":"Lisez","body":" et partagez le Manual of Co","link":"https://www.haeccity.com/wlog/cocomo"},{"label":"S'abonner","body":", se joindre ou faire un don au Réseau canadien de cohabitation ","link":"https://cohousing.ca/"},{"label":"Acheter","body":" ou louer dans un projet de cohabitat existant (https://cohousing.ca/classifieds/)  ","link":"https://cohousing.ca/classifieds/"},{"label":"Trouvez","body":" une coopérative d'habitation en Colombie-Britannique","link":"https://www.chf.bc.ca/find-co-op/"},{"label":"Organisez","body":" un repas collaboratif avec un groupe de personnes et discutez de ce à quoi pourrait ressembler un mode de vie plus collaboratif et partagez des photos avec #propriétécollective.","link":""}]
+      "actions": [
+        {
+          "label": "Lisez",
+          "body": " et partagez le Manual of Co",
+          "link": "https://www.haeccity.com/wlog/cocomo"
+        },
+        {
+          "label": "S'abonner",
+          "body": ", se joindre ou faire un don au Réseau canadien de cohabitation ",
+          "link": "https://cohousing.ca/"
+        },
+        {
+          "label": "Acheter",
+          "body": " ou louer dans un projet de cohabitat existant (https://cohousing.ca/classifieds/)  ",
+          "link": "https://cohousing.ca/classifieds/"
+        },
+        {
+          "label": "Trouvez",
+          "body": " une coopérative d'habitation en Colombie-Britannique",
+          "link": "https://www.chf.bc.ca/find-co-op/"
+        },
+        {
+          "label": "Organisez",
+          "body": " un repas collaboratif avec un groupe de personnes et discutez de ce à quoi pourrait ressembler un mode de vie plus collaboratif et partagez des photos avec #propriétécollective.",
+          "link": ""
+        }
+      ]
     },
     "banner": "collective_ownership_banner.jpg",
     "demand_num": "7",
@@ -1795,7 +2009,18 @@
       "advocate": "Ipek Türeli, McGill University",
       "architect": "Atelier Big City",
       "banner_caption": "",
-      "actions":[{"label":"Sign","body":" the Mutual Aid Housing Proposal petition","link":"https://www.change.org/p/la-maison-du-savoir-et-de-la-litt%C3%A9rature-msl-sur-l-ancienne-gare-routi%C3%A8re-de-montr%C3%A9al"},{"label":"Become a member","body":" of the Table de concertation du Faubourg Saint-Laurent ","link":"https://docs.google.com/forms/d/e/1FAIpQLSc6C0Faq1eEoGKksjJE3kR2bC4rdgy4OsvMnNVyObyisrFa5w/viewform"}]
+      "actions": [
+        {
+          "label": "Sign",
+          "body": " the Mutual Aid Housing Proposal petition",
+          "link": "https://www.change.org/p/la-maison-du-savoir-et-de-la-litt%C3%A9rature-msl-sur-l-ancienne-gare-routi%C3%A8re-de-montr%C3%A9al"
+        },
+        {
+          "label": "Become a member",
+          "body": " of the Table de concertation du Faubourg Saint-Laurent ",
+          "link": "https://docs.google.com/forms/d/e/1FAIpQLSc6C0Faq1eEoGKksjJE3kR2bC4rdgy4OsvMnNVyObyisrFa5w/viewform"
+        }
+      ]
     },
     "fr": {
       "title": "Habitat solidaire",
@@ -1807,7 +2032,18 @@
       "advocate": "Ipek Türeli, Université McGill",
       "architect": "Atelier Big City",
       "banner_caption": "",
-      "actions":[{"label":"Signer","body":" la pétition d’Habitat Solidaire","link":"https://www.change.org/p/la-maison-du-savoir-et-de-la-litt%C3%A9rature-msl-sur-l-ancienne-gare-routi%C3%A8re-de-montr%C3%A9al"},{"label":"Devenez membre","body":" de la Table de concertation du Faubourg Saint-Laurent ","link":"https://docs.google.com/forms/d/e/1FAIpQLSc6C0Faq1eEoGKksjJE3kR2bC4rdgy4OsvMnNVyObyisrFa5w/viewform"}]
+      "actions": [
+        {
+          "label": "Signer",
+          "body": " la pétition d’Habitat Solidaire",
+          "link": "https://www.change.org/p/la-maison-du-savoir-et-de-la-litt%C3%A9rature-msl-sur-l-ancienne-gare-routi%C3%A8re-de-montr%C3%A9al"
+        },
+        {
+          "label": "Devenez membre",
+          "body": " de la Table de concertation du Faubourg Saint-Laurent ",
+          "link": "https://docs.google.com/forms/d/e/1FAIpQLSc6C0Faq1eEoGKksjJE3kR2bC4rdgy4OsvMnNVyObyisrFa5w/viewform"
+        }
+      ]
     },
     "banner": "mutual_aid_housing_banner.jpg",
     "gallery": [
@@ -2026,7 +2262,13 @@
       "advocate": "Bâtir Son Quartier",
       "architect": "L'OEUF Architects",
       "banner_caption": "Street view of the ambient ecosystems and housing\t",
-      "actions":[{"label":"Sign up","body":" for the newsletter and become a member of Centre d’écologie urbaine de Montréal ","link":"https://www.ecologieurbaine.net/infolettre"}]
+      "actions": [
+        {
+          "label": "Sign up",
+          "body": " for the newsletter and become a member of Centre d’écologie urbaine de Montréal ",
+          "link": "https://www.ecologieurbaine.net/infolettre"
+        }
+      ]
     },
     "fr": {
       "title": "Écosystèmes ambiants communs",
@@ -2038,7 +2280,13 @@
       "advocate": "Bâtir Son Quartier",
       "architect": "L'OEUF Architects",
       "banner_caption": "Vue des écosystèmes urbains et des logements environnants. ",
-      "actions":[{"label":"Inscrivez-vous","body":" à l'infolettre et devenez membre du Centre d'écologie urbaine de Montréal ","link":"https://www.ecologieurbaine.net/infolettre"}]
+      "actions": [
+        {
+          "label": "Inscrivez-vous",
+          "body": " à l'infolettre et devenez membre du Centre d'écologie urbaine de Montréal ",
+          "link": "https://www.ecologieurbaine.net/infolettre"
+        }
+      ]
     },
     "banner": "ambient_ecosystems_banner.jpg",
     "demand_num": "9",

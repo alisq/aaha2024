@@ -2,13 +2,10 @@
 import { useEffect, useState } from 'react'
 import Flickity from 'react-flickity-component'
 import parse from 'html-react-parser'
-import useLang from '../hooks/useLang'
-import CarouselImg from './carouselImg'
 
 
-const CarouselDemand = ({ carouselImages }) => {
+const CarouselDemand = ({ carouselData }) => {
   const [zoomedImgIndex, setZoomImgIndex] = useState(null)
-  const lang = useLang()
 
   useEffect(() => {
     const { style } = document.body
@@ -16,15 +13,15 @@ const CarouselDemand = ({ carouselImages }) => {
     return () => style.overflowY = 'initial'
   }, [zoomedImgIndex])
 
-  const zoomedImg = carouselImages[zoomedImgIndex]
+  const zoomedImg = carouselData[zoomedImgIndex]
   return (
     <>
       {typeof zoomedImgIndex === 'number' &&
         <div className='slide-fullscreen' onClick={() => setZoomImgIndex(null)} >
           <div className='close' onClick={() => setZoomImgIndex(null)}>&times;</div>
-          <CarouselImg image={zoomedImg} />
+          <img src={zoomedImg.src} alt={zoomedImg.alt} />
           <div className='caption'>
-            {parse(zoomedImg[lang].caption)}
+            {parse(zoomedImg.caption)}
           </div>
         </div>}
       <Flickity
@@ -37,14 +34,14 @@ const CarouselDemand = ({ carouselImages }) => {
           pageDots: false
         }}
         reloadOnUpdate={true}>
-        {carouselImages.map((image, i) =>
+        {carouselData.map(({ src, alt, caption }, i) =>
           <div className='slide' key={i} >
             <div className='demand-slide'>
-              <CarouselImg image={image} />
+              <img src={src} alt={alt} />
             </div>
-            {image[lang].caption !== '' &&
+            {caption !== '' &&
               <div className='caption text-center'>
-                {image[lang].caption.replace(/(<([^>]+)>)/gi, '')}
+                {caption.replace(/(<([^>]+)>)/gi, '')}
               </div>}
           </div>
         )}

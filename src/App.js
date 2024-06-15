@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import ReactGA from 'react-ga'
 import usePromise from 'react-promise'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
@@ -6,14 +6,14 @@ import './app.css'
 import DemandBody from './components/demandBody'
 import PageBody from './components/pageBody'
 import { LANGS } from './constants/constants'
-import demandData from './demands.json'
+import { GlobalContext } from './contexts/contexts'
 import usePrevious from './hooks/usePrevious'
 import Main from './main'
 import pageData from './pages.json'
 import apiServices from './services/apiServices'
 import { getBrowserLang } from './utils/languageUtils'
 import { getUrlParts } from './utils/urlUtils'
-import { GlobalContext } from './contexts/contexts'
+import _ from 'lodash'
 
 
 const OUR_TRACKING_ID = "G-8JJ40D5L38"
@@ -26,7 +26,6 @@ const App = () => {
   const prevLocation = usePrevious(location)
 
   const { value } = usePromise(apiServices.data)
-  console.log(value)
 
   const browserLang = getBrowserLang()
   const fallbackLang = LANGS.includes(browserLang) ? browserLang : LANGS[0]
@@ -58,14 +57,12 @@ const App = () => {
             element={<Main currentLang={lang} />}
             key={i}>
             <Route index element={null} />
-            {demandData.map((demand, i) =>
-              <Route
-                path={`demand/${demand.demand_id}`}
-                element={<DemandBody {...demand}
-                  ref={sectionRef}
-                  nid={i}
-                  content={demand[lang]} />}
-                key={i} />)}
+            {_.uniqBy(value?.demands[lang], 'nid')
+              .map(data => <Route
+                key={data.nid}
+                path={`demand/${data.field_demand_id}`}
+                element={<DemandBody ref={sectionRef} data={data} />} />
+              )}
             {pageData.map((page, i) =>
               <Route
                 path={`page/${page.page_id}`}

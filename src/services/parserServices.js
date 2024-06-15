@@ -5,6 +5,7 @@ import { API_ENDPOINT } from '../constants/constants'
 import Action from '../components/parsedAction'
 import { Link } from 'react-router-dom'
 import { validateString } from '../utils/commonUtils'
+import _ from 'lodash'
 
 const replaceLink = src => `${API_ENDPOINT}/${src}`
 const linkIsExternal = to => typeof to === 'string' && to.match(/^(https|www)/)
@@ -19,20 +20,30 @@ const parseAnchor = ({ attribs, children }) => {
       {domToReact(children)}
     </Link>
   )
-
 }
 
-const basicParse = html => parse(html, {
+const parseMulti = ul => {
+  const results = []
+  let result
+  const regExp = /<li>(.*?)<\/li>/g
+  while ((result = regExp.exec(ul)) !== null)
+    results.push(result[1])
+  return results
+}
+
+
+const basicParse = html => html ? parse(html, {
   replace: domNode => {
     const { tagName } = domNode
     if (tagName === 'a') return parseAnchor(domNode)
   }
-})
+}) : undefined
 
 
 const parseDemand = demandData => {
   if (!demandData) return {}
   const {
+    field_demand_id,
     body,
     title,
     field_region,
@@ -40,12 +51,25 @@ const parseDemand = demandData => {
     field_activist,
     field_architect,
     field_advocate,
-    field_image_gallery,
+    field_image_gallery_1,
+    field_image_gallery_2,
+    field_image_gallery_3,
     field_banner,
     field_banner_1,
     field_actions,
   } = demandData
+  const gallerySrcs = parseMulti(field_image_gallery_1)
+  const galleryAlts = parseMulti(field_image_gallery_2)
+  const galleryCaptions = parseMulti(field_image_gallery_3)
+
+  const gallery = gallerySrcs.map((src, i) => ({
+    src: replaceLink(src),
+    alt: galleryAlts[i],
+    caption: galleryCaptions[i]
+  }))
+
   return {
+    id: field_demand_id,
     body: basicParse(body),
     title: titleCase(title),
     region: basicParse(field_region),
@@ -53,7 +77,7 @@ const parseDemand = demandData => {
     activist: basicParse(field_activist),
     architect: basicParse(field_architect),
     advocate: basicParse(field_advocate),
-    // gallerySrc: replaceLink(field_image_gallery),
+    gallery,
     bannerSrc: replaceLink(field_banner),
     bannerCaption: field_banner_1,
     actions: basicParse(field_actions, domNode => {

@@ -1,21 +1,16 @@
-import parse from 'html-react-parser'
-import { forwardRef, useContext, useEffect, useMemo } from 'react'
-import Action from './action'
+import { forwardRef, useEffect, useMemo } from 'react'
 import CarouselDemand from './carouselDemand'
 
 import contributorData from '../contributors.json'
 import MemberDemand from './memberDemand'
 import useIsEn from '../hooks/useIsEn'
-import useLang from '../hooks/useLang'
-import { GlobalContext } from '../contexts/contexts'
 import parserServices from '../services/parserServices'
 
-const DemandBody = forwardRef(({ nid, demand_id, gallery }, ref) => {
+const DemandBody = forwardRef(({ data }, ref) => {
   const isEn = useIsEn()
-  const lang = useLang()
 
-  const demandData = useContext(GlobalContext)?.demands[lang].find(demand => nid + 1 === parseInt(demand.nid))
   const {
+    id,
     body,
     title,
     region,
@@ -25,10 +20,11 @@ const DemandBody = forwardRef(({ nid, demand_id, gallery }, ref) => {
     advocate,
     bannerSrc,
     bannerCaption,
+    gallery,
     actions,
-  } = useMemo(() => parserServices.parseDemand(demandData), [demandData])
+  } = useMemo(() => parserServices.parseDemand(data), [data])
 
-  const teamMembers = contributorData.filter(member => member.team_id === demand_id)
+  const teamMembers = contributorData.filter(member => member.team_id === id)
 
   useEffect(() => {
     document.title = `AAHA | ${title}`
@@ -36,8 +32,8 @@ const DemandBody = forwardRef(({ nid, demand_id, gallery }, ref) => {
   }, [title])
 
   return (
-    demandData &&
-    <section id={demand_id} className='demand' ref={ref}>
+    data &&
+    <section id={id} className='demand' ref={ref}>
       <div className='container'>
         <div className='row'>
           <div className='three columns sticky'>
@@ -55,7 +51,7 @@ const DemandBody = forwardRef(({ nid, demand_id, gallery }, ref) => {
             <img src={bannerSrc} alt='' />
             <p className='caption'>{bannerCaption}</p>
             <div>{body}</div>
-            <div><CarouselDemand carouselImages={gallery} /></div>
+            <div><CarouselDemand carouselData={gallery} /></div>
           </div>
           <div className='action-bar three columns sticky-bottom white-bg'>
             <h3>{isEn ? 'TAKE ACTION:' : "PASSONS À L'ACTION : "}</h3>
@@ -70,9 +66,9 @@ const DemandBody = forwardRef(({ nid, demand_id, gallery }, ref) => {
         <thead>
           <tr>
             <td className='sidebearing'></td>
-            <td><label className='red'>{isEn ? 'name' : 'Nom'}</label></td>
-            <td><label className='red'>{isEn ? 'organizations' : 'Organisme'}</label></td>
-            <td><label className='red'>{isEn ? 'role' : 'Rôle'}</label></td>
+            <td><label className='red'>{isEn ? 'name' : 'nom'}</label></td>
+            <td><label className='red'>{isEn ? 'organizations' : 'organisme'}</label></td>
+            <td><label className='red'>{isEn ? 'role' : 'rôle'}</label></td>
             <td className='sidebearing'></td>
           </tr>
         </thead>
