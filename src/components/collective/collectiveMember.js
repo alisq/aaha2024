@@ -1,23 +1,23 @@
 import { Link } from 'react-router-dom'
 import useLang from '../../hooks/useLang'
+import { CLS } from '../../constants/styleConstants'
+import TableHead from '../common/tableHead'
 
 const CollectiveMember = ({ member }) => {
   const { lang } = useLang()
   const { title, team, organization, organization_links, role, bio } = member[lang]
   return (
-    <tr>
-      <td className='sidebearing'></td>
+    <TableHead>
       <td><strong>{member.name}</strong></td>
       {member.category === 'collaborator' ?
         <>
           <td><label>{title}</label></td>
           <td>{bio}</td>
-          <td className='sidebearing'></td>
         </> :
         <>
           {title && (<td><label>{title}</label></td>)}
           <td>
-            <ul className='orgLinks'>
+            <ul className={CLS.ORG_LINKS}>
               {organization.map((org, i) =>
                 <li key={i}>
                   <Link target='_blank' to={organization_links[i]}>
@@ -27,17 +27,16 @@ const CollectiveMember = ({ member }) => {
             </ul>
           </td>
           {member.team_id &&
-            <td className='smallHalf'>
-              <Link className='teamTitle' to={`/${lang}/demand/${member.team_id}`}>
+            <td className={CLS.SMALL_HALF}>
+              <Link className={CLS.TEAM_TITLE} to={`/${lang}/demand/${member.team_id}`}>
                 {team}
               </Link>
             </td>}
-          {role && <td className='smallHalf'><label>{role}</label></td>}
+          {role && <td className={CLS.SMALL_HALF}><label>{role}</label></td>}
           {bio && <td>{bio}</td>}
-          <td className='sidebearing'></td>
         </>
       }
-    </tr>
+    </TableHead>
   )
 }
 

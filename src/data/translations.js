@@ -16,6 +16,10 @@ const activist = ['Activist', 'Activiste']
 const advocate = ['Advocate', 'Défenseur']
 const architect = ['Architect', 'Architecte']
 
+export const MAIN = {
+  bottomTitle: ['Join The Campaign', 'Rejoindre la campagne']
+}
+
 export const MENU = {
   demands,
   contact: ['CONTACT', 'CONTACTER']

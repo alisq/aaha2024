@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
+import useLang from '../../hooks/useLang'
+import { CLS } from '../../constants/styleConstants'
+import TableHead from '../common/tableHead'
 
 const DemandMember = ({ member }) => {
-  const { name, organization, organization_links, role } = member
+  const { lang } = useLang()
+  const { organization, organization_links, role } = member[lang]
+
   return (
-    <tr>
-      <td className='sidebearing'></td>
-      <td><strong>{name}</strong></td>
+    <TableHead>
+      <td><strong>{member.name}</strong></td>
       <td>
-        <ul className='orgLinks'>
+        <ul className={CLS.ORG_LINKS}>
           {organization.map((org, i) =>
             <li key={i}>
               <Link target='_blank' to={organization_links[i]}>
@@ -17,9 +21,8 @@ const DemandMember = ({ member }) => {
           )}
         </ul>
       </td>
-      <td className='smallHalf'><label>{role}</label></td>
-      <td className='sidebearing'></td>
-    </tr>
+      <td className={CLS.SMALL_HALF}><label>{role}</label></td>
+    </TableHead>
   )
 }
 

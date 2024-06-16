@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { API_ENDPOINT, API_LANGS } from '../constants/constants'
+import { API_ENDPOINT, API_LANGS } from '../constants/apiConstants'
 import httpServices from './httpServices'
 
 const uniqDemand = demands => _.uniqBy(demands, 'nid')

@@ -1,7 +1,7 @@
 
 import parse, { domToReact } from 'html-react-parser'
 import { titleCase } from 'title-case'
-import { API_ENDPOINT } from '../constants/constants'
+import { API_ENDPOINT } from '../constants/apiConstants'
 import { Link } from 'react-router-dom'
 import { validateString } from '../utils/commonUtils'
 

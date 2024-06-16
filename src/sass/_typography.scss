@@ -130,7 +130,7 @@ h3 {
     padding-bottom: 1rem;
   }
 
-  &.textCenter {
+  &.text-center {
     text-align: center;
   }
 }
@@ -141,8 +141,9 @@ h5 {
   // height: 1rem;
   margin-top: -0.1em;
   padding-right: 0.75em;
-  margin-bottom:0;
+  margin-bottom: 0;
 }
+
 .exAlt1,
 .exAlt2,
 .exAlt3 {
@@ -150,6 +151,7 @@ h5 {
   visibility: hidden;
   overflow: hidden;
 }
+
 .exAlt1:before,
 .exAlt2:before,
 .exAlt3:before {
@@ -168,7 +170,7 @@ h5 {
   content: "\0778";
 }
 
-.noBreak {
+.no-break {
   white-space: nowrap;
 }
 
@@ -178,8 +180,9 @@ h5 {
 
 .text-right {
   text-align: right;
-  padding-right:1em;
+  padding-right: 1em;
 }
+
 .caption {
   font-size: 0.8em;
   line-height: 1.3;
@@ -189,25 +192,27 @@ h5 {
   font-style: italic;
 }
 
-.teamTitle:link,
-.teamTitle:visited {
+.team-title:link,
+.team-title:visited {
   font-family: "AAHA-WEB";
   font-size: 1.2em;
   color: $foreground;
   text-decoration: none;
 }
 
-.teamTitle:hover {
+.team-title:hover {
   color: $red;
 }
 
-.orgLinks {
+.org-links {
   list-style-type: none;
   margin: 0;
   padding: 0;
+
   & li {
     margin: 0;
     padding: 0;
+
     & a:link,
     & a:visited {
       color: $foreground;
@@ -259,6 +264,7 @@ button:visited {
   &:hover .num {
     color: rgba($foreground, 0.3);
   }
+
   // margin-top:-50%;
 
   h2 {
@@ -297,6 +303,7 @@ button:visited {
   &:hover .num {
     color: rgba($foreground, 0.3);
   }
+
   // margin-top:-50%;
 
   h2 {
@@ -348,13 +355,13 @@ label,
   color: $white;
   padding: 0.4em 1em 0.2em;
   border-radius: 1em;
-  cursor:pointer;
-  transition:background 0.3s;
+  cursor: pointer;
+  transition: background 0.3s;
   // margin-left:-1em;
 
 
   &:hover {
-    background:$foreground;
+    background: $foreground;
   }
 }
 
@@ -362,7 +369,7 @@ ol {
   list-style: decimal;
 }
 
-// 
+//
 .temp-filter-header,
 .temp-filter-item {
   font-family: aaha-web, monospace;
@@ -375,6 +382,7 @@ ol {
 
 .temp-filter-item {
   display: none;
+
   &:hover {
     background-color: $red;
   }

@@ -6,10 +6,12 @@ import { GlobalContext } from '../../contexts/contexts'
 import contributorData from '../../contributors.json'
 import { COLLECTIVE } from '../../data/translations'
 import useLang from '../../hooks/useLang'
-import TableHeader from '../common/tableHead'
+import TableLabel from '../common/tableLabel'
 import Filter from '../common/filter'
 import CollectiveMember from './collectiveMember'
 import CollectiveCommittee from './collectiveCommittee'
+import { CLS } from '../../constants/styleConstants'
+import TableLabelHead from '../common/tableLabelHead'
 
 
 const Collective = () => {
@@ -61,10 +63,10 @@ const Collective = () => {
       <br /><br />
       <h3
         ref={sectionRefs['organizing-committee']}
-        className='textCenter'>
+        className={CLS.TEXT_CENTER}>
         {translations.header}
       </h3>
-      <table className='members'>
+      <table className={CLS.MEMBERS}>
         <tbody>
           {committeeData.map((member, i) =>
             <CollectiveCommittee
@@ -75,18 +77,16 @@ const Collective = () => {
       <br /><br />
       <h3
         ref={sectionRefs['collaborators']}
-        className='textCenter'>
+        className={CLS.TEXT_CENTER}>
         {translations.collaborator}
       </h3>
-      <table className='members'>
+      <table className={CLS.MEMBERS}>
         <thead>
-          <tr>
-            <td className='sidebearing'></td>
-            <TableHeader name={translations.memberName} />
-            <TableHeader name={translations.memberRole} />
-            <TableHeader name={translations.memberBio} />
-            <td className='sidebearing'></td>
-          </tr>
+          <TableLabelHead names={[
+            translations.memberName,
+            translations.memberRole,
+            translations.memberBio
+          ]} />
         </thead>
         <tbody>
           {collaboratorData.map((member, i) => <CollectiveMember member={member} key={i} />)}
@@ -95,10 +95,10 @@ const Collective = () => {
       <br /><br />
       <h3
         ref={sectionRefs['team-members']}
-        className='textCenter'>
+        className={CLS.TEXT_CENTER}>
         {translations.members}
       </h3>
-      <div className='text-center'>
+      <div className={CLS.TEXT_CENTER}>
         <Filter
           name='team-members-role'
           placeholder={translations.memberRole}
@@ -110,16 +110,14 @@ const Collective = () => {
           list={demands?.map(({ title }) => title)}
           handleFilter={({ target }) => handleFilterTeam({ team: target.value })} />
       </div>
-      <table className='members'>
+      <table className={CLS.MEMBERS}>
         <thead>
-          <tr>
-            <td className='sidebearing'></td>
-            <TableHeader name={translations.memberName} />
-            <TableHeader name={translations.memberOrg} />
-            <TableHeader name={translations.team} />
-            <TableHeader name={translations.memberRole} />
-            <td className='sidebearing'></td>
-          </tr>
+          <TableLabelHead names={[
+            translations.memberName,
+            translations.memberOrg,
+            translations.team,
+            translations.memberRole,
+          ]} />
         </thead>
         <tbody>{contributorData.map(getTeamMember)}</tbody>
       </table>

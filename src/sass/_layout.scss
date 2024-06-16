@@ -19,6 +19,7 @@ section {
 .container {
   max-width: $max-container-width;
 }
+
 p {
   padding: 0;
   margin-bottom: 0.5em !important;
@@ -55,21 +56,21 @@ h1 {
 
   &.title-top {
     top: 0.75em;
-    
+
   }
 
   &.title-bottom {
     // transform:rotate(180deg);
-    color:black;
-    position:fixed;
-    top:calc(100vh - 1.6em);
+    color: black;
+    position: fixed;
+    top: calc(100vh - 1.6em);
   }
 
   &.fr {
     transform: rotate(180deg);
   }
 
- 
+
 
   &.title-top,
   &.title-bottom {
@@ -87,7 +88,7 @@ h1 {
     }
   }
 
-  
+
 }
 
 .title-top.invert,
@@ -217,16 +218,16 @@ h1 {
     &.center {
       top: 10px;
       left: 10px;
-      
-      opacitY:0;
+
+      opacitY: 0;
     }
   }
 
-  
+
 
   &.active .menu-button-square,
   &:hover .menu-button-square {
-    opacity:1;
+    opacity: 1;
     transform: rotate(45deg);
   }
 
@@ -309,6 +310,7 @@ h1 {
   opacity: 0;
   transition: opacity $transition-time;
   padding: 0;
+
   &.active {
     opacity: 1;
     user-select: initial;
@@ -319,6 +321,7 @@ h1 {
     list-style-type: none;
     margin-top: 5em;
     margin-left: 0.5em;
+
     & li {
       font-family: "AAHA-WEB";
       color: $red;
@@ -333,7 +336,7 @@ h1 {
       & a:visited {
         color: $red;
         text-decoration: none;
-        transition:color 0.4s
+        transition: color 0.4s
       }
 
       & a:hover {
@@ -360,22 +363,22 @@ h1 {
 
 
 
-.filter-section {
-  text-align:center;
-    font-family:'AAHA-WEB';
-    display:inline-block;
-    border:1px solid $red;
-    border-radius:2em;
-    background:$red;
-    color:white;
-    padding-right:0.5em;
-    font-size:1.75rem;
-    margin:0 0.5em;
-    padding-top:0.5em;
+.filter {
+  text-align: center;
+  font-family: 'AAHA-WEB';
+  display: inline-block;
+  border: 1px solid $red;
+  border-radius: 2em;
+  background: $red;
+  color: white;
+  padding-right: 0.5em;
+  font-size: 1.75rem;
+  margin: 0 0.5em;
+  padding-top: 0.5em;
 
-    & option {
-      font-family:'AAHA-WEB';
-    }
+  & option {
+    font-family: 'AAHA-WEB';
+  }
 
 }
 
@@ -395,23 +398,24 @@ h1 {
 
   & img {
     width: 100%;
-    height: 100%;    
-    padding-top:3vw;
+    height: 100%;
+    padding-top: 3vw;
     max-width: 94vw;
-    max-height:90vh;
+    max-height: 90vh;
     object-fit: contain;
     mix-blend-mode: normal;
     cursor: zoom-out;
     transition: none;
 
-    &, &:hover{
+    &,
+    &:hover {
       filter: none;
     }
   }
 
   & .caption {
-    padding:1em;
-    text-align:center;
+    padding: 1em;
+    text-align: center;
   }
 
   & .close {
@@ -421,82 +425,82 @@ h1 {
     position: absolute;
     top: 2.5rem;
     right: 2rem;
-    cursor:pointer;
-    transition:color 0.4s;
+    cursor: pointer;
+    transition: color 0.4s;
 
     &:hover {
-      color:$foreground;
+      color: $foreground;
     }
   }
 }
 
 
 .flickity-viewport {
-  overflow:visible;
+  overflow: visible;
 
 
 
-& .slide {
-  border-right:3px solid rgba($foreground, 0);
-  width:100%;
-  
+  & .slide {
+    border-right: 3px solid rgba($foreground, 0);
+    width: 100%;
 
-  & .demand-slide {
-    width:100%;
-    height:80vh;
-    overflow:hidden;
-    position:relative;
 
-    & img {
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      display:block;
-      max-width:100%;
-      max-height:600px;
-      width:auto;
-      height:auto;
-      opacity:0.3;
-      cursor: zoom-in;
+    & .demand-slide {
+      width: 100%;
+      height: 80vh;
+      overflow: hidden;
+      position: relative;
+
+      & img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        max-width: 100%;
+        max-height: 600px;
+        width: auto;
+        height: auto;
+        opacity: 0.3;
+        cursor: zoom-in;
+      }
     }
-  }
 
-  & .caption {
-    opacity:0;
-    transition:0.4s;
-  }
-
-  &.is-selected  {
     & .caption {
-      opacity:1;
+      opacity: 0;
+      transition: 0.4s;
     }
-    & img{
-      filter: grayscale(0) contrast(100%);
-      opacity:1;
+
+    &.is-selected {
+      & .caption {
+        opacity: 1;
+      }
+
+      & img {
+        filter: grayscale(0) contrast(100%);
+        opacity: 1;
+      }
+
     }
-    
   }
-}
 
 }
 
 button.flickity-button {
-  padding:0;
-  border:1px solid $red;
-  background:none;
-  z-index:10000;
+  padding: 0;
+  border: 1px solid $red;
+  background: none;
+  z-index: 10000;
 
   & svg {
-    fill:$red
-    
+    fill: $red
   }
 
   &:hover {
-    border:1px solid $red;
+    border: 1px solid $red;
 
     & svg {
-      fill:$red;
+      fill: $red;
     }
   }
 }
@@ -511,6 +515,7 @@ button.flickity-button {
 ul.actions {
   list-style-type: none;
   padding-top: 1em;
+
   & li {
     margin-bottom: 1em;
     padding-bottom: 1em;
@@ -520,13 +525,13 @@ ul.actions {
 table {
   width: 100%;
   border-spacing: 0;
-  margin-bottom:0;
+  margin-bottom: 0;
 
   & thead tr td {
-    border-top:none!important;
-    border-bottom:none;
+    border-top: none !important;
+    border-bottom: none;
   }
-  
+
   & tr {
     padding: 0;
     margin: 0;
@@ -546,9 +551,6 @@ table {
 
     & td {
       padding: 0.25em;
-
-      // &.hideText {
-      // }
     }
 
     &.hide {
@@ -559,8 +561,9 @@ table {
 
     &:first-child td {
       border-top: 1px solid rgba($foreground, 0.3);
-      
+
     }
+
     // &:nth-child(odd) {background: rgba($foreground,0.02)}
     // background:red;
 
@@ -580,31 +583,34 @@ table {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
   grid-column-gap: 1em;
+
   & svg {
-    width:100%;
-    height:auto;
+    width: 100%;
+    height: auto;
   }
 }
+
 #contact {
-  position:relative;
-  padding:0;
+  position: relative;
+  padding: 0;
 
   & .row {
     // padding:0 2em ;
-    position:absolute;
-    
-    top:50vh;
-    transform:translateY(-50%)
-  } 
+    position: absolute;
+
+    top: 50vh;
+    transform: translateY(-50%)
+  }
 
 
 }
+
 .partners {
 
-  margin-top:2em;
-  max-width:40%;
+  margin-top: 2em;
+  max-width: 40%;
 
-  & .footerLogo {
+  & .footer-logo {
     fill: rgba($foreground, 1);
     width: 100%;
     transition: fill 0.4s;
@@ -615,54 +621,54 @@ table {
       fill: $red;
     }
 
-  & svg {
-    height:auto;
+    & svg {
+      height: auto;
+    }
+
+    & #logoBiennale {
+      width: 50%;
+
+    }
+
+    & #logoCCA,
+    & #logoUW,
+    & #logoSALA,
+    & #logoRAIC {
+      width: 80%;
+    }
+
+
   }
 
-  & #logoBiennale {
-    width: 50%;
-    
-  }
-
-  & #logoCCA,
-  & #logoUW,
-  & #logoSALA,
-  & #logoRAIC {
-    width: 80%;
-  }
 
 
-}
-
-
-
-#contact {
-    position:relative;
+  #contact {
+    position: relative;
 
     & .row {
-      padding:0 2em ;
-      position:absolute;
-      background:red;
-      top:50vh;
-      transform:translateY(-50%)
-    } 
+      padding: 0 2em;
+      position: absolute;
+      background: red;
+      top: 50vh;
+      transform: translateY(-50%)
+    }
 
-  & h5 {
-    color: rgba($background, 1);
-  }
+    & h5 {
+      color: rgba($background, 1);
+    }
 
-  & li {
-    margin-bottom: 0;
-  }
+    & li {
+      margin-bottom: 0;
+    }
 
-  & .footerList {
-    font-family: 'AAHA-WEB';
-    text-transform: uppercase; 
-    // list-style-type: disc;
-    // margin-left: -1.25em;
-  }
+    & .footerList {
+      font-family: 'AAHA-WEB';
+      text-transform: uppercase;
+      // list-style-type: disc;
+      // margin-left: -1.25em;
+    }
 
-  
+
   }
 }
 
@@ -697,6 +703,7 @@ table {
   body {
     font-size: 18px;
   }
+
   #menu-button {
     top: 0.5em;
     left: 0.5em;
@@ -715,24 +722,25 @@ table {
   }
 
   #contact {
-    text-align:center;
-    position:relative;
-    
+    text-align: center;
+    position: relative;
+
     & .socials {
       padding-bottom: 0.5rem;
     }
 
     & .row {
-      padding:0 2em ;
-      position:absolute;;
-      top:50vh;
-      transform:translateY(-50%);
+      padding: 0 2em;
+      position: absolute;
+      ;
+      top: 50vh;
+      transform: translateY(-50%);
 
       & .text-right {
-        text-align:center;
-        padding-right:0;
+        text-align: center;
+        padding-right: 0;
       }
-      
+
     }
   }
 
@@ -757,6 +765,7 @@ table {
     &.fr {
       font-size: 1.5em;
     }
+
     & h2 {
       text-align: left;
       display: block;
@@ -774,6 +783,7 @@ table {
   h4 {
     text-align: center;
   }
+
   h1 {
     position: static;
     height: auto;
@@ -790,8 +800,8 @@ table {
 
     &.title-bottom {
       transform: rotate(0);
-      position:static;
-      padding:0.5em;
+      position: static;
+      padding: 0.5em;
     }
 
     &.fr {
@@ -811,6 +821,7 @@ table {
     font-size: 2em;
     line-height: 1;
   }
+
   h3 {
     padding-top: 1em;
 
@@ -820,11 +831,12 @@ table {
   }
 
   section {
-    
+
     padding: 1rem;
+
     &#demands {
-      min-height:0;
-      padding:0;
+      min-height: 0;
+      padding: 0;
     }
   }
 
@@ -836,9 +848,10 @@ table {
   section.demand {
     padding-top: 3em;
   }
+
   .sticky {
     position: static;
-    
+
   }
 
   #menu ul li {
@@ -848,7 +861,7 @@ table {
   .members {
 
     & thead {
-      display:none;
+      display: none;
 
     }
 
@@ -858,6 +871,7 @@ table {
       padding: 1em 0;
       border-bottom: 1px solid rgba($foreground, 0.3);
       height: auto;
+
       &:first-child {
         border-top: 1px solid rgba($foreground, 0.3);
       }
@@ -866,6 +880,7 @@ table {
         border: none;
       }
     }
+
     & td {
       display: block;
       margin: 0;
@@ -877,7 +892,7 @@ table {
         padding: 0;
       }
 
-      // &.smallHalf {
+      // &.small-half {
       //     width:50%;
       //     float:left;
       //     height:1.2em
@@ -886,6 +901,6 @@ table {
   }
 
   .partners {
-    max-width:100%;
+    max-width: 100%;
   }
 }

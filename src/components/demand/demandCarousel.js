@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Flickity from 'react-flickity-component'
 import parse from 'html-react-parser'
+import { CLS, CLSES } from '../../constants/styleConstants'
 
 
 const DemandCarousel = ({ data }) => {
@@ -17,16 +18,16 @@ const DemandCarousel = ({ data }) => {
   return (
     <>
       {typeof zoomedImgIndex === 'number' &&
-        <div className='slide-fullscreen' onClick={() => setZoomImgIndex(null)} >
-          <div className='close' onClick={() => setZoomImgIndex(null)}>&times;</div>
+        <div className={CLS.SLIDE_FULLSCREEN} onClick={() => setZoomImgIndex(null)} >
+          <div className={CLS.CLOSE} onClick={() => setZoomImgIndex(null)}>&times;</div>
           <img src={zoomedImg.src} alt={zoomedImg.alt} />
-          <div className='caption'>
+          <div className={CLS.CAPTION}>
             {parse(zoomedImg.caption)}
           </div>
         </div>}
       <Flickity
         flickityRef={ref => ref.on('staticClick', (_, __, ___, i) => setZoomImgIndex(i))}
-        className='carousel'
+        className={CLS.CAROUSEL}
         options={{
           initialIndex: 0,
           draggable: true,
@@ -35,12 +36,12 @@ const DemandCarousel = ({ data }) => {
         }}
         reloadOnUpdate={true}>
         {data.map(({ src, alt, caption }, i) =>
-          <div className='slide' key={i} >
-            <div className='demand-slide'>
+          <div className={CLS.SLIDE} key={i} >
+            <div className={CLS.DEMAND_SLIDE}>
               <img src={src} alt={alt} />
             </div>
             {caption !== '' &&
-              <div className='caption text-center'>
+              <div className={CLSES.CENTER_CAPTION}>
                 {caption.replace(/(<([^>]+)>)/gi, '')}
               </div>}
           </div>

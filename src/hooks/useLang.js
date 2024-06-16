@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { getUrlParts } from '../utils/urlUtils'
-import { LANGS } from '../constants/constants'
+import { LANGS } from '../constants/commonConstants'
 import { mapObject } from '../utils/commonUtils'
 
 const useLang = translations => {

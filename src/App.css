@@ -449,7 +449,7 @@ h3 {
     font-size: 10rem;
     line-height: 1;
     padding-bottom: 1rem; }
-  h3.textCenter {
+  h3.text-center {
     text-align: center; }
 
 h5 {
@@ -479,7 +479,7 @@ h5 {
 .exAlt3:before {
   content: "\0778"; }
 
-.noBreak {
+.no-break {
   white-space: nowrap; }
 
 .text-center {
@@ -496,25 +496,25 @@ h5 {
   font-weight: bold;
   font-style: italic; }
 
-.teamTitle:link,
-.teamTitle:visited {
+.team-title:link,
+.team-title:visited {
   font-family: "AAHA-WEB";
   font-size: 1.2em;
   color: #101010;
   text-decoration: none; }
 
-.teamTitle:hover {
+.team-title:hover {
   color: #c00000; }
 
-.orgLinks {
+.org-links {
   list-style-type: none;
   margin: 0;
   padding: 0; }
-  .orgLinks li {
+  .org-links li {
     margin: 0;
     padding: 0; }
-    .orgLinks li a:link,
-    .orgLinks li a:visited {
+    .org-links li a:link,
+    .org-links li a:visited {
       color: #101010; }
 
 button {
@@ -878,7 +878,7 @@ h1 {
     .socials i:hover {
       color: #c00000; }
 
-.filter-section {
+.filter {
   text-align: center;
   font-family: 'AAHA-WEB';
   display: inline-block;
@@ -890,7 +890,7 @@ h1 {
   font-size: 1.75rem;
   margin: 0 0.5em;
   padding-top: 0.5em; }
-  .filter-section option {
+  .filter option {
     font-family: 'AAHA-WEB'; }
 
 .slide-fullscreen {
@@ -1036,22 +1036,22 @@ table {
 .partners {
   margin-top: 2em;
   max-width: 40%; }
-  .partners .footerLogo {
+  .partners .footer-logo {
     fill: #101010;
     width: 100%;
     transition: fill 0.4s;
     height: auto;
     padding-bottom: 2em; }
-    .partners .footerLogo:hover {
+    .partners .footer-logo:hover {
       fill: #c00000; }
-    .partners .footerLogo svg {
+    .partners .footer-logo svg {
       height: auto; }
-    .partners .footerLogo #logoBiennale {
+    .partners .footer-logo #logoBiennale {
       width: 50%; }
-    .partners .footerLogo #logoCCA,
-    .partners .footerLogo #logoUW,
-    .partners .footerLogo #logoSALA,
-    .partners .footerLogo #logoRAIC {
+    .partners .footer-logo #logoCCA,
+    .partners .footer-logo #logoUW,
+    .partners .footer-logo #logoSALA,
+    .partners .footer-logo #logoRAIC {
       width: 80%; }
   .partners #contact {
     position: relative; }

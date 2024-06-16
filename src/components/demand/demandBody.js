@@ -1,15 +1,20 @@
 import { forwardRef, useEffect, useMemo } from 'react'
-import DemandCarousel from './demandCarousel'
+import { CLS } from '../../constants/styleConstants'
 import contributorData from '../../contributors.json'
 import { DEMAND_BODY } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import parserServices from '../../services/parserServices'
-import TableHeader from '../common/tableHead'
-import DemandMember from './demandMember'
+import LeftColumn from '../common/leftColumn'
+import MidColumn from '../common/midColumn'
+import RightColumn from '../common/rightColumn'
+import TableLabel from '../common/tableLabel'
+import DemandCarousel from './demandCarousel'
 import DemandData from './demandData'
+import DemandMember from './demandMember'
+import TableLabelHead from '../common/tableLabelHead'
 
 const DemandBody = forwardRef(function DemandBody({ data }, ref) {
-  const { lang, translations } = useLang(DEMAND_BODY)
+  const { translations } = useLang(DEMAND_BODY)
   const {
     id,
     body,
@@ -34,44 +39,41 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
 
   return (
     data &&
-    <section id={id} className='demand' ref={ref}>
-      <div className='container'>
-        <div className='row'>
-          <div className='three columns sticky'>
-            <h2>{translations.header} {title}</h2>
+    <section id={id} className={CLS.DEMAND} ref={ref}>
+      <div className={CLS.CONTAINER}>
+        <div className={CLS.ROW}>
+          <LeftColumn title={`${translations.header} ${title}`}>
             <p>{longSummary}</p>
             <DemandData label={translations.region} value={region} />
             <DemandData label={translations.activist} value={activist} />
             <DemandData label={translations.architect} value={architect} />
             <DemandData label={translations.advocate} value={advocate} />
-          </div>
-          <div className='six columns'>
+          </LeftColumn>
+          <MidColumn>
             <img src={bannerSrc} alt='' />
-            <p className='caption'>{bannerCaption}</p>
+            <p className={CLS.CAPTION}>{bannerCaption}</p>
             <div>{body}</div>
             <div><DemandCarousel data={gallery} /></div>
-          </div>
-          <div className='action-bar three columns sticky-bottom white-bg'>
+          </MidColumn>
+          <RightColumn >
             <h3>{translations.takeAction}</h3>
-            <ul className='actions'>{actions}</ul>
-          </div>
+            <ul className={CLS.ACTIONS}>{actions}</ul>
+          </RightColumn>
         </div>
       </div>
       <br /><br />
-      <h3 className='textCenter'>{translations.member}</h3>
+      <h3 className={CLS.TEXT_CENTER}>{translations.member}</h3>
       <br />
-      <table className='members'>
+      <table className={CLS.MEMBERS}>
         <thead>
-          <tr>
-            <td className='sidebearing'></td>
-            <TableHeader name={translations.memberName} />
-            <TableHeader name={translations.memberOrg} />
-            <TableHeader name={translations.memberRole} />
-            <td className='sidebearing'></td>
-          </tr>
+          <TableLabelHead names={[
+            translations.memberName,
+            translations.memberOrg,
+            translations.memberRole
+          ]} />
         </thead>
         <tbody>
-          {teamMembers.map((member, i) => <DemandMember key={i} member={member[lang]} />)}
+          {teamMembers.map((member, i) => <DemandMember key={i} member={member} />)}
         </tbody>
       </table>
     </section>

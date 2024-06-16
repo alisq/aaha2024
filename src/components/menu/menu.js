@@ -5,6 +5,8 @@ import useLang from '../../hooks/useLang'
 import pageData from '../../pages.json'
 import { validateString } from '../../utils/commonUtils'
 import MenuLink from './menuLink'
+import { joinClasses } from '../../utils/styleUtils'
+import { CLS } from '../../constants/styleConstants'
 
 const Menu = ({ footerRef }) => {
   const [visibility, setVisibility] = useState(false)
@@ -15,16 +17,17 @@ const Menu = ({ footerRef }) => {
     footerRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const getMenuSquareClass = direction => joinClasses(CLS.MENU_BUTTON_SQUARE, direction)
   return (
     <>
       <div id='menu-button'
         onClick={() => setVisibility(!visibility)}
         className={validateString(visibility, 'active')}>
-        <div className='menu-button-square top-left'></div>
-        <div className='menu-button-square top-right'></div>
-        <div className='menu-button-square center'></div>
-        <div className='menu-button-square bottom-left'></div>
-        <div className='menu-button-square bottom-right'></div>
+        <div className={getMenuSquareClass(CLS.TOP_LEFT)}></div>
+        <div className={getMenuSquareClass(CLS.TOP_RIGHT)}></div>
+        <div className={getMenuSquareClass(CLS.CENTER)}></div>
+        <div className={getMenuSquareClass(CLS.BOTTOM_LEFT)}></div>
+        <div className={getMenuSquareClass(CLS.BOTTOM_RIGHT)}></div>
       </div>
       <section id='menu' className={validateString(visibility, 'active')}>
         <ul>

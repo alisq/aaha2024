@@ -1,5 +1,10 @@
+import { CLS } from '../../constants/styleConstants'
 
-const TableHeader = ({ name }) =>
-  <td><label className='red'>{name}</label></td>
+const TableHead = ({ children }) =>
+  <tr>
+    <td className={CLS.SIDEBEARING}></td>
+    {children}
+    <td className={CLS.SIDEBEARING}></td>
+  </tr>
 
-export default TableHeader
+export default TableHead

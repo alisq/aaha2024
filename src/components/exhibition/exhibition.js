@@ -4,7 +4,10 @@ import SponsorLogos from './sponsorLogos'
 import Pavilion from './pavilion'
 import useLang from '../../hooks/useLang'
 import { EXHIBITION } from '../../data/translations'
-import { LANGS } from '../../constants/constants'
+import { LANGS } from '../../constants/commonConstants'
+import MidColumn from '../common/midColumn'
+import LeftColumn from '../common/leftColumn'
+import { CLS, CLSES } from '../../constants/styleConstants'
 
 const carouselImages = [
   {
@@ -59,26 +62,27 @@ const carouselImages = [
   }
 ]
 
+// TODO Columns
 const Exhibition = () => {
   const { lang, translations } = useLang(EXHIBITION)
   const isEn = lang === LANGS[0]
   return (
-    <div className='container'>
-      <div className='row'>
-        <div className='three columns'><br /></div>
-        <div className='six columns'>
+    <div className={CLS.CONTAINER}>
+      <div className={CLS.ROW}>
+        <LeftColumn noSticky><br /></LeftColumn>
+        <MidColumn>
           <br />
-          <h3 className='text-center'>
+          <h3 className={CLS.TEXT_CENTER}>
             {translations.notForSale}
           </h3>
-        </div>
-        <Pavilion className='img' />
-        <div className='three columns'><br /></div>
-        <div className='six columns'>
-          <p className='caption text-center'>Pavilion layout for Not For Sale exhibition in Venice, Italy.</p>
-          <h3 className='text-center'>
-            {translations.banners}
-          </h3>
+        </MidColumn>
+        <Pavilion className={CLS.IMG} />
+        <LeftColumn noSticky><br /></LeftColumn>
+        <MidColumn>
+          <p className={CLSES.CENTER_CAPTION}>
+            Pavilion layout for Not For Sale exhibition in Venice, Italy.
+          </p>
+          <h3 className={CLS.TEXT_CENTER}>{translations.banners}</h3>
           <p>
             {
               isEn ?
@@ -87,7 +91,7 @@ const Exhibition = () => {
             }
           </p>
           <ExhibitionCarousel data={carouselImages} />
-          <p className='caption'>
+          <p className={CLS.CAPTION}>
             {
               isEn ?
                 <>
@@ -122,7 +126,7 @@ const Exhibition = () => {
           Marie McGregor Pitawanakwat<br />
           Chinook Song Catchers<br />
           Robyn Adams<br /><br />
-        </div>
+        </MidColumn>
       </div>
     </div>
 

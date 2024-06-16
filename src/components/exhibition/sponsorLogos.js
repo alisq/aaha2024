@@ -1,3 +1,4 @@
+import { CLS } from '../../constants/styleConstants'
 import { EXHIBITION } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import { ReactComponent as LogoAFBC } from '../../svg/LogoAFBC.svg'
@@ -13,8 +14,8 @@ const SponsorLogos = () => {
   const { translations } = useLang(EXHIBITION)
   return (
     <>
-      <h3 className='text-center'>{translations.sponsors}</h3>
-      <div className='partners'>
+      <h3 className={CLS.TEXT_CENTER}>{translations.sponsors}</h3>
+      <div className={CLS.PARTNERS}>
         <h4>{translations.commissioner}</h4>
         <SponsorLogo to='https://canadacouncil.ca/' id='logoCCA' Svg={LogoCCA} />
         <h4>{translations.primarySponsor}</h4>
@@ -26,7 +27,7 @@ const SponsorLogos = () => {
         <br /><br />
         <h4>{translations.sponsors}</h4>
         <SponsorLogo to='https://raic.org/' id='logoRAIC' Svg={LogoRAIC} />
-        <div className='thirds'>
+        <div className={CLS.THIRDS}>
           <div>
             <SponsorLogo to='https://www.oaa.on.ca/' id='logoOAA' Svg={LogoOAA} />
           </div>

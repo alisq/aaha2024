@@ -1,22 +1,21 @@
 import parse from 'html-react-parser'
 import { forwardRef } from 'react'
+import { CLS } from '../constants/styleConstants'
 import Collective from './collective/collective'
+import LeftColumn from './common/leftColumn'
+import MidColumn from './common/midColumn'
+import RightColumn from './common/rightColumn'
 import Exhibition from './exhibition/exhibition'
 
 
 const PageBody = forwardRef(function PageBody({ page_id, body, title }, ref) {
   return (
-    <section id={page_id} className='page' ref={ref}>
-      <div className='container'>
-        <div className='row'>
-          <div className='three columns sticky'>
-            <h2>{title}</h2>
-          </div>
-          <div className='six columns'>
-            <div>{parse(body)}</div>
-          </div>
-          <div className='action-bar three columns sticky-bottom white-bg'>
-          </div>
+    <section id={page_id} className={CLS.PAGE} ref={ref}>
+      <div className={CLS.CONTAINER}>
+        <div className={CLS.ROW}>
+          <LeftColumn title={title} />
+          <MidColumn><div>{parse(body)}</div></MidColumn>
+          <RightColumn />
         </div>
       </div>
       {page_id === 'exhibition' ? <Exhibition /> :

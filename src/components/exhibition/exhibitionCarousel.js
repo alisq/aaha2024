@@ -1,11 +1,12 @@
 import Flickity from 'react-flickity-component'
 import useLang from '../../hooks/useLang'
+import { CLS, CLSES } from '../../constants/styleConstants'
 
 const ExhibitionCarousel = ({ data }) => {
   const { lang } = useLang()
   return (
     <Flickity
-      className='carousel'
+      className={CLS.CAROUSEL}
       options={{
         initialIndex: 2,
         draggable: true,
@@ -15,9 +16,9 @@ const ExhibitionCarousel = ({ data }) => {
       reloadOnUpdate
       static>
       {data.map((image, i) =>
-        <div key={i} className='slide'>
+        <div key={i} className={CLS.SLIDE}>
           <img src={image.uri} alt={image[lang].alt} />
-          {image[lang].caption !== '' && <p className='caption text-center'>{image[lang].caption}</p>}
+          {image[lang].caption !== '' && <p className={CLSES.CENTER_CAPTION}>{image[lang].caption}</p>}
         </div>)}
     </Flickity>
   )

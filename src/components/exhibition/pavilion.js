@@ -1,5 +1,6 @@
 import { useWindowSize } from '@uidotdev/usehooks'
-import { LANGS, PAVILION_BREAKPOINT } from '../../constants/constants'
+import { CLS, PAVILION_BREAKPOINT } from '../../constants/styleConstants'
+import { LANGS } from '../../constants/commonConstants'
 import { ReactComponent as PavilionBigEn } from '../../svg/pavilionBigRaster_en.svg'
 import { ReactComponent as PavilionBigFr } from '../../svg/pavilionBigRaster_fr.svg'
 import useLang from '../../hooks/useLang'
@@ -11,7 +12,7 @@ const Pavilion = () => {
 
   return width < PAVILION_BREAKPOINT ?
     <img src='/img/pavilion.png' alt='' /> :
-    <Svg className='multiply' />
+    <Svg className={CLS.MULTIPLY} />
 }
 
 export default Pavilion
