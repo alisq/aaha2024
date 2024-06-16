@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import useLang from '../../hooks/useLang'
 import { FOOTER } from '../../data/translations'
 
-const Footer = forwardRef((_, ref) => {
+const Footer = forwardRef(function Footer(_, ref) {
   const { lang, translations } = useLang(FOOTER)
 
   return (
@@ -44,6 +44,7 @@ const Footer = forwardRef((_, ref) => {
       </div>
     </section>
   )
+
 })
 
 export default Footer

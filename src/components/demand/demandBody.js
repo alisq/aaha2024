@@ -8,7 +8,7 @@ import TableHeader from '../common/tableHead'
 import DemandMember from './demandMember'
 import DemandData from './demandData'
 
-const DemandBody = forwardRef(({ data }, ref) => {
+const DemandBody = forwardRef(function DemandBody({ data }, ref) {
   const { lang, translations } = useLang(DEMAND_BODY)
   const {
     id,

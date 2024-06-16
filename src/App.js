@@ -4,19 +4,18 @@ import usePromise from 'react-promise'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import './app.css'
 import DemandBody from './components/demand/demandBody'
+import Main from './components/main'
 import PageBody from './components/pageBody'
 import { LANGS } from './constants/constants'
 import { GlobalContext } from './contexts/contexts'
 import usePrevious from './hooks/usePrevious'
-import Main from './components/main'
 import pageData from './pages.json'
 import apiServices from './services/apiServices'
 import { getBrowserLang } from './utils/languageUtils'
 import { getUrlParts } from './utils/urlUtils'
-import _ from 'lodash'
 
 
-const OUR_TRACKING_ID = "G-8JJ40D5L38"
+const OUR_TRACKING_ID = 'G-8JJ40D5L38'
 ReactGA.initialize(OUR_TRACKING_ID)
 
 
