@@ -31,6 +31,7 @@ export const CLS = {
 
   PAGE: 'page',
   CONTAINER: 'container',
+  BLOCK_CONTAINER: 'block-container',
   DEMAND: 'demand',
   DEMANDS: 'demands',
   MANIFESTO: 'manifesto',

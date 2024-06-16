@@ -96,7 +96,13 @@ h1 {
   color: $background !important;
 }
 
-#lang {
+.block-container {
+  >* {
+    display: block;
+  }
+}
+
+.spon #lang {
   width: 80px;
   height: 30px;
   cursor: pointer;

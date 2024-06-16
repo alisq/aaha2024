@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import useLang from '../../hooks/useLang'
 import { CLS } from '../../constants/styleConstants'
+import useLang from '../../hooks/useLang'
+import Anchor from '../common/anchor'
 import TableHead from '../common/tableHead'
 
 const DemandMember = ({ member }) => {
@@ -14,9 +14,9 @@ const DemandMember = ({ member }) => {
         <ul className={CLS.ORG_LINKS}>
           {organization.map((org, i) =>
             <li key={i}>
-              <Link target='_blank' to={organization_links[i]}>
+              <Anchor to={organization_links[i]}>
                 {org}
-              </Link>
+              </Anchor>
             </li>
           )}
         </ul>

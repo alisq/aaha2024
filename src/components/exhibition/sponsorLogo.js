@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
 import { CLS } from '../../constants/styleConstants'
+import Anchor from '../common/anchor'
 
 const SponsorLogo = ({ to, id, Svg }) =>
-  <Link to={to} target='_blank'>
+  <Anchor to={to}>
     <Svg className={CLS.FOOTER_LOGO} id={id} />
-  </Link>
+  </Anchor>
 
 export default SponsorLogo

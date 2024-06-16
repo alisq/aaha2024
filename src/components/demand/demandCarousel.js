@@ -1,7 +1,7 @@
 
+import parse from 'html-react-parser'
 import { useEffect, useState } from 'react'
 import Flickity from 'react-flickity-component'
-import parse from 'html-react-parser'
 import { CLS, CLSES } from '../../constants/styleConstants'
 
 

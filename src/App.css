@@ -704,7 +704,10 @@ h1 {
 .title-bottom.invert {
   color: #F5F5F5 !important; }
 
-#lang {
+.block-container > * {
+  display: block; }
+
+.spon #lang {
   width: 80px;
   height: 30px;
   cursor: pointer;
@@ -714,14 +717,14 @@ h1 {
   right: 1em;
   transform-origin: 50% 50%;
   transition: all 0.4s; }
-  #lang div {
+  .spon #lang div {
     display: inline-block;
     border-radius: 2px;
     transition: all 0.4s;
     padding: 0.2em 0.3em 0;
     color: #c00000;
     font-family: aaha-web; }
-    #lang div:hover, #lang div.active {
+    .spon #lang div:hover, .spon #lang div.active {
       color: rgba(245, 245, 245, 0.9);
       background: #c00000; }
 

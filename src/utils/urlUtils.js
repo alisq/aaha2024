@@ -21,3 +21,6 @@ export const updateUrl = (location, type, value) => {
   if (type === 'content') urlParts.content = value
   return partsToUrl(urlParts)
 }
+
+export const linkIsExternal = to => typeof to === 'string' && to.match(/^(https|www)/)
+

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import useLang from '../../hooks/useLang'
 import TableHead from '../common/tableHead'
+import Anchor from '../common/anchor'
 
 const CollectiveCommittee = ({ member }) => {
   const { lang } = useLang()
@@ -9,7 +9,7 @@ const CollectiveCommittee = ({ member }) => {
     <TableHead>
       <td>
         <h5>
-          <Link href={links[0]} target='_blank'>{name}</Link>
+          <Anchor to={links[0]}>{name}</Anchor>
         </h5>
       </td>
       <td><div>{member[lang].bio}</div></td>

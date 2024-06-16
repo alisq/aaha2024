@@ -1,22 +1,18 @@
 
 import parse, { domToReact } from 'html-react-parser'
 import { titleCase } from 'title-case'
+import Anchor from '../components/common/anchor'
 import { API_ENDPOINT } from '../constants/apiConstants'
-import { Link } from 'react-router-dom'
-import { validateString } from '../utils/commonUtils'
+import { linkIsExternal } from '../utils/urlUtils'
 
 const replaceLink = src => `${API_ENDPOINT}/${src}`
-const linkIsExternal = to => typeof to === 'string' && to.match(/^(https|www)/)
 
 const parseAnchor = ({ attribs, children }) => {
   const { href } = attribs
-  const isExternal = linkIsExternal(href)
   return (
-    <Link
-      to={isExternal ? replaceLink(href) : href}
-      target={validateString(isExternal, '_blank')}>
+    <Anchor to={linkIsExternal(href) ? replaceLink(href) : href}>
       {domToReact(children)}
-    </Link>
+    </Anchor>
   )
 }
 

@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import DemandHeader from './demand/demandHeader'
 import Footer from './footer/footer'
 import HomeFist from './homeFist'
@@ -13,11 +13,12 @@ import { CLS } from '../constants/styleConstants'
 import { MAIN } from '../data/translations'
 import { joinClasses } from '../utils/styleUtils'
 import Canada from './common/canada'
+import Anchor from './common/anchor'
 
 const Main = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const footerRef = useRef(null)
+  const footerRef = useRef()
   const { lang: currentLang, translations } = useLang(MAIN)
   const isEn = currentLang === LANGS[0]
 
@@ -62,9 +63,9 @@ const Main = () => {
               handleClick={() => { handleHeaderClick(header) }} />)}
         </div>
         <h1 className={CLS.TITLE_BOTTOM}>
-          <Link to='https://docs.google.com/forms/d/1A4sRDWE8gjoyg1w0XlH9CImhx4BbAv9yCo67JPOkVkc/viewform?edit_requested=true#responses' target='_blank'>
+          <Anchor to='https://docs.google.com/forms/d/1A4sRDWE8gjoyg1w0XlH9CImhx4BbAv9yCo67JPOkVkc/viewform?edit_requested=true#responses'>
             {translations.bottomTitle}
-          </Link>
+          </Anchor>
         </h1>
       </section>
       <Outlet />

@@ -1,14 +1,15 @@
-import { Link } from 'react-router-dom'
 import ExhibitionCarousel from './exhibitionCarousel'
 import SponsorLogos from './sponsorLogos'
 import Pavilion from './pavilion'
 import useLang from '../../hooks/useLang'
 import { EXHIBITION } from '../../data/translations'
 import { LANGS } from '../../constants/commonConstants'
-import MidColumn from '../common/midColumn'
+import CenterColumn from '../common/centerColumn'
 import LeftColumn from '../common/leftColumn'
 import { CLS, CLSES } from '../../constants/styleConstants'
+import Anchor from '../common/anchor'
 
+// TODO
 const carouselImages = [
   {
     uri: '/img/b4f/mutual-aid-housing.jpg',
@@ -70,15 +71,13 @@ const Exhibition = () => {
     <div className={CLS.CONTAINER}>
       <div className={CLS.ROW}>
         <LeftColumn noSticky><br /></LeftColumn>
-        <MidColumn>
+        <CenterColumn>
           <br />
-          <h3 className={CLS.TEXT_CENTER}>
-            {translations.notForSale}
-          </h3>
-        </MidColumn>
+          <h3 className={CLS.TEXT_CENTER}>{translations.notForSale}</h3>
+        </CenterColumn>
         <Pavilion className={CLS.IMG} />
         <LeftColumn noSticky><br /></LeftColumn>
-        <MidColumn>
+        <CenterColumn>
           <p className={CLSES.CENTER_CAPTION}>
             Pavilion layout for Not For Sale exhibition in Venice, Italy.
           </p>
@@ -86,8 +85,8 @@ const Exhibition = () => {
           <p>
             {
               isEn ?
-                <>The banners hanging from the mezzanine in the pavilion house the demands collected by AAHA. Created by <Link to='./collective#collective__collaborators'>Grey Piitaapan Muldoon</Link>, the banners avail what is close and on hand–blankets, bedsheets, curtains, jackets–to carry words and take space. Grey has been making these “banners for fugitives” since 2014, when they were illegally evicted, along with their collected family, to make way for sale: The banners wear against the alienation.</> :
-                <>Les banderoles suspendues à la mezzanine du pavillon s’approprient l’espace pour transmettre les demandes des équipes associées à AAHA. Ces banderoles ont été créées par <Link to='./collective#collective__collaborators'>Grey Piitaapan Muldoon</Link>, qui a misé sur les matériaux qui lui étaient disponibles (couvertures, draps, rideaux, manteaux). L’artiste crée ce genre de « banderoles pour fugitifs » depuis 2014, année de son éviction illégale, et de celle de ses proches, à des fins de vente. L’usure de ces banderoles participe à la lutte contre l’aliénation.</>
+                <>The banners hanging from the mezzanine in the pavilion house the demands collected by AAHA. Created by <Anchor to='./collective#collective__collaborators'>Grey Piitaapan Muldoon</Anchor>, the banners avail what is close and on hand–blankets, bedsheets, curtains, jackets–to carry words and take space. Grey has been making these “banners for fugitives” since 2014, when they were illegally evicted, along with their collected family, to make way for sale: The banners wear against the alienation.</> :
+                <>Les banderoles suspendues à la mezzanine du pavillon s’approprient l’espace pour transmettre les demandes des équipes associées à AAHA. Ces banderoles ont été créées par <Anchor to='./collective#collective__collaborators'>Grey Piitaapan Muldoon</Anchor>, qui a misé sur les matériaux qui lui étaient disponibles (couvertures, draps, rideaux, manteaux). L’artiste crée ce genre de « banderoles pour fugitifs » depuis 2014, année de son éviction illégale, et de celle de ses proches, à des fins de vente. L’usure de ces banderoles participe à la lutte contre l’aliénation.</>
             }
           </p>
           <ExhibitionCarousel data={carouselImages} />
@@ -117,16 +116,19 @@ const Exhibition = () => {
           </p>
           <SponsorLogos />
           <h4>{translations.gratitude}</h4>
-          Ron Kellett<br />
-          Tamara Ross<br />
-          Tracy Satterfield<br />
-          Emma Fennell<br />
-          Maya Przybylski<br />
-          Julie Dring<br />
-          Marie McGregor Pitawanakwat<br />
-          Chinook Song Catchers<br />
-          Robyn Adams<br /><br />
-        </MidColumn>
+          <div className={CLS.BLOCK_CONTAINER}>
+            <span>Ron Kellett</span>
+            <span>Tamara Ross</span>
+            <span>Tracy Satterfield</span>
+            <span>Emma Fennell</span>
+            <span>Maya Przybylski</span>
+            <span>Julie Dring</span>
+            <span>Marie McGregor Pitawanakwat</span>
+            <span>Chinook Song Catchers</span>
+            <span>Robyn Adams</span>
+          </div>
+          <br />
+        </CenterColumn>
       </div>
     </div>
 

@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { CLS } from '../../constants/styleConstants'
 import { MENU } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import pageData from '../../pages.json'
 import { validateString } from '../../utils/commonUtils'
 import MenuLink from './menuLink'
-import { joinClasses } from '../../utils/styleUtils'
-import { CLS } from '../../constants/styleConstants'
+import MenuSquares from './menuSquares'
 
 const Menu = ({ footerRef }) => {
   const [visibility, setVisibility] = useState(false)
@@ -17,21 +16,17 @@ const Menu = ({ footerRef }) => {
     footerRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const getMenuSquareClass = direction => joinClasses(CLS.MENU_BUTTON_SQUARE, direction)
   return (
     <>
-      <div id='menu-button'
-        onClick={() => setVisibility(!visibility)}
-        className={validateString(visibility, 'active')}>
-        <div className={getMenuSquareClass(CLS.TOP_LEFT)}></div>
-        <div className={getMenuSquareClass(CLS.TOP_RIGHT)}></div>
-        <div className={getMenuSquareClass(CLS.CENTER)}></div>
-        <div className={getMenuSquareClass(CLS.BOTTOM_LEFT)}></div>
-        <div className={getMenuSquareClass(CLS.BOTTOM_RIGHT)}></div>
-      </div>
-      <section id='menu' className={validateString(visibility, 'active')}>
+      <MenuSquares
+        handleClick={() => setVisibility(!visibility)}
+        className={validateString(visibility, CLS.ACTIVE)} />
+      <section id='menu' className={validateString(visibility, CLS.ACTIVE)}>
         <ul>
-          <li><Link to='/'>{translations.demands}</Link></li>
+          <MenuLink
+            title={translations.demands}
+            to={`/${lang}`}
+            handleClick={() => setVisibility(false)} />
           {pageData.map((page, i) =>
             <MenuLink
               key={i}
