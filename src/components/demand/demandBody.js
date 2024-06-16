@@ -1,14 +1,15 @@
 import { forwardRef, useEffect, useMemo } from 'react'
-import CarouselDemand from './carouselDemand'
-
-import contributorData from '../contributors.json'
-import MemberDemand from './memberDemand'
-import useIsEn from '../hooks/useIsEn'
-import parserServices from '../services/parserServices'
+import DemandCarousel from './demandCarousel'
+import contributorData from '../../contributors.json'
+import { DEMAND_BODY } from '../../data/translations'
+import useLang from '../../hooks/useLang'
+import parserServices from '../../services/parserServices'
+import TableHeader from '../common/tableHead'
+import DemandMember from './demandMember'
+import DemandData from './demandData'
 
 const DemandBody = forwardRef(({ data }, ref) => {
-  const isEn = useIsEn()
-
+  const { lang, translations } = useLang(DEMAND_BODY)
   const {
     id,
     body,
@@ -37,43 +38,40 @@ const DemandBody = forwardRef(({ data }, ref) => {
       <div className='container'>
         <div className='row'>
           <div className='three columns sticky'>
-            <h2>{isEn ? 'We Demand' : 'Nous demandons'} {title}</h2>
+            <h2>{translations.header} {title}</h2>
             <p>{longSummary}</p>
-            <p><label>{isEn ? 'REGION:' : 'Région : '}</label> {region}</p>
-            {activist &&
-              <p><label>{isEn ? 'Activist:' : 'Activiste : '}</label> {activist}</p>}
-            {architect &&
-              <p><label>{isEn ? 'Architect:' : 'Architecte : '}</label> {architect}</p>}
-            {advocate &&
-              <p><label>{isEn ? 'Advocate:' : 'Défenseur : '}</label> {advocate}</p>}
+            <DemandData label={translations.region} value={region} />
+            <DemandData label={translations.activist} value={activist} />
+            <DemandData label={translations.architect} value={architect} />
+            <DemandData label={translations.advocate} value={advocate} />
           </div>
           <div className='six columns'>
             <img src={bannerSrc} alt='' />
             <p className='caption'>{bannerCaption}</p>
             <div>{body}</div>
-            <div><CarouselDemand carouselData={gallery} /></div>
+            <div><DemandCarousel data={gallery} /></div>
           </div>
           <div className='action-bar three columns sticky-bottom white-bg'>
-            <h3>{isEn ? 'TAKE ACTION:' : "PASSONS À L'ACTION : "}</h3>
+            <h3>{translations.takeAction}</h3>
             <ul className='actions'>{actions}</ul>
           </div>
         </div>
       </div>
       <br /><br />
-      <h3 className='textCenter'>{isEn ? 'TEAM MEMBERS' : 'MEMBRES DE L’ÉQUIPE'}</h3>
+      <h3 className='textCenter'>{translations.member}</h3>
       <br />
       <table className='members'>
         <thead>
           <tr>
             <td className='sidebearing'></td>
-            <td><label className='red'>{isEn ? 'name' : 'nom'}</label></td>
-            <td><label className='red'>{isEn ? 'organizations' : 'organisme'}</label></td>
-            <td><label className='red'>{isEn ? 'role' : 'rôle'}</label></td>
+            <TableHeader name={translations.memberName} />
+            <TableHeader name={translations.memberOrg} />
+            <TableHeader name={translations.memberRole} />
             <td className='sidebearing'></td>
           </tr>
         </thead>
         <tbody>
-          {teamMembers.map((member, i) => <MemberDemand key={i} member={member} />)}
+          {teamMembers.map((member, i) => <DemandMember key={i} member={member[lang]} />)}
         </tbody>
       </table>
     </section>

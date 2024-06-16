@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom'
-import useLang from '../hooks/useLang'
 
-const MemberDemand = ({ member }) => {
-  const lang = useLang()
-  const { organization, organization_links, role } = member[lang]
+const DemandMember = ({ member }) => {
+  const { name, organization, organization_links, role } = member
   return (
     <tr>
       <td className='sidebearing'></td>
-      <td><strong>{member.name}</strong></td>
+      <td><strong>{name}</strong></td>
       <td>
         <ul className='orgLinks'>
           {organization.map((org, i) =>
@@ -25,4 +23,4 @@ const MemberDemand = ({ member }) => {
   )
 }
 
-export default MemberDemand
+export default DemandMember

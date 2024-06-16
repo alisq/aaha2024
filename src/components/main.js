@@ -1,20 +1,20 @@
 import { useRef } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import DemandHeader from './components/demandHeader'
-import Footer from './components/footer'
-import HomeFist from './components/homeFist'
-import LangButton from './components/langButton'
-import Menu from './components/menu'
-import { LANGS } from './constants/constants'
-import demandData from './demands.json'
-import useLang from './hooks/useLang'
-import { getUrlParts, updateUrl } from './utils/urlUtils'
+import DemandHeader from './demand/demandHeader'
+import Footer from './footer/footer'
+import HomeFist from './homeFist'
+import Menu from './menu/menu'
+import { LANGS } from '../constants/constants'
+import demandData from '../demands.json'
+import useLang from '../hooks/useLang'
+import { getUrlParts, updateUrl } from '../utils/urlUtils'
+import { validateString } from '../utils/commonUtils'
 
 const Main = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const footerRef = useRef(null)
-  const currentLang = useLang()
+  const { lang: currentLang } = useLang()
 
   const handleLangSwitch = lang => {
     if (currentLang !== lang)
@@ -32,11 +32,13 @@ const Main = () => {
       <HomeFist />
       <div id='lang'>
         {LANGS.map((lang, i) =>
-          <LangButton
-            lang={lang}
-            isActive={lang === currentLang}
-            handleClick={() => handleLangSwitch(lang)}
-            key={i} />)}
+          <div
+            key={i}
+            className={validateString(lang === currentLang, 'active')}
+            onClick={() => handleLangSwitch(lang)} >
+            {lang.toLocaleUpperCase()}
+          </div>
+        )}
       </div>
       <section id='demands'>
         <h1 className='title-top'>Architects Against Housing Alienation<span className='exAlt2'>!</span></h1>

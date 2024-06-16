@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
-import useIsEn from '../hooks/useLang'
-import Carousel from './carousel'
-import Logos from './logos'
+import ExhibitionCarousel from './exhibitionCarousel'
+import SponsorLogos from './sponsorLogos'
 import Pavilion from './pavilion'
+import useLang from '../../hooks/useLang'
+import { EXHIBITION } from '../../data/translations'
+import { LANGS } from '../../constants/constants'
 
 const carouselImages = [
   {
@@ -58,7 +60,8 @@ const carouselImages = [
 ]
 
 const Exhibition = () => {
-  const isEn = useIsEn()
+  const { lang, translations } = useLang(EXHIBITION)
+  const isEn = lang === LANGS[0]
   return (
     <div className='container'>
       <div className='row'>
@@ -66,7 +69,7 @@ const Exhibition = () => {
         <div className='six columns'>
           <br />
           <h3 className='text-center'>
-            {isEn ? 'Not for Sale! Heartquarters' : 'Pas à vendre / Quartier général'}
+            {translations.notForSale}
           </h3>
         </div>
         <Pavilion className='img' />
@@ -74,7 +77,7 @@ const Exhibition = () => {
         <div className='six columns'>
           <p className='caption text-center'>Pavilion layout for Not For Sale exhibition in Venice, Italy.</p>
           <h3 className='text-center'>
-            {isEn ? 'Banners for Fugitives' : 'Banderoles pour fugitifs'}
+            {translations.banners}
           </h3>
           <p>
             {
@@ -83,7 +86,7 @@ const Exhibition = () => {
                 <>Les banderoles suspendues à la mezzanine du pavillon s’approprient l’espace pour transmettre les demandes des équipes associées à AAHA. Ces banderoles ont été créées par <Link to='./collective#collective__collaborators'>Grey Piitaapan Muldoon</Link>, qui a misé sur les matériaux qui lui étaient disponibles (couvertures, draps, rideaux, manteaux). L’artiste crée ce genre de « banderoles pour fugitifs » depuis 2014, année de son éviction illégale, et de celle de ses proches, à des fins de vente. L’usure de ces banderoles participe à la lutte contre l’aliénation.</>
             }
           </p>
-          <Carousel carouselImages={carouselImages} />
+          <ExhibitionCarousel data={carouselImages} />
           <p className='caption'>
             {
               isEn ?
@@ -91,18 +94,16 @@ const Exhibition = () => {
                 <>Caitlan Secondcost, Hannah Genosko, Pamela Stone, Steph Rybcyn et Emily Davidson J étaient D’autres Mains, aidant en tant qu’assistants de studio, qui ont apporté leur présence et leur esprit critique dans le travail.<br /><br />Robert Wright, Chris Webb, Wren Tian, Sally Wolchyn-Raab, Vie, Robin, Henny, Lux, Gabrielle, Catriona, Aislinn, Heather, Melissa, Leesa, Brody, Kate G.,Tayla, Rob, et Simon sont également cousus dans: ils ont répondu à diverses demandes d’aide dans la préparation de ces bannières et leurs autres énergies sont également reconnues.</>
             }
           </p>
-          <Logos />
-          <h4>
-            {isEn ? 'Gracious Support and Collaboration of' : 'Le soutien gracieux et la collaboration de : '}
-          </h4>
+          <SponsorLogos />
+          <h4>{translations.gratitude}</h4>
           Ron Kellett<br />
           Tamara Ross<br />
           Tracy Satterfield<br />
-          Emma Fennell <br />
+          Emma Fennell<br />
           Maya Przybylski<br />
-          Julie Dring <br />
-          Marie McGregor Pitawanakwat <br />
-          Chinook Song Catchers <br />
+          Julie Dring<br />
+          Marie McGregor Pitawanakwat<br />
+          Chinook Song Catchers<br />
           Robyn Adams<br /><br />
         </div>
       </div>

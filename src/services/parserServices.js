@@ -2,10 +2,8 @@
 import parse, { domToReact } from 'html-react-parser'
 import { titleCase } from 'title-case'
 import { API_ENDPOINT } from '../constants/constants'
-import Action from '../components/parsedAction'
 import { Link } from 'react-router-dom'
 import { validateString } from '../utils/commonUtils'
-import _ from 'lodash'
 
 const replaceLink = src => `${API_ENDPOINT}/${src}`
 const linkIsExternal = to => typeof to === 'string' && to.match(/^(https|www)/)
@@ -83,7 +81,7 @@ const parseDemand = demandData => {
     actions: basicParse(field_actions, domNode => {
       const { tagName, children } = domNode
       if (tagName === 'p')
-        return <Action>{domToReact(children)}</Action>
+        return <li>{domToReact(children)}</li>
       if (tagName === 'a') return parseAnchor(domNode)
     })
   }

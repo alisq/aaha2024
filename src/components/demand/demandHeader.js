@@ -1,4 +1,4 @@
-import { validateString } from '../utils/commonUtils'
+import { validateString } from '../../utils/commonUtils'
 
 const DemandHeader = ({ data, handleClick, field_demand_no, field_exmark, demand_id }) => {
   const splitTitle = data.title.split(' ')

@@ -3,12 +3,12 @@ import ReactGA from 'react-ga'
 import usePromise from 'react-promise'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import './app.css'
-import DemandBody from './components/demandBody'
+import DemandBody from './components/demand/demandBody'
 import PageBody from './components/pageBody'
 import { LANGS } from './constants/constants'
 import { GlobalContext } from './contexts/contexts'
 import usePrevious from './hooks/usePrevious'
-import Main from './main'
+import Main from './components/main'
 import pageData from './pages.json'
 import apiServices from './services/apiServices'
 import { getBrowserLang } from './utils/languageUtils'
@@ -57,7 +57,7 @@ const App = () => {
             element={<Main currentLang={lang} />}
             key={i}>
             <Route index element={null} />
-            {_.uniqBy(value?.demands[lang], 'nid')
+            {value?.demands[lang]
               .map(data => <Route
                 key={data.nid}
                 path={`demand/${data.field_demand_id}`}

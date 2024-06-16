@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import useLang from '../hooks/useLang'
+import useLang from '../../hooks/useLang'
 
-const Member = ({ member }) => {
-  const lang = useLang()
-  const { title, organization, organization_links, role, bio } = member[lang]
+const CollectiveMember = ({ member }) => {
+  const { lang } = useLang()
+  const { title, team, organization, organization_links, role, bio } = member[lang]
   return (
     <tr>
       <td className='sidebearing'></td>
@@ -29,7 +29,7 @@ const Member = ({ member }) => {
           {member.team_id &&
             <td className='smallHalf'>
               <Link className='teamTitle' to={`/${lang}/demand/${member.team_id}`}>
-                {member[lang].team}
+                {team}
               </Link>
             </td>}
           {role && <td className='smallHalf'><label>{role}</label></td>}
@@ -41,4 +41,4 @@ const Member = ({ member }) => {
   )
 }
 
-export default Member
+export default CollectiveMember

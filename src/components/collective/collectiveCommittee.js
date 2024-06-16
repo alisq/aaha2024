@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import useLang from '../hooks/useLang'
+import useLang from '../../hooks/useLang'
 
-const MemberCommittee = ({ member }) => {
-  const lang = useLang()
+const CollectiveCommittee = ({ member }) => {
+  const { lang } = useLang()
   const { links, name } = member
   return (
     <tr>
@@ -18,4 +18,4 @@ const MemberCommittee = ({ member }) => {
   )
 }
 
-export default MemberCommittee
+export default CollectiveCommittee

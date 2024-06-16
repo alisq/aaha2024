@@ -4,7 +4,7 @@ import Flickity from 'react-flickity-component'
 import parse from 'html-react-parser'
 
 
-const CarouselDemand = ({ carouselData }) => {
+const DemandCarousel = ({ data }) => {
   const [zoomedImgIndex, setZoomImgIndex] = useState(null)
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const CarouselDemand = ({ carouselData }) => {
     return () => style.overflowY = 'initial'
   }, [zoomedImgIndex])
 
-  const zoomedImg = carouselData[zoomedImgIndex]
+  const zoomedImg = data[zoomedImgIndex]
   return (
     <>
       {typeof zoomedImgIndex === 'number' &&
@@ -34,7 +34,7 @@ const CarouselDemand = ({ carouselData }) => {
           pageDots: false
         }}
         reloadOnUpdate={true}>
-        {carouselData.map(({ src, alt, caption }, i) =>
+        {data.map(({ src, alt, caption }, i) =>
           <div className='slide' key={i} >
             <div className='demand-slide'>
               <img src={src} alt={alt} />
@@ -50,4 +50,4 @@ const CarouselDemand = ({ carouselData }) => {
   )
 }
 
-export default CarouselDemand
+export default DemandCarousel

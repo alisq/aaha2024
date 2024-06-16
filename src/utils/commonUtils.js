@@ -3,5 +3,17 @@ export const validateString = (validatorOrString, string) => {
   return validatorOrString ? string : ''
 }
 
-export const quickArray = (length, callback = i => i) =>
-  Array(length).fill(0).map((_, i) => callback(i))
+export const mapObject = (
+  object,
+  callback
+) => {
+  const newObject = {}
+  Object.keys(object).forEach(key => {
+    const value = object[key]
+    newObject[key] = callback(key, value)
+  })
+
+  return newObject
+}
+
+export const addColons = ([en, fr]) => [`${en}:`, `${fr} :`]

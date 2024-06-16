@@ -1,21 +1,25 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useContext, useLayoutEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import collaboratorData from '../collaborators.json'
-import committeeData from '../committee.json'
-import contributorData from '../contributors.json'
-import demandData from '../demands.json'
-import useIsEn from '../hooks/useIsEn'
-import useLang from '../hooks/useLang'
-import Filter from './filter'
-import Member from './member'
-import MemberCommittee from './memberCommittee'
+import collaboratorData from '../../collaborators.json'
+import committeeData from '../../committee.json'
+import { GlobalContext } from '../../contexts/contexts'
+import contributorData from '../../contributors.json'
+import { COLLECTIVE } from '../../data/translations'
+import useLang from '../../hooks/useLang'
+import TableHeader from '../common/tableHead'
+import Filter from '../common/filter'
+import CollectiveMember from './collectiveMember'
+import CollectiveCommittee from './collectiveCommittee'
 
 
 const Collective = () => {
   const location = useLocation()
-  const lang = useLang()
-  const isEn = useIsEn()
-  const [teamMemberFilters, setTeamMemberFilters] = useState({ role: '', team: '', organization: '' })
+  const { lang, translations } = useLang(COLLECTIVE)
+  const demands = useContext(GlobalContext)?.demands[lang]
+
+  const [teamMemberFilters, setTeamMemberFilters] = useState({
+    role: '', team: '', organization: ''
+  })
 
   const sectionRefs = {
     'organizing-committee': useRef(null),
@@ -44,7 +48,7 @@ const Collective = () => {
       (!organization || memberData.organization.find(org => org.toLocaleLowerCase()
         === organization.toLocaleLowerCase()))
     )
-      return <Member
+      return <CollectiveMember
         member={member}
         key={i} />
   }
@@ -58,12 +62,12 @@ const Collective = () => {
       <h3
         ref={sectionRefs['organizing-committee']}
         className='textCenter'>
-        {isEn ? 'ORGANIZING COMMITTEE' : 'COMITÉ ORGANISATEUR'}
+        {translations.header}
       </h3>
       <table className='members'>
         <tbody>
           {committeeData.map((member, i) =>
-            <MemberCommittee
+            <CollectiveCommittee
               key={i}
               member={member} />)}
         </tbody>
@@ -72,54 +76,48 @@ const Collective = () => {
       <h3
         ref={sectionRefs['collaborators']}
         className='textCenter'>
-        {isEn ? 'CAMPAIGN COLLABORATORS' : 'COLLABORATEURS DE LA CAMPAGNE'}
+        {translations.collaborator}
       </h3>
       <table className='members'>
         <thead>
           <tr>
             <td className='sidebearing'></td>
-            <td><label className='red'>{isEn ? 'NAME' : 'NOM'}</label></td>
-            <td><label className='red'>{isEn ? 'ROLE' : 'RÔLE'}</label></td>
-            <td><label className='red'>{isEn ? 'BIOGRAPHY' : 'BIOGRAPHIE'}</label></td>
+            <TableHeader name={translations.memberName} />
+            <TableHeader name={translations.memberRole} />
+            <TableHeader name={translations.memberBio} />
             <td className='sidebearing'></td>
           </tr>
         </thead>
         <tbody>
-          {collaboratorData.map((member, i) => <Member
-            member={member}
-            key={i} />)}
+          {collaboratorData.map((member, i) => <CollectiveMember member={member} key={i} />)}
         </tbody>
       </table>
       <br /><br />
       <h3
         ref={sectionRefs['team-members']}
         className='textCenter'>
-        {isEn ? 'TEAM MEMBERS' : 'MEMBRES DE L’ÉQUIPE'}
+        {translations.members}
       </h3>
       <div className='text-center'>
         <Filter
           name='team-members-role'
-          placeholder={isEn ? 'ROLE' : 'RÔLE'}
-          list={isEn ?
-            ['ACTIVIST', 'ADVOCATE', 'ARCHITECT'] :
-            ['ACTIVISTE', 'DÉFENSEUR', 'ARCHITECTE']}
+          placeholder={translations.memberRole}
+          list={translations.memberList}
           handleFilter={({ target }) => handleFilterTeam({ role: target.value })} />
         <Filter
           name='team-members-team'
-          placeholder={isEn ? 'TEAM' : 'EQUIPE'}
-          list={isEn ?
-            demandData.map(demand => demand.en.title) :
-            demandData.map(demand => demand.fr.title)}
+          placeholder={translations.team}
+          list={demands?.map(({ title }) => title)}
           handleFilter={({ target }) => handleFilterTeam({ team: target.value })} />
       </div>
       <table className='members'>
         <thead>
           <tr>
             <td className='sidebearing'></td>
-            <td><label className='red'>{isEn ? 'NAME' : 'NOM'}</label></td>
-            <td><label className='red'>{isEn ? 'ORGANIZATION' : 'ORGANISME'}</label></td>
-            <td><label className='red'>{isEn ? 'TEAM' : 'EQUIPE'}</label></td>
-            <td><label className='red'>{isEn ? 'ROLE' : 'RÔLE'}</label></td>
+            <TableHeader name={translations.memberName} />
+            <TableHeader name={translations.memberOrg} />
+            <TableHeader name={translations.team} />
+            <TableHeader name={translations.memberRole} />
             <td className='sidebearing'></td>
           </tr>
         </thead>
