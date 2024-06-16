@@ -11,6 +11,7 @@ const role = ['Role', 'Rôle']
 const org = ['Organizations', 'Organisme']
 const bio = ['Biography', 'Biographie']
 const members = ['TEAM MEMBERS', 'MEMBRES DE L’ÉQUIPE']
+const team = ['TEAM', 'EQUIPE']
 
 const activist = ['Activist', 'Activiste']
 const advocate = ['Advocate', 'Défenseur']
@@ -47,7 +48,7 @@ export const COLLECTIVE = {
   memberOrg: org,
   members,
   memberList: _.zip(activist, advocate, architect),
-  team: ['TEAM', 'EQUIPE']
+  team
 }
 
 export const FOOTER = {
@@ -71,4 +72,12 @@ export const EXHIBITION = {
   primarySponsor: ['Primary Presenting Sponsor', 'Commanditaire présentateur principal'],
   coSponsor: ['Co-Presenting Sponsor', 'Commanditaire co-présentateur'],
   sponsors: ['Sponsors', 'Commanditaires'],
+}
+
+export const TABLE = {
+  name,
+  role,
+  bio,
+  org,
+  team,
 }

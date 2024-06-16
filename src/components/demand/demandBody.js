@@ -7,7 +7,6 @@ import parserServices from '../../services/parserServices'
 import LeftColumn from '../common/leftColumn'
 import MidColumn from '../common/midColumn'
 import RightColumn from '../common/rightColumn'
-import TableLabel from '../common/tableLabel'
 import DemandCarousel from './demandCarousel'
 import DemandData from './demandData'
 import DemandMember from './demandMember'
@@ -65,13 +64,7 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
       <h3 className={CLS.TEXT_CENTER}>{translations.member}</h3>
       <br />
       <table className={CLS.MEMBERS}>
-        <thead>
-          <TableLabelHead names={[
-            translations.memberName,
-            translations.memberOrg,
-            translations.memberRole
-          ]} />
-        </thead>
+        <TableLabelHead labels={['name', 'org', 'role']} />
         <tbody>
           {teamMembers.map((member, i) => <DemandMember key={i} member={member} />)}
         </tbody>

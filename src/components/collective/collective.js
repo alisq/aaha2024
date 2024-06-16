@@ -6,7 +6,6 @@ import { GlobalContext } from '../../contexts/contexts'
 import contributorData from '../../contributors.json'
 import { COLLECTIVE } from '../../data/translations'
 import useLang from '../../hooks/useLang'
-import TableLabel from '../common/tableLabel'
 import Filter from '../common/filter'
 import CollectiveMember from './collectiveMember'
 import CollectiveCommittee from './collectiveCommittee'
@@ -81,13 +80,7 @@ const Collective = () => {
         {translations.collaborator}
       </h3>
       <table className={CLS.MEMBERS}>
-        <thead>
-          <TableLabelHead names={[
-            translations.memberName,
-            translations.memberRole,
-            translations.memberBio
-          ]} />
-        </thead>
+        <TableLabelHead labels={['name', 'role', 'bio']} />
         <tbody>
           {collaboratorData.map((member, i) => <CollectiveMember member={member} key={i} />)}
         </tbody>
@@ -111,14 +104,7 @@ const Collective = () => {
           handleFilter={({ target }) => handleFilterTeam({ team: target.value })} />
       </div>
       <table className={CLS.MEMBERS}>
-        <thead>
-          <TableLabelHead names={[
-            translations.memberName,
-            translations.memberOrg,
-            translations.team,
-            translations.memberRole,
-          ]} />
-        </thead>
+        <TableLabelHead labels={['name', 'org', 'team', 'role']} />
         <tbody>{contributorData.map(getTeamMember)}</tbody>
       </table>
     </>
