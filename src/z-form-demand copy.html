@@ -34,6 +34,7 @@
 </head>
 <body>
        
+    <table></table>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
@@ -51,31 +52,39 @@ fetch('./demands.json')
 
 
     for(i=0;i<demands.length;i++) {
-        console.log(demands[i].gallery)
+        
 
-        for (j=0;j<demands[i].gallery.length;j++) {
-            console.log(demands[i].gallery[j])
+        for (j=0;j<demands[i].en.actions.length;j++) {
+            
+            t = demands[i].en.actions[j].label.toUpperCase();
+            a = t.split("")[0]+t.toLowerCase().split("").slice(1).join("") + demands[i].en.actions[j].body;  
+            l = demands[i].en.actions[j].link
+
+            f_t = demands[i].fr.actions[j].label.toUpperCase();
+            f_a = t.split("")[0]+t.toLowerCase().split("").slice(1).join("") + demands[i].fr.actions[j].body;  
+            f_l = demands[i].fr.actions[j].link
+
+            a = `<tr>
+                <td><input type="text" value="${demands[i].en.title}"></td>
+                <td><input type="text" value="${t}"></td><td><input type="text" value="${a}"></td><td><input type="text" value="${l}"></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td><input type="text" value="${f_t}"></td><td><input type="text" value="${f_a}"></td><td><input type="text" value="${f_l}"></td>
+                </tr>
+                <tr><td>—</td></tr>
+                `
+
+            
+
             
             
-            // l = `https://server-aaha.codepanel.in/${demands[i].gallery[j].uri}`
-            // $("body").append(`<a href=${l}>${l}</a><br />`)
-            // l = `${demands[i].gallery[j][lang].alt}<br /><br />`
-            // $("body").append(`${l}`)
+            
+             $("table").append(a)
 
         }
-        linkurl =  ""
-        if (lang == 'en') {
-            linkurl = `https://aaha-db.iamasq.works/node/${i+1}/edit`
-        } else {
-            linkurl = `https://aaha-db.iamasq.works/${lang}/node/${i+1}/edit`
-        }
-
-            d = `
-            <strong>${demands[i][lang].title}</strong><br />
-            <a href="${linkurl}">${linkurl}</a><br />
-            <textarea height="20">${demands[i].field_demand_no}</textarea><br />
-            <br /><br />`
-
+       
+          
             $("body").append(d)
 
 

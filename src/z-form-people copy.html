@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Document</title>
+
+    <style>
+        label {
+            display: inline-block;
+            width: 200px;
+            padding-bottom: 1em;
+        }
+
+        input,
+        textarea {
+            font-size: 20px;
+            padding: 0.25em;
+            width: 400px;
+        }
+
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        #json_dump {
+            width: 80%;
+            height: 500px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <table id="page">
+    </table>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+
+   
+        fetch('./contributors.json')
+            .then(response => response.json())
+            .then(json => {
+                people = [...json]
+                
+
+                for (i = 0; i < people.length; i++) {
+                    console.log(people[i])
+
+                    let row = `
+                    <tr>
+                        <td class="title">${people[i].name}</td>
+                        <td class="field_demand">${people[i].team_num}</td>
+                        <td class="field_affiliate_organization_link">${people[i].en.organization_links}</td>
+                        <td class="field_affiliate_organization_title">${people[i].en.organization}</td>
+                        <td class="bio">${people[i].en.bio}</td>
+                        <td class="field_role">${people[i].en.role}</td>
+                        <td class="field_collective_section">team_members</td>
+                    </tr>
+                        
+                        `
+                    
+
+                        $("#page").append(row)
+                    
+                    
+
+
+                }
+            }
+        )
+
+             
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
