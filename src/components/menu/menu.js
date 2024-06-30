@@ -38,6 +38,10 @@ const Menu = ({ footerRef }) => {
             title={translations.contact}
             handleClick={handleContactClick} />
         </ul>
+
+        <div className="menuRight">
+          <div className='embedContainer'><iframe src='https://www.youtube.com/embed/WW8PxLUfAww' frameBorder='0' allowfullscreen></iframe></div>
+        </div>
       </section>
     </>
   )
