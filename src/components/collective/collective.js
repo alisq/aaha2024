@@ -14,9 +14,14 @@ import parserServices from '../../services/parserServices'
 import TeamMember from './teamMember'
 
 
+//  TODO
+const ORGANIZING_COMMITTEE = 'collective__organizing-committee'
+const COLLABORATORS = 'collective__collaborators'
+const TEAM_MEMBERS = 'collective__team-members'
+
 const Collective = () => {
   const location = useLocation()
-  const { lang, translations } = useLang(COLLECTIVE)
+  const { translations } = useLang(COLLECTIVE)
   const { demands, members } = useContext(GlobalContext) ?? {}
 
   const [teamMemberFilters, setTeamMemberFilters] = useState({
@@ -24,9 +29,9 @@ const Collective = () => {
   })
 
   const sectionRefs = {
-    'organizing-committee': useRef(null),
-    'collaborators': useRef(null),
-    'team-members': useRef(null)
+    [ORGANIZING_COMMITTEE]: useRef(null),
+    [COLLABORATORS]: useRef(null),
+    [TEAM_MEMBERS]: useRef(null)
   }
 
 
@@ -35,54 +40,34 @@ const Collective = () => {
     const matchedRef = sectionRefs[location.hash.slice(1)]
     if (!matchedRef?.current) return
     window.scrollBy({
-      top: matchedRef.current.getBoundingClientRect().top - 64,
+      top: matchedRef.current.getBoundingClientRect().top - 60,
       left: 0,
       behavior: 'smooth'
     })
   }, [location.hash])
 
-  const getTeamMember = (member, i) => {
+  const getTeamMember = (memberData, i) => {
+    const member = parserServices.parseMember(memberData, demands)
     const { role, team, organization } = teamMemberFilters
-    const memberData = member[lang]
 
     if (
-      (!role || role.toLocaleLowerCase() === memberData.role.toLocaleLowerCase()) &&
-      (!team || team.toLocaleLowerCase() === memberData.team.toLocaleLowerCase()) &&
-      (!organization || memberData.organization.find(org => org.toLocaleLowerCase()
+      (!role || role.toLocaleLowerCase() === member.role.toLocaleLowerCase()) &&
+      (!team || team.toLocaleLowerCase() === member.team?.toLocaleLowerCase()) &&
+      (!organization || member.orgs.find(org => org.name.toLocaleLowerCase()
         === organization.toLocaleLowerCase()))
     )
-      return <CollectiveMember
-        member={member}
-        key={i} />
-  }
-
-  const getTeamMember2 = (memberData, i) => {
-    const member = parserServices.parseMember(memberData, demands)
-    const { role, team, orgName } = member
-
-    console.log(member)
-    return <TeamMember member={member} key={i} />
-    // if (
-    //   (!role || role.toLocaleLowerCase() === memberData.role.toLocaleLowerCase()) &&
-    //   (!team || team.toLocaleLowerCase() === memberData.team.toLocaleLowerCase()) &&
-    //   (!organization || memberData.organization.find(org => org.toLocaleLowerCase()
-    //     === organization.toLocaleLowerCase()))
-    // )
-    //   return <CollectiveMember
-    //     member={member}
-    //     key={i} />
+      return <TeamMember member={member} key={i} />
   }
 
   const handleFilterTeam = newFilter =>
     setTeamMemberFilters({ ...teamMemberFilters, ...newFilter })
 
-  // TODO Link to pages.json
   return (
     members &&
     <>
       <br /><br />
       <h3
-        ref={sectionRefs['organizing-committee']}
+        ref={sectionRefs[ORGANIZING_COMMITTEE]}
         className={CLS.TEXT_CENTER}>
         {translations.header}
       </h3>
@@ -94,7 +79,7 @@ const Collective = () => {
       </table>
       <br /><br />
       <h3
-        ref={sectionRefs['collaborators']}
+        ref={sectionRefs[COLLABORATORS]}
         className={CLS.TEXT_CENTER}>
         {translations.collaborator}
       </h3>
@@ -106,7 +91,7 @@ const Collective = () => {
       </table>
       <br /><br />
       <h3
-        ref={sectionRefs['team-members']}
+        ref={sectionRefs[TEAM_MEMBERS]}
         className={CLS.TEXT_CENTER}>
         {translations.members}
       </h3>
@@ -124,11 +109,7 @@ const Collective = () => {
       </div>
       <table className={CLS.MEMBERS}>
         <TableLabelHead labels={['name', 'org', 'team', 'role']} />
-        <tbody>{teamMemberData.map(getTeamMember)}</tbody>
-      </table>
-      <table className={CLS.MEMBERS}>
-        <TableLabelHead labels={['name', 'org', 'team', 'role']} />
-        <tbody>{members.teamMembers.map(getTeamMember2)}</tbody>
+        <tbody>{members.teamMembers.map(getTeamMember)}</tbody>
       </table>
     </>
   )

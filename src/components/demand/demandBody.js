@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useMemo } from 'react'
+import { forwardRef, useEffect, useLayoutEffect, useMemo } from 'react'
 import { CLS } from '../../constants/styleConstants'
 import contributorData from '../../contributors.json'
 import { DEMAND_BODY } from '../../data/translations'
@@ -8,7 +8,10 @@ import DemandCarousel from './demandCarousel'
 import DemandData from './demandData'
 import DemandMember from './demandMember'
 import TableLabelHead from '../common/tableLabelHead'
-import Columns from '../common/section'
+import Section from '../common/section'
+import { useLocation } from 'react-router-dom'
+import useLocationChange from '../../hooks/useLangChanged'
+import useMergedRef from '../../hooks/useMergedRef'
 
 const DemandBody = forwardRef(function DemandBody({ data }, ref) {
   const { translations } = useLang(DEMAND_BODY)
@@ -29,6 +32,15 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
 
   const teamMembers = contributorData.filter(member => member.team_id === id)
 
+  const location = useLocation()
+  const mergedRef = useMergedRef(ref)
+  const locationChangeRef = useLocationChange()
+
+  useLayoutEffect(() => {
+    if (!locationChangeRef.current.lang)
+      mergedRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [data, location])
+
   useEffect(() => {
     document.title = `AAHA | ${title}`
     return () => document.title = 'AAHA'
@@ -36,10 +48,10 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
 
   return (
     data &&
-    <Columns
+    <Section
       id={id}
       className={CLS.DEMAND}
-      ref={ref}
+      ref={mergedRef}
       title={`${translations.header} ${title}`}
       left={
         <>
@@ -73,7 +85,7 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
           {teamMembers.map((member, i) => <DemandMember key={i} member={member} />)}
         </tbody>
       </table>
-    </Columns>
+    </Section>
   )
 })
 

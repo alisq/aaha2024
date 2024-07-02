@@ -1,24 +1,26 @@
 import { forwardRef, useLayoutEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 import { CLS } from '../../constants/styleConstants'
-import useLocationChange from '../../hooks/useLangChanged'
 import useMergedRef from '../../hooks/useMergedRef'
 import { joinClasses } from '../../utils/styleUtils'
 import CenterColumn from './centerColumn'
 import LeftColumn from './leftColumn'
 import RightColumn from './rightColumn'
 
-const Section = forwardRef(function PageBody({
-  id, className, children, title, left, center, right
+const Section = forwardRef(function Section({
+  id,
+  className,
+  children,
+  title,
+  left,
+  center,
+  right
 }, ref) {
-  const location = useLocation()
-  const mergedRef = useMergedRef(ref)
-  const locationChangeRef = useLocationChange()
 
+  const mergedRef = useMergedRef(ref)
   useLayoutEffect(() => {
-    if (!locationChangeRef.current.lang)
-      mergedRef.current.scrollIntoView({ behavior: 'smooth' })
-  }, [location])
+    mergedRef.current.scrollIntoView({ behavior: 'smooth' })
+  }, []) // TODO might need refreshh on data load
+
   return (
     <section id={id} className={joinClasses(CLS.PAGE, className)} ref={mergedRef}>
       <div className={CLS.CONTAINER}>

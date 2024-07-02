@@ -6,7 +6,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import DemandBody from './components/demand/demandBody'
 import Main from './components/main'
-import Columns from './components/common/section'
+import Section from './components/common/section'
 import { LANGS } from './constants/commonConstants'
 import { GlobalContext } from './contexts/contexts'
 import pages from './data/pages'
@@ -32,7 +32,6 @@ const App = () => {
   const fallbackLang = LANGS.includes(browserLang) ? browserLang : LANGS[0]
   const { lang } = useLang() ?? { lang: fallbackLang }
 
-  console.log(value)
   useLayoutEffect(() => {
     const urlParts = getUrlParts(location)
     const { category, content } = urlParts
@@ -66,12 +65,12 @@ const App = () => {
                 key={i}
                 path={`page/${page.page_id}`}
                 element={
-                  <Columns
+                  <Section
                     id={page.page_id}
                     title={page[lang].title}
                     center={<div>{parse(page[lang].body)}</div>}>
                     {pages[page.page_id]}
-                  </Columns>
+                  </Section>
                 } />)}
           </Route>
         )}

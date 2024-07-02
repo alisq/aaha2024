@@ -20,9 +20,9 @@ const trimChildren = ({ children }) => {
 
 const getLink = html => {
   html = he.decode(html)
-  const text = html.replaceAll(/\n/g, '').match(/.*(?=<a href=")/m)?.[0].trim()
+  const name = html.replaceAll(/\n/g, '').match(/.*(?=<a href=")/m)?.[0].trim()
   const link = html.match(/(?<=href=").*(?=")/)?.[0]
-  return { text, link }
+  return { name, link }
 }
 
 const parseAnchor = ({ attribs, children }) => {
