@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CLS } from '../../constants/styleConstants'
+import { CLS, CSS_ID } from '../../constants/styleConstants'
 import { MENU } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import pageData from '../../pages.json'
@@ -21,7 +21,7 @@ const Menu = ({ footerRef }) => {
       <MenuSquares
         handleClick={() => setVisibility(!visibility)}
         className={validateString(visibility, CLS.ACTIVE)} />
-      <section id='menu' className={validateString(visibility, CLS.ACTIVE)}>
+      <section id={CSS_ID.MENU} className={validateString(visibility, CLS.ACTIVE)}>
         <ul>
           <MenuLink
             title={translations.demands}
@@ -39,8 +39,10 @@ const Menu = ({ footerRef }) => {
             handleClick={handleContactClick} />
         </ul>
 
-        <div className="menuRight">
-          <div className='embedContainer'><iframe src='https://www.youtube.com/embed/WW8PxLUfAww' frameBorder='0' allowfullscreen></iframe></div>
+        <div className='menuRight'>
+          <div className='embedContainer'>
+            <iframe src='https://www.youtube.com/embed/WW8PxLUfAww' frameBorder='0' allowfullscreen />
+          </div>
         </div>
       </section>
     </>
