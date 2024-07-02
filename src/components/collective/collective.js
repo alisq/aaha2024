@@ -29,7 +29,7 @@ const Collective = () => {
     'team-members': useRef(null)
   }
 
-  console.log(members)
+
   // TODO: currently no way of setting hash
   useLayoutEffect(() => {
     const matchedRef = sectionRefs[location.hash.slice(1)]
@@ -60,6 +60,7 @@ const Collective = () => {
     const member = parserServices.parseMember(memberData, demands)
     const { role, team, orgName } = member
 
+    console.log(member)
     return <TeamMember member={member} key={i} />
     // if (
     //   (!role || role.toLocaleLowerCase() === memberData.role.toLocaleLowerCase()) &&
@@ -125,10 +126,10 @@ const Collective = () => {
         <TableLabelHead labels={['name', 'org', 'team', 'role']} />
         <tbody>{teamMemberData.map(getTeamMember)}</tbody>
       </table>
-      {/* <table className={CLS.MEMBERS}>
+      <table className={CLS.MEMBERS}>
         <TableLabelHead labels={['name', 'org', 'team', 'role']} />
         <tbody>{members.teamMembers.map(getTeamMember2)}</tbody>
-      </table> */}
+      </table>
     </>
   )
 }

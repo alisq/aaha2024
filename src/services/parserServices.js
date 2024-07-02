@@ -21,7 +21,6 @@ const trimChildren = ({ children }) => {
 const getLink = html => {
   html = he.decode(html)
   const text = html.replaceAll(/\n/g, '').match(/.*(?=<a href=")/m)?.[0].trim()
-  console.log(text)
   const link = html.match(/(?<=href=").*(?=")/)?.[0]
   return { text, link }
 }
@@ -38,7 +37,7 @@ const parseAnchor = ({ attribs, children }) => {
 const parseMulti = ul => {
   const results = []
   let result
-  const regExp = /<li>(.*?)<\/li>/g
+  const regExp = /<li>((.|\s)*?)<\/li>/mg
   while ((result = regExp.exec(ul)) !== null)
     results.push(result[1])
   return results
@@ -90,14 +89,14 @@ const parseDemand = demandData => {
 const parseMember = (memberData, allDemands) => {
   if (!memberData) return {}
   const { body, title } = memberData
-  const orgData = getLink(memberData.field_affiliate_organization)
+  const orgs = parseMulti(memberData.field_affiliate_organization).map(getLink)
+
 
   return {
     name: title,
     bio: basicParse(body),
     link: getLink(memberData[MEMBER_FIELDS.ORG])?.link,
-    orgName: orgData.text,
-    orgLink: orgData.link,
+    orgs,
     team: allDemands?.[memberData.field_demand]?.title,
     role: memberData.field_role
   }

@@ -32,10 +32,10 @@ const App = () => {
   const fallbackLang = LANGS.includes(browserLang) ? browserLang : LANGS[0]
   const { lang } = useLang() ?? { lang: fallbackLang }
 
+  console.log(value)
   useLayoutEffect(() => {
     const urlParts = getUrlParts(location)
     const { category, content } = urlParts
-
     if (
       value &&
       !category &&
