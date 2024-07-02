@@ -1,22 +1,23 @@
 import { useContext, useLayoutEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import collaboratorData from '../../collaborators.json'
-import committeeData from '../../committee.json'
 import { GlobalContext } from '../../contexts/contexts'
-import contributorData from '../../contributors.json'
+import teamMemberData from '../../contributors.json'
 import { COLLECTIVE } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import Filter from '../common/filter'
 import CollectiveMember from './collectiveMember'
-import CollectiveCommittee from './collectiveCommittee'
+import Committee from './committee'
 import { CLS } from '../../constants/styleConstants'
 import TableLabelHead from '../common/tableLabelHead'
+import parserServices from '../../services/parserServices'
+import TeamMember from './teamMember'
 
 
 const Collective = () => {
   const location = useLocation()
   const { lang, translations } = useLang(COLLECTIVE)
-  const demands = useContext(GlobalContext)?.demands[lang]
+  const { demands, members } = useContext(GlobalContext) ?? {}
 
   const [teamMemberFilters, setTeamMemberFilters] = useState({
     role: '', team: '', organization: ''
@@ -28,6 +29,7 @@ const Collective = () => {
     'team-members': useRef(null)
   }
 
+  console.log(members)
   // TODO: currently no way of setting hash
   useLayoutEffect(() => {
     const matchedRef = sectionRefs[location.hash.slice(1)]
@@ -54,10 +56,28 @@ const Collective = () => {
         key={i} />
   }
 
+  const getTeamMember2 = (memberData, i) => {
+    const member = parserServices.parseMember(memberData, demands)
+    const { role, team, orgName } = member
+
+    return <TeamMember member={member} key={i} />
+    // if (
+    //   (!role || role.toLocaleLowerCase() === memberData.role.toLocaleLowerCase()) &&
+    //   (!team || team.toLocaleLowerCase() === memberData.team.toLocaleLowerCase()) &&
+    //   (!organization || memberData.organization.find(org => org.toLocaleLowerCase()
+    //     === organization.toLocaleLowerCase()))
+    // )
+    //   return <CollectiveMember
+    //     member={member}
+    //     key={i} />
+  }
+
   const handleFilterTeam = newFilter =>
     setTeamMemberFilters({ ...teamMemberFilters, ...newFilter })
 
+  // TODO Link to pages.json
   return (
+    members &&
     <>
       <br /><br />
       <h3
@@ -67,10 +87,8 @@ const Collective = () => {
       </h3>
       <table className={CLS.MEMBERS}>
         <tbody>
-          {committeeData.map((member, i) =>
-            <CollectiveCommittee
-              key={i}
-              member={member} />)}
+          {members.committees.map((data, i) =>
+            <Committee key={i} data={data} />)}
         </tbody>
       </table>
       <br /><br />
@@ -105,8 +123,12 @@ const Collective = () => {
       </div>
       <table className={CLS.MEMBERS}>
         <TableLabelHead labels={['name', 'org', 'team', 'role']} />
-        <tbody>{contributorData.map(getTeamMember)}</tbody>
+        <tbody>{teamMemberData.map(getTeamMember)}</tbody>
       </table>
+      {/* <table className={CLS.MEMBERS}>
+        <TableLabelHead labels={['name', 'org', 'team', 'role']} />
+        <tbody>{members.teamMembers.map(getTeamMember2)}</tbody>
+      </table> */}
     </>
   )
 }

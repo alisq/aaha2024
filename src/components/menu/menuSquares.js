@@ -1,4 +1,4 @@
-import { CLS } from '../../constants/styleConstants'
+import { CLS, CSS_ID } from '../../constants/styleConstants'
 import { joinClasses } from '../../utils/styleUtils'
 
 const MenuSquares = ({ className, handleClick }) => {
@@ -11,7 +11,7 @@ const MenuSquares = ({ className, handleClick }) => {
   ]
 
   return (
-    <div id='menu-button'
+    <div id={CSS_ID.MENU_BUTTON}
       onClick={handleClick}
       className={className}>
       {classes.map((className, i) => <div

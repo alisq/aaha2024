@@ -15,6 +15,8 @@ import pageData from './pages.json'
 import apiServices from './services/apiServices'
 import { getBrowserLang } from './utils/languageUtils'
 import { getUrlParts } from './utils/urlUtils'
+import useLang from './hooks/useLang'
+import { DEMAND_FIELDS } from './constants/apiConstants'
 
 
 const OUR_TRACKING_ID = 'G-8JJ40D5L38'
@@ -28,12 +30,14 @@ const App = () => {
 
   const browserLang = getBrowserLang()
   const fallbackLang = LANGS.includes(browserLang) ? browserLang : LANGS[0]
+  const { lang } = useLang() ?? { lang: fallbackLang }
 
   useLayoutEffect(() => {
     const urlParts = getUrlParts(location)
     const { category, content } = urlParts
 
     if (
+      value &&
       !category &&
       !content &&
       !locationChangeRef.current.lang &&
@@ -43,18 +47,18 @@ const App = () => {
   }, [value, location])
 
   return (
-    <GlobalContext.Provider value={value}>
+    <GlobalContext.Provider value={value?.[lang]}>
       <Routes location={location}>
         {LANGS.map((lang, i) =>
           <Route
             key={i}
             path={lang}
-            element={<Main currentLang={lang} />}>
+            element={<Main />}>
             <Route index element={null} />
-            {value?.demands[lang]
+            {value?.[lang].demands
               .map(data => <Route
                 key={data.nid}
-                path={`demand/${data.field_demand_id}`}
+                path={`demand/${data[DEMAND_FIELDS.ID]}`}
                 element={<DemandBody data={data} />} />
               )}
             {pageData.map((page, i) =>

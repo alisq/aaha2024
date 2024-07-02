@@ -9,6 +9,7 @@
     "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.7.2",
     "flickity": "^2.3.0",
+    "he": "^1.2.0",
     "html-react-parser": "^3.0.16",
     "lodash": "^4.17.21",
     "node-sass": "^7.0.3",

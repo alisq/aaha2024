@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { CLS, CLSES } from '../../constants/styleConstants'
+import { CLS, CLSES, CSS_ID } from '../../constants/styleConstants'
 import { FOOTER } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import { joinClasses } from '../../utils/styleUtils'
@@ -10,7 +10,7 @@ const Footer = forwardRef(function Footer(_, ref) {
 
   // TODO feed footer link from menu API
   return (
-    <section id='contact' className={CLS.INVERSE} ref={ref}>
+    <section id={CSS_ID.CONTACT} className={CLS.INVERSE} ref={ref}>
       <div className={CLS.CONTAINER}>
         <div className={CLS.ROW}>
           <div className={CLSES.FOUR_COLUMNS}>

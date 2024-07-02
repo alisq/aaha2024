@@ -1,21 +1,23 @@
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import DemandHeader from './demand/demandHeader'
 import Footer from './footer/footer'
 import HomeFist from './homeFist'
 import Menu from './menu/menu'
 import { LANGS } from '../constants/commonConstants'
-import demandData from '../demands.json'
 import useLang from '../hooks/useLang'
 import { getUrlParts, updateUrl } from '../utils/urlUtils'
 import { validateString } from '../utils/commonUtils'
-import { CLS } from '../constants/styleConstants'
+import { CLS, CSS_ID } from '../constants/styleConstants'
 import { MAIN } from '../data/translations'
 import { joinClasses } from '../utils/styleUtils'
 import Canada from './common/canada'
 import Anchor from './common/anchor'
+import { DEMAND_FIELDS } from '../constants/apiConstants'
+import { GlobalContext } from '../contexts/contexts'
 
 const Main = () => {
+  const { demands } = useContext(GlobalContext) ?? {}
   const navigate = useNavigate()
   const location = useLocation()
   const footerRef = useRef()
@@ -27,16 +29,17 @@ const Main = () => {
       navigate(updateUrl(location, 'lang', lang))
   }
 
-  const handleHeaderClick = header =>
-    navigate(`demand/${header.demand_id}`, { replace: header.demand_id === getUrlParts(location).content })
+  const handleHeaderClick = id =>
+    navigate(`demand/${id}`, { replace: id === getUrlParts(location).content })
 
   return (
+    demands &&
     <>
       <Menu
         navigate={navigate}
         footerRef={footerRef} />
       <HomeFist />
-      <div id='lang'>
+      <div id={CSS_ID.LANG}>
         {LANGS.map((lang, i) =>
           <div
             key={i}
@@ -56,11 +59,13 @@ const Main = () => {
               <>TO END HOUSING ALIENATION IN <Canada /><br /> WE DEMAND...</> :
               <>POUR METTRE FIN À L’ALIÉNATION DU LOGEMENT AU <Canada />, NOUS DEMANDONS...</>}
           </span>
-          {demandData.map((header, i) =>
-            <DemandHeader {...header}
+          {demands?.map((header, i) =>
+            <DemandHeader
               key={i}
-              data={header[currentLang]}
-              handleClick={() => { handleHeaderClick(header) }} />)}
+              title={header.title}
+              number={header[DEMAND_FIELDS.NUMBER]}
+              exMark={header[DEMAND_FIELDS.EX_MARK]}
+              handleClick={() => handleHeaderClick(header[DEMAND_FIELDS.ID])} />)}
         </div>
         <h1 className={CLS.TITLE_BOTTOM}>
           <Anchor to='https://docs.google.com/forms/d/1A4sRDWE8gjoyg1w0XlH9CImhx4BbAv9yCo67JPOkVkc/viewform?edit_requested=true#responses'>

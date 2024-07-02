@@ -1,3 +1,4 @@
+import { CSS_ID } from '../constants/styleConstants'
 import { ReactComponent as FistHome } from '../svg/fist-home.svg'
 import { useWindowScroll } from '@uidotdev/usehooks'
 
@@ -7,7 +8,7 @@ const HomeFist = () => {
   const handleClick = () => window.scrollTo(({ top: 0, behavior: 'smooth' }))
   return (
     <FistHome
-      id='menu-fist'
+      id={CSS_ID.MENU_FIST}
       style={{ opacity: y > 100 ? '1' : '0' }}
       onClick={handleClick} />
   )

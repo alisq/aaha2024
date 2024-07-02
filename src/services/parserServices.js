@@ -2,10 +2,29 @@
 import parse, { domToReact } from 'html-react-parser'
 import { titleCase } from 'title-case'
 import Anchor from '../components/common/anchor'
-import { API_ENDPOINT } from '../constants/apiConstants'
+import { API_ENDPOINT, DEMAND_FIELDS, MEMBER_FIELDS } from '../constants/apiConstants'
 import { linkIsExternal } from '../utils/urlUtils'
+import he from 'he'
+
 
 const replaceLink = src => `${API_ENDPOINT}/${src}`
+
+const trimChildren = ({ children }) => {
+  const isEmpty = children?.every(child =>
+    (child.type === 'text' && !child.data.trim()) ||
+    child.name === 'br'
+  )
+
+  return isEmpty ? [] : children
+}
+
+const getLink = html => {
+  html = he.decode(html)
+  const text = html.replaceAll(/\n/g, '').match(/.*(?=<a href=")/m)?.[0].trim()
+  console.log(text)
+  const link = html.match(/(?<=href=").*(?=")/)?.[0]
+  return { text, link }
+}
 
 const parseAnchor = ({ attribs, children }) => {
   const { href } = attribs
@@ -25,10 +44,10 @@ const parseMulti = ul => {
   return results
 }
 
-
-const basicParse = html => html ? parse(html, {
+const basicParse = html => html ? parse(he.decode(html), {
   replace: domNode => {
     const { tagName } = domNode
+    domNode.children = trimChildren(domNode)
     if (tagName === 'a') return parseAnchor(domNode)
   }
 }) : undefined
@@ -36,25 +55,10 @@ const basicParse = html => html ? parse(html, {
 
 const parseDemand = demandData => {
   if (!demandData) return {}
-  const {
-    field_demand_id,
-    body,
-    title,
-    field_region,
-    field_long_summary,
-    field_activist,
-    field_architect,
-    field_advocate,
-    field_image_gallery_1,
-    field_image_gallery_2,
-    field_image_gallery_3,
-    field_banner,
-    field_banner_1,
-    field_actions,
-  } = demandData
-  const gallerySrcs = parseMulti(field_image_gallery_1)
-  const galleryAlts = parseMulti(field_image_gallery_2)
-  const galleryCaptions = parseMulti(field_image_gallery_3)
+  const { body, title } = demandData
+  const gallerySrcs = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_1])
+  const galleryAlts = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_2])
+  const galleryCaptions = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_3])
 
   const gallery = gallerySrcs.map((src, i) => ({
     src: replaceLink(src),
@@ -63,18 +67,18 @@ const parseDemand = demandData => {
   }))
 
   return {
-    id: field_demand_id,
+    id: demandData[DEMAND_FIELDS.ID],
     body: basicParse(body),
     title: titleCase(title),
-    region: basicParse(field_region),
-    longSummary: field_long_summary,
-    activist: basicParse(field_activist),
-    architect: basicParse(field_architect),
-    advocate: basicParse(field_advocate),
+    region: basicParse(demandData[DEMAND_FIELDS.REGION]),
+    longSummary: demandData[DEMAND_FIELDS.LONG_SUMMARY],
+    activist: basicParse(demandData[DEMAND_FIELDS.ACTIVIST]),
+    architect: basicParse(demandData[DEMAND_FIELDS.ARCHITECT]),
+    advocate: basicParse(demandData[DEMAND_FIELDS.ADVOCATE]),
     gallery,
-    bannerSrc: replaceLink(field_banner),
-    bannerCaption: field_banner_1,
-    actions: basicParse(field_actions, domNode => {
+    bannerSrc: replaceLink(demandData[DEMAND_FIELDS.BANNER]),
+    bannerCaption: demandData[DEMAND_FIELDS.BANNER_1],
+    actions: basicParse(demandData[DEMAND_FIELDS.ACTIONS], domNode => {
       const { tagName, children } = domNode
       if (tagName === 'p')
         return <li>{domToReact(children)}</li>
@@ -83,8 +87,25 @@ const parseDemand = demandData => {
   }
 }
 
+const parseMember = (memberData, allDemands) => {
+  if (!memberData) return {}
+  const { body, title } = memberData
+  const orgData = getLink(memberData.field_affiliate_organization)
+
+  return {
+    name: title,
+    bio: basicParse(body),
+    link: getLink(memberData[MEMBER_FIELDS.ORG])?.link,
+    orgName: orgData.text,
+    orgLink: orgData.link,
+    team: allDemands?.[memberData.field_demand]?.title,
+    role: memberData.field_role
+  }
+}
+
 const parserServices = {
-  parseDemand
+  parseDemand,
+  parseMember
 }
 
 export default parserServices

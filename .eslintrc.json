@@ -19,7 +19,11 @@
   },
   "plugins": ["react", "react-hooks"],
   "rules": {
-    "indent": ["error", 2, { "ignoredNodes": ["TemplateLiteral *"] }],
+    "indent": [
+      "error",
+      2,
+      { "ignoredNodes": ["TemplateLiteral *"], "SwitchCase": 1 }
+    ],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "never"],

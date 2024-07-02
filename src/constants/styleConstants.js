@@ -33,7 +33,7 @@ export const CLS = {
   CONTAINER: 'container',
   BLOCK_CONTAINER: 'block-container',
   DEMAND: 'demand',
-  DEMANDS: 'demands',
+  DEMANDS: 'demands', // TODO
   MANIFESTO: 'manifesto',
   INTRO: 'intro',
   FILTER: 'filter',
@@ -70,4 +70,13 @@ export const CLS = {
 export const CLSES = {
   CENTER_CAPTION: joinClasses(CLS.CAPTION, CLS.TEXT_CENTER),
   FOUR_COLUMNS: joinClasses(CLS.FOUR, CLS.COLUMNS)
+}
+
+export const CSS_ID = {
+  LANG: 'lang',
+  MENU: 'menu',
+  MENU_BUTTON: 'menu-button',
+  MENU_FIST: 'menu-fist',
+  CONTACT: 'contact'
+
 }
