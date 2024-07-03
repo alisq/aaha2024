@@ -35,7 +35,7 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
 
   const teamMembers = members.teamMembers.filter(member =>
     member[MEMBER_FIELDS.DEMAND] === data.nid)
-  const demandActions = parserServices.parseActions(actions[parseInt(data.nid)])
+  const demandActions = parserServices.parseActions(actions[parseInt(data.nid) - 1])
   console.log(demandActions)
 
   const location = useLocation()
