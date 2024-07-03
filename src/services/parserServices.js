@@ -55,15 +55,22 @@ const hasNoData = data => !data || !Object.keys(data).length
 const parseDemand = demandData => {
   if (hasNoData(demandData)) return {}
   const { body, title } = demandData
-  const gallerySrcs = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_1])
-  const galleryAlts = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_2])
-  const galleryCaptions = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_3])
+  // const gallerySrcs = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY])
+  // const galleryAlts = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_2])
+  // const galleryCaptions = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_3])
+
+  const gallerySrcs = demandData[DEMAND_FIELDS.IMAGE_GALLERY].split('|')
+  const galleryAlts = demandData[DEMAND_FIELDS.IMAGE_GALLERY_1].split('|')
+  const galleryCaptions = demandData[DEMAND_FIELDS.IMAGE_GALLERY_2].split('|')
+
 
   const gallery = gallerySrcs.map((src, i) => ({
     src: replaceLink(src),
     alt: galleryAlts[i],
     caption: galleryCaptions[i]
   }))
+
+  
 
   
   return {
@@ -84,8 +91,9 @@ const parseDemand = demandData => {
 const parseMember = (memberData, allDemands) => {
   if (hasNoData(memberData)) return {}
   const { body, title } = memberData
+  
   const orgs = parseMulti(memberData.field_affiliate_organization).map(getLink)
-  console.log(orgs)
+  // console.log(orgs)
   return {
     name: title,
     bio: basicParse(body),

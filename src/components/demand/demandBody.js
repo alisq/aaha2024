@@ -34,12 +34,12 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
   } = useMemo(() => parserServices.parseDemand(data), [data])
 
 
-  console.log(bannerCaption)
+  
 
   const teamMembers = members.teamMembers.filter(member =>
     member[MEMBER_FIELDS.DEMAND] === data.nid)
   const demandActions = parserServices.parseActions(actions[parseInt(data.nid) - 1])
-  console.log(demandActions)
+  
 
   const location = useLocation()
   const mergedRef = useMergedRef(ref)

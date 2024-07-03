@@ -46,7 +46,7 @@ const data = (async () => {
     actionsEn[i] = actions[0]
     actionsFr[i] = actions[1]
   })
-  console.log(actionsEn, actionsFr)
+  // console.log(actionsEn, actionsFr)
 
   return {
     en: {
