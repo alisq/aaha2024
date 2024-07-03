@@ -65,18 +65,19 @@ const parseDemand = demandData => {
     caption: galleryCaptions[i]
   }))
 
+  
   return {
     id: demandData[DEMAND_FIELDS.ID],
     body: basicParse(body),
     title: titleCase(title ?? ''),
-    region: basicParse(demandData[DEMAND_FIELDS.REGION]),
+    region: demandData[DEMAND_FIELDS.REGION],
     longSummary: demandData[DEMAND_FIELDS.LONG_SUMMARY],
     activist: basicParse(demandData[DEMAND_FIELDS.ACTIVIST]),
     architect: basicParse(demandData[DEMAND_FIELDS.ARCHITECT]),
     advocate: basicParse(demandData[DEMAND_FIELDS.ADVOCATE]),
     gallery,
     bannerSrc: replaceLink(demandData[DEMAND_FIELDS.BANNER]),
-    bannerCaption: demandData[DEMAND_FIELDS.BANNER_1],
+    bannerCaption: basicParse(demandData[DEMAND_FIELDS.BANNER_CAPTION]),
   }
 }
 
@@ -84,7 +85,7 @@ const parseMember = (memberData, allDemands) => {
   if (hasNoData(memberData)) return {}
   const { body, title } = memberData
   const orgs = parseMulti(memberData.field_affiliate_organization).map(getLink)
-
+  console.log(orgs)
   return {
     name: title,
     bio: basicParse(body),

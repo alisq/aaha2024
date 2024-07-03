@@ -120,9 +120,11 @@ h2 {
 }
 
 h3 {
+  // text-transform: Titlecase;
   font-size: 3rem;
   letter-spacing: 0.02em;
   line-height: 4rem;
+  
 
   &.bigTitle {
     font-size: 10rem;
@@ -343,6 +345,7 @@ label,
   font-size: 0.8em;
   line-height: 1.2em;
   letter-spacing: 0.1em;
+  color:$red;
 }
 
 .label li {

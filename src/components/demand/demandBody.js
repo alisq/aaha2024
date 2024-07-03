@@ -33,6 +33,9 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
     gallery,
   } = useMemo(() => parserServices.parseDemand(data), [data])
 
+
+  console.log(bannerCaption)
+
   const teamMembers = members.teamMembers.filter(member =>
     member[MEMBER_FIELDS.DEMAND] === data.nid)
   const demandActions = parserServices.parseActions(actions[parseInt(data.nid) - 1])
@@ -81,11 +84,13 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
           <h3>{translations.takeAction}</h3>
           <ul className={CLS.ACTIONS}>{
             demandActions.map((action, i) => (
-              <li key={i}>
+              <li className="action" key={i}>
                 <Anchor to={action.link}>
                   <label className={CLS.LABEL_RED}>{action.button}</label>
-                </Anchor>
-                {' '}{action.label}
+                </Anchor><br />
+                {action.label}<br />
+                [<em><a className="small" href="{action.link}">{action.link.replace('https://','').replace('http://','').replace('www.','')}</a></em>]
+                
               </li>
             ))
           }</ul>

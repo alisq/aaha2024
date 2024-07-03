@@ -32,7 +32,7 @@ export const DEMAND_BODY = {
   activist: addColons(activist),
   architect: addColons(architect),
   advocate: addColons(advocate),
-  takeAction: ['TAKE ACTION:', 'PASSONS À L’ACTION :'],
+  takeAction: ['Take Action:', 'Passons à l\'action :'],
   members,
   memberName: name,
   memberOrg: org,

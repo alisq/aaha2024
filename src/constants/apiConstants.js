@@ -18,6 +18,7 @@ export const DEMAND_FIELDS = {
   IMAGE_GALLERY_3: 'field_image_gallery_3',
   BANNER: 'field_banner',
   BANNER_1: 'field_banner_1',
+  BANNER_CAPTION: 'field_banner_caption',
   ACTIONS: 'field_actions',
 }
 
