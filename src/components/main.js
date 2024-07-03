@@ -26,7 +26,7 @@ const Main = () => {
 
   const handleLangSwitch = lang => {
     if (currentLang !== lang)
-      navigate(updateUrl(location, 'lang', lang))
+      navigate(updateUrl(location, { lang }))
   }
 
   const handleHeaderClick = id =>

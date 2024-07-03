@@ -1,20 +1,23 @@
-import { forwardRef, useEffect, useLayoutEffect, useMemo } from 'react'
+import { forwardRef, useContext, useEffect, useLayoutEffect, useMemo } from 'react'
 import { CLS } from '../../constants/styleConstants'
-import contributorData from '../../contributors.json'
 import { DEMAND_BODY } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import parserServices from '../../services/parserServices'
 import DemandCarousel from './demandCarousel'
 import DemandData from './demandData'
-import DemandMember from './demandMember'
 import TableLabelHead from '../common/tableLabelHead'
 import Section from '../common/section'
 import { useLocation } from 'react-router-dom'
 import useLocationChange from '../../hooks/useLangChanged'
 import useMergedRef from '../../hooks/useMergedRef'
+import { GlobalContext } from '../../contexts/contexts'
+import { MEMBER_FIELDS } from '../../constants/apiConstants'
+import TeamMember from '../collective/teamMember'
 
 const DemandBody = forwardRef(function DemandBody({ data }, ref) {
   const { translations } = useLang(DEMAND_BODY)
+  const { members } = useContext(GlobalContext) ?? {}
+
   const {
     id,
     body,
@@ -30,7 +33,8 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
     actions,
   } = useMemo(() => parserServices.parseDemand(data), [data])
 
-  const teamMembers = contributorData.filter(member => member.team_id === id)
+  const teamMembers = members.teamMembers.filter(member =>
+    member[MEMBER_FIELDS.DEMAND] === data.nid)
 
   const location = useLocation()
   const mergedRef = useMergedRef(ref)
@@ -82,7 +86,8 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
       <table className={CLS.MEMBERS}>
         <TableLabelHead labels={['name', 'org', 'role']} />
         <tbody>
-          {teamMembers.map((member, i) => <DemandMember key={i} member={member} />)}
+          {teamMembers.map((memberData, i) =>
+            <TeamMember key={i} memberData={memberData} hideTeam />)}
         </tbody>
       </table>
     </Section>

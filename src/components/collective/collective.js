@@ -2,7 +2,6 @@ import { useContext, useLayoutEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import collaboratorData from '../../collaborators.json'
 import { GlobalContext } from '../../contexts/contexts'
-import teamMemberData from '../../contributors.json'
 import { COLLECTIVE } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import Filter from '../common/filter'
@@ -56,7 +55,7 @@ const Collective = () => {
       (!organization || member.orgs.find(org => org.name.toLocaleLowerCase()
         === organization.toLocaleLowerCase()))
     )
-      return <TeamMember member={member} key={i} />
+      return <TeamMember memberData={memberData} key={i} />
   }
 
   const handleFilterTeam = newFilter =>

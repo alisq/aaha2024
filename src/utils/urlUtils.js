@@ -15,12 +15,8 @@ export const partsToUrl = ({ lang, category, content }) => joinPaths(
   )
 )
 
-export const updateUrl = (location, type, value) => {
-  const urlParts = getUrlParts(location)
-  if (type === 'lang') urlParts.lang = value
-  if (type === 'content') urlParts.content = value
-  return partsToUrl(urlParts)
-}
+export const updateUrl = (location, newUrlParts) =>
+  partsToUrl({ ...getUrlParts(location), ...newUrlParts })
+
 
 export const linkIsExternal = to => typeof to === 'string' && to.match(/^(https|www)/)
-

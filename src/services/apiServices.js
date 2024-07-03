@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { API_ENDPOINT, API_LANGS, MEMBERS_SECTIONS, MEMBER_FIELDS, MEMBER_ROLES } from '../constants/apiConstants'
+import { API_ENDPOINT, API_LANGS, MEMBERS_SECTIONS, MEMBER_FIELDS } from '../constants/apiConstants'
 import httpServices from './httpServices'
 import { joinPaths } from '../utils/urlUtils'
 

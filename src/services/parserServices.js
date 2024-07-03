@@ -51,9 +51,9 @@ const basicParse = html => html ? parse(he.decode(html), {
   }
 }) : undefined
 
-
+const hasNoData = data => !data || !Object.keys(data).length
 const parseDemand = demandData => {
-  if (!demandData) return {}
+  if (hasNoData(demandData)) return {}
   const { body, title } = demandData
   const gallerySrcs = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_1])
   const galleryAlts = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_2])
@@ -68,7 +68,7 @@ const parseDemand = demandData => {
   return {
     id: demandData[DEMAND_FIELDS.ID],
     body: basicParse(body),
-    title: titleCase(title),
+    title: titleCase(title ?? ''),
     region: basicParse(demandData[DEMAND_FIELDS.REGION]),
     longSummary: demandData[DEMAND_FIELDS.LONG_SUMMARY],
     activist: basicParse(demandData[DEMAND_FIELDS.ACTIVIST]),
@@ -87,17 +87,17 @@ const parseDemand = demandData => {
 }
 
 const parseMember = (memberData, allDemands) => {
-  if (!memberData) return {}
+  if (hasNoData(memberData)) return {}
   const { body, title } = memberData
   const orgs = parseMulti(memberData.field_affiliate_organization).map(getLink)
-
 
   return {
     name: title,
     bio: basicParse(body),
     link: getLink(memberData[MEMBER_FIELDS.ORG])?.link,
     orgs,
-    team: allDemands?.[memberData.field_demand]?.title,
+    team: allDemands?.[memberData[MEMBER_FIELDS.DEMAND]]?.title,
+    teamId: allDemands?.[memberData[MEMBER_FIELDS.DEMAND]]?.field_demand_id,
     role: memberData.field_role
   }
 }
