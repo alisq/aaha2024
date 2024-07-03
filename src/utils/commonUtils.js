@@ -17,3 +17,6 @@ export const mapObject = (
 }
 
 export const addColons = ([en, fr]) => [`${en}:`, `${fr} :`]
+
+export const quickArray = (length, callback = i => i) =>
+  Array(length).fill(0).map((_, i) => callback(i))

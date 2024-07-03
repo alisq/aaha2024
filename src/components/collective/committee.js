@@ -1,10 +1,11 @@
 import TableHead from '../common/tableHead'
 import Anchor from '../common/anchor'
 import parserServices from '../../services/parserServices'
+import { useMemo } from 'react'
 
 const Committee = ({ data }) => {
-  const { name, bio, link } = parserServices.parseMember(data)
-
+  const { name, bio, link } = useMemo(() =>
+    parserServices.parseMember(data), [data])
   return (
     <TableHead>
       <td>

@@ -1,15 +1,17 @@
 import _ from 'lodash'
-import { API_ENDPOINT, API_LANGS, MEMBERS_SECTIONS, MEMBER_FIELDS } from '../constants/apiConstants'
+import { ACTION_FIELDS, API_ENDPOINT, API_LANGS, MEMBERS_SECTIONS, MEMBER_FIELDS } from '../constants/apiConstants'
 import httpServices from './httpServices'
 import { joinPaths } from '../utils/urlUtils'
+import { quickArray } from '../utils/commonUtils'
 
-const uniqDemand = demands => _.uniqBy(demands, 'nid')
+const uniqEntry = entries => _.uniqBy(entries, 'nid')
+const langPartition = data => _.partition(data, { langcode: API_LANGS.en })
 
 const JSON_ENDPOINT = joinPaths(API_ENDPOINT, 'JSON')
 
 const data = (async () => {
   const { data: demandData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'demands')))
-  const demands = _.partition(demandData, { langcode: API_LANGS.en })
+  const [demandsEn, demandsFr] = langPartition(demandData)
 
   const { data: memberData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'members')))
   const membersEn = {
@@ -34,14 +36,27 @@ const data = (async () => {
     membersCollection.uncategorized.push(entry)
   })
 
+  const { data: actionData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'actions')))
+  const actionsEn = quickArray(uniqEntry(demandsEn).length)
+  const actionsFr = _.cloneDeep(actionsEn)
+
+  uniqEntry(demandsEn).forEach(({ nid }, i) => {
+    const demandActions = actionData.filter(action => action[ACTION_FIELDS.DEMAND] === nid)
+    const actions = langPartition(demandActions)
+    actionsEn[i] = actions[0]
+    actionsFr[i] = actions[1]
+  })
+
   return {
     en: {
-      demands: uniqDemand(demands[0]),
-      members: membersEn
+      demands: uniqEntry(demandsEn),
+      members: membersEn,
+      actions: actionsEn
     },
     fr: {
-      demands: uniqDemand(demands[1]),
-      members: membersFr
+      demands: uniqEntry(demandsFr),
+      members: membersFr,
+      actions: actionsFr
     }
   }
 })()

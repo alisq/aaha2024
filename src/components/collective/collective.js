@@ -45,6 +45,7 @@ const Collective = () => {
     })
   }, [location.hash])
 
+  // TODO: memoize
   const getTeamMember = (memberData, i) => {
     const member = parserServices.parseMember(memberData, demands)
     const { role, team, organization } = teamMemberFilters

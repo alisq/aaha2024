@@ -13,10 +13,11 @@ import useMergedRef from '../../hooks/useMergedRef'
 import { GlobalContext } from '../../contexts/contexts'
 import { MEMBER_FIELDS } from '../../constants/apiConstants'
 import TeamMember from '../collective/teamMember'
+import Anchor from '../common/anchor'
 
 const DemandBody = forwardRef(function DemandBody({ data }, ref) {
   const { translations } = useLang(DEMAND_BODY)
-  const { members } = useContext(GlobalContext) ?? {}
+  const { members, actions } = useContext(GlobalContext) ?? {}
 
   const {
     id,
@@ -30,11 +31,12 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
     bannerSrc,
     bannerCaption,
     gallery,
-    actions,
   } = useMemo(() => parserServices.parseDemand(data), [data])
 
   const teamMembers = members.teamMembers.filter(member =>
     member[MEMBER_FIELDS.DEMAND] === data.nid)
+  const demandActions = parserServices.parseActions(actions[parseInt(data.nid)])
+  console.log(demandActions)
 
   const location = useLocation()
   const mergedRef = useMergedRef(ref)
@@ -77,7 +79,16 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
       right={
         <>
           <h3>{translations.takeAction}</h3>
-          <ul className={CLS.ACTIONS}>{actions}</ul>
+          <ul className={CLS.ACTIONS}>{
+            demandActions.map((action, i) => (
+              <li key={i}>
+                <Anchor to={action.link}>
+                  <label className={CLS.LABEL_RED}>{action.button}</label>
+                </Anchor>
+                {' '}{action.label}
+              </li>
+            ))
+          }</ul>
         </>
       }>
       <br /><br />

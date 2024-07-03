@@ -2,7 +2,7 @@
 import parse, { domToReact } from 'html-react-parser'
 import { titleCase } from 'title-case'
 import Anchor from '../components/common/anchor'
-import { API_ENDPOINT, DEMAND_FIELDS, MEMBER_FIELDS } from '../constants/apiConstants'
+import { ACTION_FIELDS, API_ENDPOINT, DEMAND_FIELDS, MEMBER_FIELDS } from '../constants/apiConstants'
 import { linkIsExternal } from '../utils/urlUtils'
 import he from 'he'
 
@@ -77,12 +77,6 @@ const parseDemand = demandData => {
     gallery,
     bannerSrc: replaceLink(demandData[DEMAND_FIELDS.BANNER]),
     bannerCaption: demandData[DEMAND_FIELDS.BANNER_1],
-    actions: basicParse(demandData[DEMAND_FIELDS.ACTIONS], domNode => {
-      const { tagName, children } = domNode
-      if (tagName === 'p')
-        return <li>{domToReact(children)}</li>
-      if (tagName === 'a') return parseAnchor(domNode)
-    })
   }
 }
 
@@ -102,9 +96,18 @@ const parseMember = (memberData, allDemands) => {
   }
 }
 
+const parseActions = actionData =>
+  actionData.map(action => ({
+    button: action.title.toLocaleUpperCase(),
+    label: he.decode(action[ACTION_FIELDS.LABEL]),
+    link: getLink(action[ACTION_FIELDS.LINK])?.link,
+  }))
+
+
 const parserServices = {
   parseDemand,
-  parseMember
+  parseMember,
+  parseActions
 }
 
 export default parserServices

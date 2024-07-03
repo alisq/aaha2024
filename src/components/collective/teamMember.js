@@ -5,15 +5,16 @@ import { titleCase } from 'title-case'
 import { updateUrl } from '../../utils/urlUtils'
 import { useLocation } from 'react-router-dom'
 import parserServices from '../../services/parserServices'
-import { useContext } from 'react'
+import { useContext, useMemo } from 'react'
 import { GlobalContext } from '../../contexts/contexts'
 
 const TeamMember = ({ memberData, hideTeam }) => {
   const { demands } = useContext(GlobalContext) ?? {}
 
-  const member = parserServices.parseMember(memberData, demands)
+  const member = useMemo(() =>
+    parserServices.parseMember(memberData, demands), [memberData, demands])
   const { name, orgs, team, teamId, role } = member
-  console.log(member)
+
   const location = useLocation()
   return (
     <TableHead>

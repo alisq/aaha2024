@@ -27,6 +27,7 @@ export const CLS = {
   SMALL_HALF: 'small-half',
   CAPTION: 'caption',
   LABEL: 'label',
+  LABEL_RED: 'label--red',
   NO_BREAK: 'no-break',
 
   PAGE: 'page',

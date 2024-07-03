@@ -29,6 +29,12 @@ export const MEMBER_FIELDS = {
   BIO: 'body'
 }
 
+export const ACTION_FIELDS = {
+  DEMAND: 'field_demand',
+  LABEL: 'field_action_label',
+  LINK: 'field_action_link',
+}
+
 export const MEMBERS_SECTIONS = {
   COMMITTEE: 'organizing committee',
   COLLABORATORS: 'campaign collaborators',
