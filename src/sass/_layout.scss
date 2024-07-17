@@ -308,9 +308,9 @@ h1 {
   pointer-events: none;
   opacity: 0;
   transition: opacity $transition-time;
-  padding: 0;
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  padding: 1em 4em 1em;
+  
+  
 
   &.active {
     opacity: 1;
@@ -322,7 +322,7 @@ h1 {
     list-style-type: none;
     margin-top: 5em;
     margin-left: 0.5em;
-    
+    column-count: 2;
 
     & li {
       font-family: "AAHA-WEB";
@@ -335,6 +335,10 @@ h1 {
       transition: color $transition-time;
       transform:rotate(-10deg);
       transform-origin: 0 50%;
+
+      &:last-child {
+        transform:rotate(0deg);
+      }
 
       &::first-letter {
         text-transform: uppercase;

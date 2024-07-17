@@ -27,7 +27,7 @@ const Menu = ({ footerRef }) => {
             title={translations.demands}
             to={`/${lang}`}
             handleClick={() => setVisibility(false)} />
-          {pageData.map((page, i) =>
+          {pageData.map((page, i) => 
             <MenuLink
               key={i}
               to={`page/${page.page_id}`}
@@ -37,12 +37,15 @@ const Menu = ({ footerRef }) => {
           <MenuLink
             title={translations.contact}
             handleClick={handleContactClick} />
+          <li>
+            <div className='embedContainer'>
+              <iframe src='https://www.youtube.com/embed/WW8PxLUfAww' frameBorder='0' allowFullScreen />
+            </div>
+          </li>
         </ul>
 
         <div className='menuRight'>
-          <div className='embedContainer'>
-            <iframe src='https://www.youtube.com/embed/WW8PxLUfAww' frameBorder='0' allowFullScreen />
-          </div>
+       
         </div>
       </section>
     </>

@@ -4,7 +4,7 @@ import { addColons } from '../utils/commonUtils'
 const demands = ['DEMANDS', 'DEMANDES']
 const manifesto = ['MANIFESTO', 'MANIFESTE']
 const collective = ['COLLECTIVE', 'COLLECTIF']
-const exhibition = ['EXHIBITION', 'EXHIBITION']
+const exhibition = ['EXHIBITIONS', 'EXHIBITIONS']
 
 const name = ['Name', 'Nom']
 const role = ['Role', 'Rôle']

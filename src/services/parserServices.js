@@ -93,7 +93,7 @@ const parseMember = (memberData, allDemands) => {
   const { body, title } = memberData
   
   const orgs = parseMulti(memberData.field_affiliate_organization).map(getLink)
-  // console.log(orgs)
+  
   return {
     name: title,
     bio: basicParse(body),

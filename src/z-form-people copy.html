@@ -56,23 +56,26 @@
                 
 
                 for (i = 0; i < people.length; i++) {
-                    console.log(people[i])
+                    // console.log(people[i])
 
-                    let row = `
+if (people[i].team_num == 3) {
+
+
+    let row = `
                     <tr>
-                        <td class="title">${people[i].name}</td>
-                        <td class="field_demand">${people[i].team_num}</td>
-                        <td class="field_affiliate_organization_link">${people[i].en.organization_links}</td>
-                        <td class="field_affiliate_organization_title">${people[i].en.organization}</td>
-                        <td class="bio">${people[i].en.bio}</td>
-                        <td class="field_role">${people[i].en.role}</td>
-                        <td class="field_collective_section">team_members</td>
+                        <td class="title"><h2>${people[i].name}</h2></td>
+                        
+                        <td class="field_affiliate_organization_link"><textarea>${people[i].en.organization_links}</textarea></td>
+                        <td class="field_affiliate_organization_title"><textarea>${people[i].en.organization}</textarea></td>
+                        
+                        <td class="field_role"><textarea>${people[i].en.role}</textarea></td>
                     </tr>
                         
                         `
                     
 
                         $("#page").append(row)
+}
                     
                     
 

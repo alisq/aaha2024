@@ -846,9 +846,7 @@ h1 {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr; }
+  padding: 1em 4em 1em; }
   #menu.active {
     opacity: 1;
     user-select: initial;
@@ -856,7 +854,8 @@ h1 {
   #menu ul {
     list-style-type: none;
     margin-top: 5em;
-    margin-left: 0.5em; }
+    margin-left: 0.5em;
+    column-count: 2; }
     #menu ul li {
       font-family: "AAHA-WEB";
       color: #F5F5F5;
@@ -868,6 +867,8 @@ h1 {
       transition: color 0.4s;
       transform: rotate(-10deg);
       transform-origin: 0 50%; }
+      #menu ul li:last-child {
+        transform: rotate(0deg); }
       #menu ul li::first-letter {
         text-transform: uppercase; }
       #menu ul li:nth-child(4) a::after,

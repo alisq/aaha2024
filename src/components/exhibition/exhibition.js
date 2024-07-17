@@ -65,7 +65,9 @@ const carouselImages = [
 
 // TODO Columns
 const Exhibition = () => {
+  
   const { lang, translations } = useLang(EXHIBITION)
+  
   const isEn = lang === LANGS[0]
   return (
     <div className={CLS.CONTAINER}>
