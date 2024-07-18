@@ -12,9 +12,9 @@ const EventCell = ({ data }) => {
   return (
     <>
       <TableHead>
-        <td><strong>{title}</strong></td>
-        <td>{date}</td>
-        <td colSpan='2'>
+        <td style={{ width: '25%' }}><strong>{title}</strong></td>
+        <td style={{ width: '15%' }}>{date}</td>
+        <td colSpan='2' style={{ width: '25%' }}>
           {demands.map((demand, i) =>
             <>
               {!!i && <br />}
@@ -22,14 +22,14 @@ const EventCell = ({ data }) => {
             </>
           )}
         </td>
-        <td><button onClick={() => setIsExpanded(prev => !prev)}>{isExpanded ? 'COLLAPSE' : 'EXPAND'}</button></td>
+        <td style={{ width: '5%' }}><button onClick={() => setIsExpanded(prev => !prev)}>{isExpanded ? 'COLLAPSE' : 'EXPAND'}</button></td>
       </TableHead>
       {
         isExpanded &&
         (img || body || link || locale) &&
         <TableHead>
-          <td></td>
-          <td colSpan='3'>
+          <td style={{ width: '25%' }} />
+          <td colSpan='3' style={{ width: '55%' }}>
             {img && <img style={{ maxWidth: '50%' }} src={img} />}
             {body && <div>{body}</div>}
             {locale && <div>{locale}</div>}
