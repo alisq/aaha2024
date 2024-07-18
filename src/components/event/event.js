@@ -27,7 +27,7 @@ const Event = () => {
       <table className={CLS.MEMBERS}>
         <TableLabelHead labels={['title', 'date', 'demands']} />
         <tbody>
-          {parsedEvents.map((event, i) => <EventCell key={i} datas={event} />)}
+          {parsedEvents.map((event, i) => <EventCell key={i} data={event} />)}
         </tbody>
       </table>
     </>
