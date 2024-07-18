@@ -871,14 +871,18 @@ h1 {
         transform: rotate(0deg); }
       #menu ul li::first-letter {
         text-transform: uppercase; }
+      #menu ul li:nth-child(9) a::after,
+      #menu ul li:nth-child(7) a::after,
       #menu ul li:nth-child(4) a::after,
       #menu ul li:nth-child(1) a::after {
         content: "\0776"; }
+      #menu ul li:nth-child(8) a::after,
+      #menu ul li:nth-child(6) a::after,
       #menu ul li:nth-child(2) a::after {
         content: "\0777"; }
       #menu ul li:nth-child(3) a::after {
         content: "!"; }
-      #menu ul li:nth-child(5)::after {
+      #menu ul li:nth-child(10)::after, #menu ul li:nth-child(5)::after {
         content: "\0778"; }
       #menu ul li a,
       #menu ul li a:link,

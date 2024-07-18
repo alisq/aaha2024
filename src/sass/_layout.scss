@@ -344,11 +344,15 @@ h1 {
         text-transform: uppercase;
       }
 
+      &:nth-child(9) a::after,
+      &:nth-child(7) a::after,
       &:nth-child(4) a::after,
       &:nth-child(1) a::after {
         content: "\0776";
         
       }
+      &:nth-child(8) a::after,
+      &:nth-child(6) a::after,
       &:nth-child(2) a::after {
         content: "\0777";
         
@@ -359,6 +363,7 @@ h1 {
         
       }
 
+      &:nth-child(10)::after,
       &:nth-child(5)::after {
         content: "\0778";
         
