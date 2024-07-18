@@ -70,9 +70,6 @@ const parseDemand = demandData => {
     caption: galleryCaptions[i]
   }))
 
-  
-
-  
   return {
     id: demandData[DEMAND_FIELDS.ID],
     body: basicParse(body),
@@ -91,9 +88,9 @@ const parseDemand = demandData => {
 const parseMember = (memberData, allDemands) => {
   if (hasNoData(memberData)) return {}
   const { body, title } = memberData
-  
+
   const orgs = parseMulti(memberData.field_affiliate_organization).map(getLink)
-  
+
   return {
     name: title,
     bio: basicParse(body),
@@ -105,6 +102,17 @@ const parseMember = (memberData, allDemands) => {
   }
 }
 
+const parsePage = pageData => {
+  if (hasNoData(pageData)) return {}
+
+  const { title, body } = pageData
+  return {
+    title: title.toLocaleUpperCase(),
+    body: basicParse(body),
+  }
+}
+
+
 const parseActions = actionData =>
   actionData.map(action => ({
     button: action.title.toLocaleUpperCase(),
@@ -115,6 +123,7 @@ const parseActions = actionData =>
 
 const parserServices = {
   parseDemand,
+  parsePage,
   parseMember,
   parseActions
 }

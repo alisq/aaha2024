@@ -36,9 +36,12 @@ const data = (async () => {
     membersCollection.uncategorized.push(entry)
   })
 
-  const { data: actionData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'actions')))
+  const { data: actionData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'actions'))) // TODO
   const actionsEn = quickArray(uniqEntry(demandsEn).length)
   const actionsFr = _.cloneDeep(actionsEn)
+
+  const { data: pageData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'pages')))
+  const [pagesEn, pagesFr] = langPartition(pageData)
 
   uniqEntry(demandsEn).forEach(({ nid }, i) => {
     const demandActions = actionData.filter(action => action[ACTION_FIELDS.DEMAND] === nid)
@@ -46,18 +49,19 @@ const data = (async () => {
     actionsEn[i] = actions[0]
     actionsFr[i] = actions[1]
   })
-  // console.log(actionsEn, actionsFr)
 
   return {
     en: {
       demands: uniqEntry(demandsEn),
       members: membersEn,
-      actions: actionsEn
+      actions: actionsEn,
+      pages: pagesEn
     },
     fr: {
       demands: uniqEntry(demandsFr),
       members: membersFr,
-      actions: actionsFr
+      actions: actionsFr,
+      pages: pagesFr
     }
   }
 })()

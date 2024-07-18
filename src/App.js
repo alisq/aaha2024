@@ -17,6 +17,7 @@ import { getBrowserLang } from './utils/languageUtils'
 import { getUrlParts } from './utils/urlUtils'
 import useLang from './hooks/useLang'
 import { DEMAND_FIELDS } from './constants/apiConstants'
+import Page from './components/page'
 
 
 const OUR_TRACKING_ID = 'G-8JJ40D5L38'
@@ -45,8 +46,11 @@ const App = () => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [value, location])
 
+  const data = value?.[lang]
+
+  const hardFixPages = ['aaha-manifesto', 'manifesto', 'exhibition']
   return (
-    <GlobalContext.Provider value={value?.[lang]}>
+    <GlobalContext.Provider value={data}>
       <Routes location={location}>
         {LANGS.map((lang, i) =>
           <Route
@@ -54,24 +58,40 @@ const App = () => {
             path={lang}
             element={<Main />}>
             <Route index element={null} />
-            {value?.[lang].demands
+            {data?.demands
               .map(data => <Route
                 key={data.nid}
                 path={`demand/${data[DEMAND_FIELDS.ID]}`}
                 element={<DemandBody data={data} />} />
               )}
-            {pageData.map((page, i) =>
-              <Route
-                key={i}
-                path={`page/${page.page_id}`}
-                element={
-                  <Section
-                    id={page.page_id}
-                    title={page[lang].title}
-                    center={<div>{parse(page[lang].body)}</div>}>
-                    {pages[page.page_id]}
-                  </Section>
-                } />)}
+            {pageData
+              .filter(page => hardFixPages.includes(page.page_id))
+              .map((page, i) =>
+                <Route
+                  key={i}
+                  path={`page/${page.page_id}`}
+                  element={
+                    <Section
+                      id={page.page_id}
+                      title={page[lang].title}
+                      center={<div>{parse(page[lang].body)}</div>}>
+                      {pages[page.page_id]}
+                    </Section>
+                  } />)}
+            {data?.pages
+              .filter(page => !hardFixPages.includes(page.field_id))
+              .map((page, i) =>
+                <Route
+                  key={i}
+                  path={`page/${page.field_id}`}
+                  element={
+                    <Page
+                      id={page.field_id}
+                      title={page.title}
+                      body={page.body}
+                      data={page}
+                      subpage={pages[page.field_id]} />
+                  } />)}
           </Route>
         )}
         {value && <Route path='*' element={<Navigate replace to={fallbackLang} />} />}
