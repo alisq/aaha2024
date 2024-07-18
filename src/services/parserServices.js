@@ -20,9 +20,10 @@ const trimChildren = ({ children }) => {
 
 const getLink = html => {
   html = he.decode(html)
-  const name = html.replaceAll(/\n/g, '').match(/.*(?=<a href=")/m)?.[0].trim()
+  const textBefore = html.replaceAll(/\n/g, '').match(/.*(?=<a href=")/m)?.[0].trim()
   const link = html.match(/(?<=href=").*(?=")/)?.[0]
-  return { name, link }
+  const text = html.replaceAll(/\n/g, '').match(/(?<=>).*(?=<\/a>)/m)?.[0].trim()
+  return { name: textBefore, link, text } // TODO
 }
 
 const parseAnchor = ({ attribs, children }) => {
@@ -85,6 +86,25 @@ const parseDemand = demandData => {
   }
 }
 
+const parsePage = pageData => {
+  if (hasNoData(pageData)) return {}
+
+  const { title, body } = pageData
+  return {
+    title: title.toLocaleUpperCase(),
+    body: basicParse(body),
+  }
+}
+
+const parseActions = actionData =>
+  actionData.map(action => ({
+    button: action.title.toLocaleUpperCase(),
+    label: he.decode(action[ACTION_FIELDS.LABEL]),
+    link: getLink(action[ACTION_FIELDS.LINK])?.link,
+  }))
+
+
+// TODO Constant
 const parseMember = (memberData, allDemands) => {
   if (hasNoData(memberData)) return {}
   const { body, title } = memberData
@@ -102,30 +122,25 @@ const parseMember = (memberData, allDemands) => {
   }
 }
 
-const parsePage = pageData => {
-  if (hasNoData(pageData)) return {}
-
-  const { title, body } = pageData
-  return {
-    title: title.toLocaleUpperCase(),
-    body: basicParse(body),
-  }
-}
-
-
-const parseActions = actionData =>
-  actionData.map(action => ({
-    button: action.title.toLocaleUpperCase(),
-    label: he.decode(action[ACTION_FIELDS.LABEL]),
-    link: getLink(action[ACTION_FIELDS.LINK])?.link,
-  }))
-
+const parseEvents = eventData =>
+  eventData.map(event => {
+    return {
+      title: event.title,
+      img: event.field_image && replaceLink(event.field_image),
+      body: basicParse(event.body),
+      link: event.field_event_link,
+      date: basicParse(event.field_event_date),
+      locale: basicParse(event.field_locale),
+      demands: parseMulti(event.field_demand).map(demand => getLink(demand)?.text)
+    }
+  })
 
 const parserServices = {
   parseDemand,
   parsePage,
+  parseActions,
   parseMember,
-  parseActions
+  parseEvents
 }
 
 export default parserServices

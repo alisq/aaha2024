@@ -5,6 +5,7 @@ const demands = ['DEMANDS', 'DEMANDES']
 const manifesto = ['MANIFESTO', 'MANIFESTE']
 const collective = ['COLLECTIVE', 'COLLECTIF']
 const exhibition = ['EXHIBITIONS', 'EXHIBITIONS']
+const events = ['EVENTS', 'ÉVÉNEMENTS']
 
 const name = ['Name', 'Nom']
 const role = ['Role', 'Rôle']
@@ -12,6 +13,10 @@ const org = ['Organizations', 'Organisme']
 const bio = ['Biography', 'Biographie']
 const members = ['TEAM MEMBERS', 'MEMBRES DE L’ÉQUIPE']
 const team = ['TEAM', 'EQUIPE']
+
+// TODO
+const title = ['TITLE', 'TITLE']
+const date = ['DATE', 'DATE']
 
 const activist = ['Activist', 'Activiste']
 const advocate = ['Advocate', 'Défenseur']
@@ -74,10 +79,17 @@ export const EXHIBITION = {
   sponsors: ['Sponsors', 'Commanditaires'],
 }
 
+export const EVENT = {
+  header: events
+}
+
 export const TABLE = {
   name,
+  title,
   role,
   bio,
   org,
   team,
+  demands,
+  date
 }

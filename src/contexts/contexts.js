@@ -3,5 +3,7 @@ import { createContext } from 'react'
 export const GlobalContext = createContext({
   demands: {},
   members: {},
-  actions: {}
+  actions: {},
+  pages: {},
+  events: {}
 })
