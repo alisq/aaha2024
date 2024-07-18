@@ -5,33 +5,35 @@ import useLang from '../../hooks/useLang'
 import { EVENT } from '../../data/translations'
 import TableLabelHead from '../common/tableLabelHead'
 import parserServices from '../../services/parserServices'
-import EventCell from './eventCell'
+import EventCell from './pressCell'
+import PressCell from './pressCell'
 
 
 
-const Event = () => {
+const Press = () => {
   const { translations } = useLang(EVENT)
-  const { events } = useContext(GlobalContext) ?? {}
+  const { press } = useContext(GlobalContext) ?? {}
 
 
   //  TODO examine other memo deps
-  const parsedEvents = useMemo(() => parserServices.parseEvents(events), [events])
+  const parsedPress = useMemo(() => parserServices.parsePress(press), [press])
+  console.log(parsedPress)
 
   return (
-    events &&
+    press &&
     <>
       <br /><br />
       <h3 className={CLS.TEXT_CENTER}>
-        {translations.headers}
+        PRESS
       </h3 >
       <table className={CLS.MEMBERS}>
-        <TableLabelHead labels={['title', 'date', 'demands']} />
+        <TableLabelHead labels={['title', 'date', 'outlet']} />
         <tbody>
-          {parsedEvents.map((event, i) => <EventCell key={i} datas={event} />)}
+          {parsedPress.map((press, i) => <PressCell key={i} data={press} />)}
         </tbody>
       </table>
     </>
   )
 }
 
-export default Event
+export default Press

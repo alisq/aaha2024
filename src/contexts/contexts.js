@@ -5,5 +5,6 @@ export const GlobalContext = createContext({
   members: {},
   actions: {},
   pages: {},
-  events: {}
+  events: {},
+  press: {}
 })

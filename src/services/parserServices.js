@@ -135,12 +135,26 @@ const parseEvents = eventData =>
     }
   })
 
+const parsePress = pressData =>
+  pressData.map(press => {
+    return {
+      title: press.title,
+      img: press.field_image && replaceLink(press.field_image),
+      body: basicParse(press.body),
+      link: press.field_press_item_link,
+      date: basicParse(press.field_date),
+      outlet: press.field_outlet,
+      isHighlighted: press.field_highlighted === 'Highlighted'
+    }
+  })
+
 const parserServices = {
   parseDemand,
   parsePage,
   parseActions,
   parseMember,
-  parseEvents
+  parseEvents,
+  parsePress
 }
 
 export default parserServices

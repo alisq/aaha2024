@@ -17,6 +17,7 @@ const team = ['TEAM', 'EQUIPE']
 // TODO
 const title = ['TITLE', 'TITLE']
 const date = ['DATE', 'DATE']
+const outlet = ['OUTLET', 'OUTLET']
 
 const activist = ['Activist', 'Activiste']
 const advocate = ['Advocate', 'Défenseur']
@@ -91,5 +92,6 @@ export const TABLE = {
   org,
   team,
   demands,
-  date
+  date,
+  outlet
 }

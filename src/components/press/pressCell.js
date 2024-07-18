@@ -4,35 +4,27 @@ import TableHead from '../common/tableHead'
 import Anchor from '../common/anchor'
 import { useState } from 'react'
 
-const EventCell = ({ data }) => {
+const PressCell = ({ data }) => {
   const { lang } = useLang()
-  const { title, date, demands, body, link, locale, img } = data
-  const [isExpanded, setIsExpanded] = useState(false)
+  const { title, date, outlet, body, link, isHighlighted, img } = data
+  const [isExpanded, setIsExpanded] = useState(isHighlighted)
 
   return (
     <>
       <TableHead>
         <td><strong>{title}</strong></td>
         <td>{date}</td>
-        <td colSpan='2'>
-          {demands.map((demand, i) =>
-            <>
-              {!!i && <br />}
-              <Anchor className={CLS.TEAM_TITLE} key={i}>{demand}</Anchor>
-            </>
-          )}
-        </td>
+        <td>{outlet}</td>
         <td><button onClick={() => setIsExpanded(prev => !prev)}>{isExpanded ? 'COLLAPSE' : 'EXPAND'}</button></td>
       </TableHead>
       {
         isExpanded &&
-        (img || body || link || locale) &&
+        (img || body || link) &&
         <TableHead>
           <td></td>
           <td colSpan='3'>
-            {img && <img style={{ maxWidth: '50%' }} src={img} />}
+            {img && <img style={{ maxWidth: '80%' }} src={img} />}
             {body && <div>{body}</div>}
-            {locale && <div>{locale}</div>}
             {link && <div><Anchor to={link}>{link}</Anchor></div>}
           </td>
           <td></td>
@@ -41,4 +33,4 @@ const EventCell = ({ data }) => {
   )
 }
 
-export default EventCell
+export default PressCell

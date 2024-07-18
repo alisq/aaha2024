@@ -45,7 +45,10 @@ const data = (async () => {
 
   const { data: eventData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'events')))
   const [eventsEn, eventsFr] = langPartition(eventData)
-  console.log(eventsEn, eventsFr)
+
+  const { data: pressData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'press')))
+  const [pressEn, pressFr] = langPartition(pressData)
+
 
   uniqEntry(demandsEn).forEach(({ nid }, i) => {
     const demandActions = actionData.filter(action => action[ACTION_FIELDS.DEMAND] === nid)
@@ -60,14 +63,16 @@ const data = (async () => {
       members: membersEn,
       actions: actionsEn,
       pages: pagesEn,
-      events: eventsEn
+      events: eventsEn,
+      press: pressEn
     },
     fr: {
       demands: uniqEntry(demandsFr),
       members: membersFr,
       actions: actionsFr,
       pages: pagesFr,
-      events: eventsFr
+      events: eventsFr,
+      press: pressFr
     }
   }
 })()
