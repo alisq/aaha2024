@@ -24,11 +24,7 @@ const Footer = forwardRef(function Footer(_, ref) {
               <Anchor to='https://www.tiktok.com/@aaha.ca' target='_blank'><i className='fa-brands fa-tiktok' /></Anchor>&nbsp;&nbsp;
               <Anchor to='https://www.instagram.com/aaha.ca' target='_blank'><i className='fa-brands fa-instagram' /></Anchor>
             </div>
-            <h3>
-              <Anchor className={CLS.AAHA_TEXT} to='https://www.dropbox.com/sh/v45fyvebyivi7g8/AABwz65YK1-10i8TTwmcSdL2a?dl=0' target='_blank'>
-                {translations.pressKit}
-              </Anchor>
-            </h3>
+
             <br /><br />
           </div>
           <div className={joinClasses(CLSES.FOUR_COLUMNS, CLS.TEXT_RIGHT)}>

@@ -12,7 +12,7 @@ const PressCell = ({ data }) => {
   return (
     <>
       <TableHead>
-        <td style={{ width: '25%' }}><strong>{title}</strong></td>
+        <td style={{ width: '25%' }}>{link && <h4><Anchor to={link}>{title}</Anchor></h4>}</td>
         <td style={{ width: '15%' }}>{date}</td>
         <td style={{ width: '25%' }}>{outlet}</td>
         <td style={{ width: '5%' }}><button onClick={() => setIsExpanded(prev => !prev)}>{isExpanded ? 'COLLAPSE' : 'EXPAND'}</button></td>
@@ -25,7 +25,7 @@ const PressCell = ({ data }) => {
           <td colSpan='2' style={{ width: '55%' }}>
             {img && <img style={{ maxWidth: '80%' }} src={img} />}
             {body && <div>{body}</div>}
-            {link && <div><Anchor to={link}>{link}</Anchor></div>}
+            
           </td>
           <td />
         </TableHead>}

@@ -362,6 +362,14 @@ label,
   transition: background 0.3s;
   // margin-left:-1em;
 
+  &.small {
+    font-size:0.6em;
+
+    & a {
+      color:$background;
+    }
+  }
+
 
   &:hover {
     background: $foreground;

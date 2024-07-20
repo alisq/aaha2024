@@ -11,12 +11,14 @@ import { CLS } from '../../constants/styleConstants'
 import TableLabelHead from '../common/tableLabelHead'
 import parserServices from '../../services/parserServices'
 import TeamMember from './teamMember'
+import StudentActivist from './studentActivist'
 
 
 //  TODO
 const ORGANIZING_COMMITTEE = 'collective__organizing-committee'
 const COLLABORATORS = 'collective__collaborators'
 const TEAM_MEMBERS = 'collective__team-members'
+const STUDENT_ACTIVISTS = 'collective__student-activist'
 
 const Collective = () => {
   const location = useLocation()
@@ -30,7 +32,8 @@ const Collective = () => {
   const sectionRefs = {
     [ORGANIZING_COMMITTEE]: useRef(null),
     [COLLABORATORS]: useRef(null),
-    [TEAM_MEMBERS]: useRef(null)
+    [TEAM_MEMBERS]: useRef(null),
+    [STUDENT_ACTIVISTS]: useRef(null)
   }
 
 
@@ -89,6 +92,18 @@ const Collective = () => {
           {collaboratorData.map((member, i) => <CollectiveMember member={member} key={i} />)}
         </tbody>
       </table>
+      <br /><br />
+      <h3
+        ref={sectionRefs[STUDENT_ACTIVISTS]}
+        className={CLS.TEXT_CENTER}>
+          STUDENT ACTIVISTS
+        {/* {translations.studentActivists} */}
+      </h3>
+      {/* 
+      <table className={CLS.MEMBERS}>
+        <TableLabelHead labels={['name', 'org']} />
+        <tbody>{members.studentActivists.map(getTeamMember)}</tbody>
+      </table> */}
       <br /><br />
       <h3
         ref={sectionRefs[TEAM_MEMBERS]}

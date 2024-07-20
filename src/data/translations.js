@@ -16,8 +16,11 @@ const team = ['TEAM', 'EQUIPE']
 
 // TODO
 const title = ['TITLE', 'TITLE']
+const eventTitle = ['EVENT', 'EVENMENT']
 const date = ['DATE', 'DATE']
+const dateTime= ['DATE & TIME', 'DATE ET HEURE']
 const outlet = ['OUTLET', 'OUTLET']
+const locale = ['LOCALE','LIEU']
 
 const activist = ['Activist', 'Activiste']
 const advocate = ['Advocate', 'Défenseur']
@@ -87,11 +90,14 @@ export const EVENT = {
 export const TABLE = {
   name,
   title,
+  eventTitle,
   role,
   bio,
   org,
   team,
   demands,
   date,
+  dateTime,
+  locale,
   outlet
 }

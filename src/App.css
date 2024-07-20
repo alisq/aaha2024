@@ -618,6 +618,10 @@ label,
   border-radius: 1em;
   cursor: pointer;
   transition: background 0.3s; }
+  .label--red.small {
+    font-size: 0.6em; }
+    .label--red.small a {
+      color: #F5F5F5; }
   .label--red:hover {
     background: #101010; }
 
@@ -1055,8 +1059,14 @@ table {
       margin: 0;
       padding: 0.5em;
       border-bottom: 1px solid rgba(16, 16, 16, 0.3); }
+      table tr td.noborder {
+        border-bottom: none; }
       table tr td:first-child {
         padding-left: 1em; }
+  table.events td, table.events th {
+    border: none; }
+  table.events .borderTop {
+    border-top: 1px solid rgba(16, 16, 16, 0.5); }
 
 .thirds {
   display: grid;
@@ -1206,8 +1216,14 @@ table {
     padding-top: 3em; }
   .sticky {
     position: static; }
-  #menu ul li {
-    font-size: 6rem; }
+  #menu {
+    padding: 1em; }
+    #menu ul {
+      column-count: 1; }
+      #menu ul li {
+        font-size: 5rem; }
+    #menu iframe {
+      display: none; }
   .members thead {
     display: none; }
   .members tr {

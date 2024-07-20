@@ -89,7 +89,8 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
                   <label className={CLS.LABEL_RED}>{action.button}</label>
                 </Anchor><br />
                 {action.label}<br />
-                [<em><a className="small" href="{action.link}">{action.link.replace('https://','').replace('http://','').replace('www.','')}</a></em>]
+                
+                <em><a className="small" href="{action.link}">{action.link}</a></em>
                 
               </li>
             ))
