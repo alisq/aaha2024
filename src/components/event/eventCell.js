@@ -5,7 +5,7 @@ import Anchor from '../common/anchor'
 import { useState } from 'react'
 
 const EventCell = ({ data }) => {
-  console.log(data)
+  // console.log(data)
   const { lang } = useLang()
   const { title, date, demands, body, link, locale, img } = data
   const [isExpanded, setIsExpanded] = useState(false)
@@ -28,27 +28,27 @@ const EventCell = ({ data }) => {
           isExpanded &&
           (img || body || link || locale) &&
           <TableHead>
-            
+
             <td className="noborder" colSpan="2">
               {img && <img style={{ maxWidth: '50%' }} src={img} />}
-  
+
               {link && <div><Anchor to={link}>{link}</Anchor></div>}
               <br />
-              
+
               {body && <div>{body}</div>}
               {demands.map((demand, i) =>
                 <>
                   <label className="label--red small">
-                    
+
                     <Anchor className={CLS.TEAM_TITLE} key={i}>{demand}</Anchor>
                   </label> &nbsp;
                 </>
               )}
-            
+
             </td>
-            
+
           </TableHead>}
-        
+
       </tbody>
     </>
   )

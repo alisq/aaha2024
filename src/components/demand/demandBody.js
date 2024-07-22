@@ -33,13 +33,10 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
     gallery,
   } = useMemo(() => parserServices.parseDemand(data), [data])
 
-
-  
-
   const teamMembers = members.teamMembers.filter(member =>
     member[MEMBER_FIELDS.DEMAND] === data.nid)
   const demandActions = parserServices.parseActions(actions[parseInt(data.nid) - 1])
-  
+
 
   const location = useLocation()
   const mergedRef = useMergedRef(ref)
@@ -84,14 +81,12 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
           <h3>{translations.takeAction}</h3>
           <ul className={CLS.ACTIONS}>{
             demandActions.map((action, i) => (
-              <li className="action" key={i}>
+              <li className='action' key={i}>
                 <Anchor to={action.link}>
                   <label className={CLS.LABEL_RED}>{action.button}</label>
                 </Anchor><br />
                 {action.label}<br />
-                
-                <em><a className="small" href="{action.link}">{action.link}</a></em>
-                
+                <em><Anchor className='small' to={action.link}>{action.link}</Anchor></em>
               </li>
             ))
           }</ul>

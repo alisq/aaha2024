@@ -26,8 +26,10 @@ const getLink = html => {
   return { name: textBefore, link, text } // TODO
 }
 
-const parseAnchor = ({ attribs, children }) => {
+const parseAnchor = (domNode) => {
+  const { attribs, children } = domNode
   const { href } = attribs
+  console.log(domNode, href)
   return (
     <Anchor to={linkIsExternal(href) ? replaceLink(href) : href}>
       {domToReact(children)}
@@ -89,7 +91,20 @@ const parseDemand = demandData => {
 const parsePage = pageData => {
   if (hasNoData(pageData)) return {}
 
-  const { title, body } = pageData
+  const { title } = pageData
+  // const body = pageData.body.replaceAll(
+  //   /iframe src=&quot;<a href=\\?".*?<\/a>;/gm,
+  //   text => `iframe src='${getLink(text).link.replace(/&quot$/, '')}'`
+  // )
+  const body = pageData.body.replaceAll(
+    /&quot;<a\s*?href=".+?">.+?<\/a>;/gm,
+    text => `'${getLink(text).link.replace(/&quot$/, '')}'`
+  )
+
+  console.log(pageData.body)
+  console.log(he.decode(body))
+  // console.log(he.decode(pageData.body))
+  // console.log(he.decode(body))
   return {
     title: title.toLocaleUpperCase(),
     body: basicParse(body),

@@ -48,7 +48,7 @@ const App = () => {
 
   const data = value?.[lang]
 
-  const hardFixPages = ['aaha-manifesto', 'manifesto', 'exhibition']
+  const hardFixPages = ['aaha-manifesto', 'manifesto',]
   return (
     <GlobalContext.Provider value={data}>
       <Routes location={location}>
