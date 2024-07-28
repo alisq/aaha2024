@@ -49,7 +49,6 @@ const data = (async () => {
   const { data: pressData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'press')))
   const [pressEn, pressFr] = langPartition(pressData)
 
-
   uniqEntry(demandsEn).forEach(({ nid }, i) => {
     const demandActions = actionData.filter(action => action[ACTION_FIELDS.DEMAND] === nid)
     const actions = langPartition(demandActions)
@@ -57,12 +56,16 @@ const data = (async () => {
     actionsFr[i] = actions[1]
   })
 
+  const orderPages = pages => pages.sort((a, b) =>
+    parseInt(a.field_page_weight_value) - parseInt(b.field_page_weight_value))
+
+  console.log(orderPages(pagesEn))
   return {
     en: {
       demands: uniqEntry(demandsEn),
       members: membersEn,
       actions: actionsEn,
-      pages: pagesEn,
+      pages: orderPages(pagesEn),
       events: eventsEn,
       press: pressEn
     },
@@ -70,7 +73,7 @@ const data = (async () => {
       demands: uniqEntry(demandsFr),
       members: membersFr,
       actions: actionsFr,
-      pages: pagesFr,
+      pages: orderPages(pagesFr),
       events: eventsFr,
       press: pressFr
     }

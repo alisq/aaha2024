@@ -1,10 +1,11 @@
 
+import he from 'he'
 import parse, { domToReact } from 'html-react-parser'
 import { titleCase } from 'title-case'
 import Anchor from '../components/common/anchor'
+import Canada from '../components/common/canada'
 import { ACTION_FIELDS, API_ENDPOINT, DEMAND_FIELDS, MEMBER_FIELDS } from '../constants/apiConstants'
 import { linkIsExternal } from '../utils/urlUtils'
-import he from 'he'
 
 
 const replaceLink = src => `${API_ENDPOINT}/${src}`
@@ -14,25 +15,27 @@ const trimChildren = ({ children }) => {
     (child.type === 'text' && !child.data.trim()) ||
     child.name === 'br'
   )
-
   return isEmpty ? [] : children
 }
+
 
 const getLink = html => {
   html = he.decode(html)
   const textBefore = html.replaceAll(/\n/g, '').match(/.*(?=<a href=")/m)?.[0].trim()
   const link = html.match(/(?<=href=").*(?=")/)?.[0]
-  const text = html.replaceAll(/\n/g, '').match(/(?<=>).*(?=<\/a>)/m)?.[0].trim()
+  const text = html
+    //.replaceAll(/\n/g, '')
+    .match(/(?<=>).+?(?=<\/a>)/m)?.[0].trim()
   return { name: textBefore, link, text } // TODO
 }
 
-const parseAnchor = (domNode) => {
+const parseAnchor = domNode => {
   const { attribs, children } = domNode
   const { href } = attribs
-  console.log(domNode, href)
+  // console.log(domNode, href)
   return (
-    <Anchor to={linkIsExternal(href) ? replaceLink(href) : href}>
-      {domToReact(children)}
+    <Anchor to={href}>
+      {domToReact(children, getBasicConfig())}
     </Anchor>
   )
 }
@@ -46,13 +49,36 @@ const parseMulti = ul => {
   return results
 }
 
-const basicParse = html => html ? parse(he.decode(html), {
+const getBasicConfig = isPage => ({
   replace: domNode => {
     const { tagName } = domNode
     domNode.children = trimChildren(domNode)
+
+    if (domNode.tagName === 'canada') return <Canada />
+    if (domNode.type === 'text') {
+      domNode.data = domNode.data
+        .replaceAll(/!!!/g, '\u0778')
+      // .replaceAll(/c\\a\\n\\a\\d\\a/g, '<canada></canada>')
+      // return <>{
+      //   domNode.data
+      //     .split('c\\a\\n\\a\\d\\a')
+      //     .join('canada')
+      // }</>
+    }
+
+
     if (tagName === 'a') return parseAnchor(domNode)
+    if (isPage && tagName === 'h2')
+      return (
+        <h3 className='bigTitle'>
+          {domToReact(domNode.children, getBasicConfig(isPage))}
+        </h3>
+      )
   }
-}) : undefined
+})
+
+const basicParse = (html, { isPage } = {}) => !html ? undefined :
+  parse(he.decode(html).replaceAll(/c\\a\\n\\a\\d\\a/g, '<canada></canada>'), getBasicConfig(isPage))
 
 const hasNoData = data => !data || !Object.keys(data).length
 const parseDemand = demandData => {
@@ -73,12 +99,13 @@ const parseDemand = demandData => {
     caption: galleryCaptions[i]
   }))
 
+
   return {
     id: demandData[DEMAND_FIELDS.ID],
     body: basicParse(body),
     title: titleCase(title ?? ''),
     region: demandData[DEMAND_FIELDS.REGION],
-    longSummary: demandData[DEMAND_FIELDS.LONG_SUMMARY],
+    longSummary: basicParse(demandData[DEMAND_FIELDS.LONG_SUMMARY]),
     activist: basicParse(demandData[DEMAND_FIELDS.ACTIVIST]),
     architect: basicParse(demandData[DEMAND_FIELDS.ARCHITECT]),
     advocate: basicParse(demandData[DEMAND_FIELDS.ADVOCATE]),
@@ -91,23 +118,31 @@ const parseDemand = demandData => {
 const parsePage = pageData => {
   if (hasNoData(pageData)) return {}
 
+  // console.log(pageData)
   const { title } = pageData
   // const body = pageData.body.replaceAll(
   //   /iframe src=&quot;<a href=\\?".*?<\/a>;/gm,
   //   text => `iframe src='${getLink(text).link.replace(/&quot$/, '')}'`
   // )
-  const body = pageData.body.replaceAll(
-    /&quot;<a\s*?href=".+?">.+?<\/a>;/gm,
-    text => `'${getLink(text).link.replace(/&quot$/, '')}'`
-  )
+  let body = pageData.body
+    // .replaceAll(/&quot;/g, '\'')
+    .replaceAll(
+      /&quot;<a\s*?href=".+?">.+?<\/a>;/gm,
+      text => {
+        text = text.replaceAll(/"/g, '\'')
+        const result = `'${getLink(text).text.replace(/&quot$/, '')}'`
+        return result
+      }
+    )
 
-  console.log(pageData.body)
-  console.log(he.decode(body))
+  // console.log(pageData.body)
+  // console.log(he.decode(pageData.body.replaceAll(/\\&amp;quot;/g, '')))
+  // console.log(he.decode(body))
   // console.log(he.decode(pageData.body))
   // console.log(he.decode(body))
   return {
     title: title.toLocaleUpperCase(),
-    body: basicParse(body),
+    body: basicParse(body, { isPage: true }),
   }
 }
 

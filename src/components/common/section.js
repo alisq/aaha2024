@@ -19,7 +19,7 @@ const Section = forwardRef(function Section({
   const mergedRef = useMergedRef(ref)
   useLayoutEffect(() => {
     mergedRef.current.scrollIntoView({ behavior: 'smooth' })
-  }, []) // TODO might need refreshh on data load
+  }, [id]) // TODO might need refreshh on data load
 
   return (
     <section id={id} className={joinClasses(CLS.PAGE, className)} ref={mergedRef}>

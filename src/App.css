@@ -886,7 +886,8 @@ h1 {
         content: "\0777"; }
       #menu ul li:nth-child(3) a::after {
         content: "!"; }
-      #menu ul li:nth-child(10)::after, #menu ul li:nth-child(5)::after {
+      #menu ul li:nth-child(10) a::after,
+      #menu ul li:nth-child(5) a::after {
         content: "\0778"; }
       #menu ul li a,
       #menu ul li a:link,
@@ -1063,7 +1064,8 @@ table {
         border-bottom: none; }
       table tr td:first-child {
         padding-left: 1em; }
-  table.events td, table.events th {
+  table.events td,
+  table.events th {
     border: none; }
   table.events .borderTop {
     border-top: 1px solid rgba(16, 16, 16, 0.5); }

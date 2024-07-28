@@ -1,11 +1,14 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import parserServices from '../services/parserServices'
 import Section from './common/section'
+import useLang from '../hooks/useLang'
 
 
 // TODO trims
 const Page = ({ id, subpage, data }) => {
-  const { title, body } = useMemo(() => parserServices.parsePage(data), [id])
+  const { lang } = useLang()
+  const { title, body } = useMemo(() => parserServices.parsePage(data), [id, lang])
+
   return (
     <Section
       id={id}

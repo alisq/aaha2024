@@ -37,7 +37,6 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
     member[MEMBER_FIELDS.DEMAND] === data.nid)
   const demandActions = parserServices.parseActions(actions[parseInt(data.nid) - 1])
 
-
   const location = useLocation()
   const mergedRef = useMergedRef(ref)
   const locationChangeRef = useLocationChange()

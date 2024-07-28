@@ -1,13 +1,14 @@
-import { forwardRef } from 'react'
+import { forwardRef, useContext } from 'react'
 import { CLS, CLSES, CSS_ID } from '../../constants/styleConstants'
 import { FOOTER } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import { joinClasses } from '../../utils/styleUtils'
 import Anchor from '../common/anchor'
+import { GlobalContext } from '../../contexts/contexts'
 
 const Footer = forwardRef(function Footer(_, ref) {
   const { lang, translations } = useLang(FOOTER)
-
+  const { pages } = useContext(GlobalContext) ?? {}
   // TODO feed footer link from menu API
   return (
     <section id={CSS_ID.CONTACT} className={CLS.INVERSE} ref={ref}>
@@ -29,9 +30,16 @@ const Footer = forwardRef(function Footer(_, ref) {
           <div className={joinClasses(CLSES.FOUR_COLUMNS, CLS.TEXT_RIGHT)}>
             <span className={joinClasses(CLS.AAHA_TEXT, CLS.BLOCK_CONTAINER)}>
               <Anchor to={`/${lang}`}>{translations.demands}</Anchor>
-              <Anchor to={`/${lang}/page/aaha-manifesto`}>{translations.manifesto}</Anchor>
+              {pages?.map((page, i) =>
+                <Anchor
+                  key={i}
+                  to={`/${lang}/page/${page.field_id}`}>
+                  {page.title.toLocaleUpperCase()}
+                </Anchor>
+              )}
+              {/* <Anchor to={`/${lang}/page/aaha-manifesto`}>{translations.manifesto}</Anchor>
               <Anchor to={`/${lang}/page/collective`}>{translations.collective}</Anchor>
-              <Anchor to={`/${lang}/page/exhibition`}>{translations.exhibition}</Anchor>
+              <Anchor to={`/${lang}/page/exhibition`}>{translations.exhibition}</Anchor> */}
               <br />
               2023, Architects Against Housing Alienation
             </span>

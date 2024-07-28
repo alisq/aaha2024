@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { CLS, CSS_ID } from '../../constants/styleConstants'
+import { GlobalContext } from '../../contexts/contexts'
 import { MENU } from '../../data/translations'
 import useLang from '../../hooks/useLang'
-import pageData from '../../pages.json'
 import { validateString } from '../../utils/commonUtils'
 import MenuLink from './menuLink'
 import MenuSquares from './menuSquares'
@@ -10,6 +10,7 @@ import MenuSquares from './menuSquares'
 const Menu = ({ footerRef }) => {
   const [visibility, setVisibility] = useState(false)
   const { lang, translations } = useLang(MENU)
+  const { pages } = useContext(GlobalContext) ?? {}
 
   const handleContactClick = () => {
     setVisibility(false)
@@ -27,11 +28,11 @@ const Menu = ({ footerRef }) => {
             title={translations.demands}
             to={`/${lang}`}
             handleClick={() => setVisibility(false)} />
-          {pageData.map((page, i) => 
+          {pages?.map((page, i) =>
             <MenuLink
               key={i}
-              to={`page/${page.page_id}`}
-              title={page[lang].title}
+              to={`page/${page.field_id}`}
+              title={page.title}
               handleClick={() => setVisibility(false)} />
           )}
           <MenuLink
@@ -43,10 +44,7 @@ const Menu = ({ footerRef }) => {
             </div>
           </li>
         </ul>
-
-        <div className='menuRight'>
-       
-        </div>
+        <div className='menuRight' />
       </section>
     </>
   )

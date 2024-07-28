@@ -1,4 +1,3 @@
-import parse from 'html-react-parser'
 import { useLayoutEffect } from 'react'
 import ReactGA from 'react-ga'
 import usePromise from 'react-promise'
@@ -6,12 +5,10 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import DemandBody from './components/demand/demandBody'
 import Main from './components/main'
-import Section from './components/common/section'
 import { LANGS } from './constants/commonConstants'
 import { GlobalContext } from './contexts/contexts'
 import pages from './data/pages'
 import useLocationChange from './hooks/useLangChanged'
-import pageData from './pages.json'
 import apiServices from './services/apiServices'
 import { getBrowserLang } from './utils/languageUtils'
 import { getUrlParts } from './utils/urlUtils'
@@ -48,7 +45,7 @@ const App = () => {
 
   const data = value?.[lang]
 
-  const hardFixPages = ['aaha-manifesto', 'manifesto',]
+
   return (
     <GlobalContext.Provider value={data}>
       <Routes location={location}>
@@ -64,22 +61,7 @@ const App = () => {
                 path={`demand/${data[DEMAND_FIELDS.ID]}`}
                 element={<DemandBody data={data} />} />
               )}
-            {pageData
-              .filter(page => hardFixPages.includes(page.page_id))
-              .map((page, i) =>
-                <Route
-                  key={i}
-                  path={`page/${page.page_id}`}
-                  element={
-                    <Section
-                      id={page.page_id}
-                      title={page[lang].title}
-                      center={<div>{parse(page[lang].body)}</div>}>
-                      {pages[page.page_id]}
-                    </Section>
-                  } />)}
             {data?.pages
-              .filter(page => !hardFixPages.includes(page.field_id))
               .map((page, i) =>
                 <Route
                   key={i}
