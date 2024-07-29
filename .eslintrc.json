@@ -26,6 +26,7 @@
     ],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
+    "jsx-quotes": ["error", "prefer-single"],
     "semi": ["error", "never"],
     "max-len": [
       "warn",

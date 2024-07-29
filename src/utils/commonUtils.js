@@ -20,3 +20,5 @@ export const addColons = ([en, fr]) => [`${en}:`, `${fr} :`]
 
 export const quickArray = (length, callback = i => i) =>
   Array(length).fill(0).map((_, i) => callback(i))
+
+export const toTop = () => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })

@@ -10,7 +10,7 @@ import MenuSquares from './menuSquares'
 const Menu = ({ footerRef }) => {
   const [visibility, setVisibility] = useState(false)
   const { lang, translations } = useLang(MENU)
-  const { pages } = useContext(GlobalContext) ?? {}
+  const { pages, scrollToSection } = useContext(GlobalContext) ?? {}
 
   const handleContactClick = () => {
     setVisibility(false)
@@ -27,13 +27,19 @@ const Menu = ({ footerRef }) => {
           <MenuLink
             title={translations.demands}
             to={`/${lang}`}
-            handleClick={() => setVisibility(false)} />
+            handleClick={() => {
+              setVisibility(false)
+              scrollToSection()
+            }} />
           {pages?.map((page, i) =>
             <MenuLink
               key={i}
               to={`page/${page.field_id}`}
               title={page.title}
-              handleClick={() => setVisibility(false)} />
+              handleClick={() => {
+                setVisibility(false)
+                scrollToSection(page.field_id)
+              }} />
           )}
           <MenuLink
             title={translations.contact}

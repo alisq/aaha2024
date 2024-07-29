@@ -1,11 +1,8 @@
-import useLang from '../../hooks/useLang'
-import { CLS } from '../../constants/styleConstants'
 import TableHead from '../common/tableHead'
 import Anchor from '../common/anchor'
 import { useState } from 'react'
 
 const PressCell = ({ data }) => {
-  const { lang } = useLang()
   const { title, date, outlet, body, link, isHighlighted, img } = data
   const [isExpanded, setIsExpanded] = useState(isHighlighted)
 
@@ -25,7 +22,7 @@ const PressCell = ({ data }) => {
           <td colSpan='2' style={{ width: '55%' }}>
             {img && <img style={{ maxWidth: '80%' }} src={img} />}
             {body && <div>{body}</div>}
-            
+
           </td>
           <td />
         </TableHead>}

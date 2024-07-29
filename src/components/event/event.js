@@ -24,11 +24,11 @@ const Event = () => {
       <h3 className={CLS.TEXT_CENTER}>
         {translations.headers}
       </h3 >
-      <table className="events">
+      <table className='events'>
         <TableLabelHead labels={['eventTitle', 'dateTime', 'locale']} />
-        
+
         {parsedEvents.map((event, i) => <EventCell key={i} data={event} />)}
-        
+
       </table>
     </>
   )

@@ -5,13 +5,11 @@ import useLang from '../../hooks/useLang'
 import { EVENT } from '../../data/translations'
 import TableLabelHead from '../common/tableLabelHead'
 import parserServices from '../../services/parserServices'
-import EventCell from './pressCell'
 import PressCell from './pressCell'
 
 
 
 const Press = () => {
-  const { translations } = useLang(EVENT)
   const { press } = useContext(GlobalContext) ?? {}
 
 

@@ -96,10 +96,10 @@ const Collective = () => {
       <h3
         ref={sectionRefs[STUDENT_ACTIVISTS]}
         className={CLS.TEXT_CENTER}>
-          STUDENT ACTIVISTS
+        STUDENT ACTIVISTS
         {/* {translations.studentActivists} */}
       </h3>
-      {/* 
+      {/*
       <table className={CLS.MEMBERS}>
         <TableLabelHead labels={['name', 'org']} />
         <tbody>{members.studentActivists.map(getTeamMember)}</tbody>

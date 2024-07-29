@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import ReactGA from 'react-ga'
 import usePromise from 'react-promise'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
@@ -15,6 +15,7 @@ import { getUrlParts } from './utils/urlUtils'
 import useLang from './hooks/useLang'
 import { DEMAND_FIELDS } from './constants/apiConstants'
 import Page from './components/page'
+import { toTop } from './utils/commonUtils'
 
 
 const OUR_TRACKING_ID = 'G-8JJ40D5L38'
@@ -30,6 +31,14 @@ const App = () => {
   const fallbackLang = LANGS.includes(browserLang) ? browserLang : LANGS[0]
   const { lang } = useLang() ?? { lang: fallbackLang }
 
+  const sectionRef = useRef()
+  const scrollToSection = id => {
+    const { content } = getUrlParts(location)
+    if (!id) toTop()
+    if (content === id)
+      sectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   useLayoutEffect(() => {
     const urlParts = getUrlParts(location)
     const { category, content } = urlParts
@@ -39,15 +48,14 @@ const App = () => {
       !content &&
       !locationChangeRef.current.lang &&
       locationChangeRef.current.url
-    )
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    ) toTop()
   }, [value, location])
 
   const data = value?.[lang]
 
 
   return (
-    <GlobalContext.Provider value={data}>
+    <GlobalContext.Provider value={{ ...data, scrollToSection }}>
       <Routes location={location}>
         {LANGS.map((lang, i) =>
           <Route
@@ -68,6 +76,7 @@ const App = () => {
                   path={`page/${page.field_id}`}
                   element={
                     <Page
+                      ref={sectionRef}
                       id={page.field_id}
                       title={page.title}
                       body={page.body}

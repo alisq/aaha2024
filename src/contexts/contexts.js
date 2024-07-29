@@ -6,5 +6,6 @@ export const GlobalContext = createContext({
   actions: {},
   pages: {},
   events: {},
-  press: {}
+  press: {},
+  scrollToSection: () => {}
 })

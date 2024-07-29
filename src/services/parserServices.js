@@ -5,7 +5,6 @@ import { titleCase } from 'title-case'
 import Anchor from '../components/common/anchor'
 import Canada from '../components/common/canada'
 import { ACTION_FIELDS, API_ENDPOINT, DEMAND_FIELDS, MEMBER_FIELDS } from '../constants/apiConstants'
-import { linkIsExternal } from '../utils/urlUtils'
 
 
 const replaceLink = src => `${API_ENDPOINT}/${src}`
@@ -199,6 +198,7 @@ const parsePress = pressData =>
   })
 
 const parserServices = {
+  basicParse,
   parseDemand,
   parsePage,
   parseActions,
