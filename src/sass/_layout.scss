@@ -969,8 +969,8 @@ table {
 // fixes
 $table-inner-margin: 1.75em;
 $td-xsmall: 5.5em;
-$td-small: 10em;
-$td-medium: 15em;
+$td-small: 12em;
+$td-medium: 17.5em;
 $td-large: 25em;
 $td-xlarge: 35em;
 
@@ -1034,14 +1034,14 @@ table {
 
 .committee-table tr {
   >:first-child {
-    width: $td-medium;
+    width: $td-small;
   }
 
 }
 
 .collective-member-table tr {
   >:first-child {
-    width: $td-medium;
+    width: $td-small;
   }
 
   >:nth-child(2) {
@@ -1052,7 +1052,7 @@ table {
 .team-member-table {
   tr {
     >:first-child {
-      width: $td-medium;
+      width: $td-small;
     }
 
     >:nth-child(2) {
@@ -1083,6 +1083,8 @@ table {
 
 
 .press-table {
+
+
   tr {
     >:first-child {
       width: $td-xlarge;
@@ -1094,6 +1096,10 @@ table {
 
     >:nth-child(4) {
       width: $td-small;
+    }
+
+    img {
+      max-width: 80%;
     }
   }
 }
@@ -1113,7 +1119,7 @@ table {
     }
 
     img {
-      max-width: 75%;
+      max-width: 70%;
     }
   }
 }

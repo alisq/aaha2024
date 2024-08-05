@@ -71,7 +71,10 @@ export const CLS = {
   BOTTOM_LEFT: 'bottom-left',
   BOTTOM_RIGHT: 'bottom-right',
 
-
+  // TABLE
+  COMMITTEE_TABLE: 'committee-table',
+  COLLECTIVE_MEMBER_TABLE: 'collective-member-table',
+  TEAM_MEMBER_TABLE: 'team-member-table'
 }
 
 export const CLSES = {

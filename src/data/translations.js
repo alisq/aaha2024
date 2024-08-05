@@ -9,7 +9,7 @@ const events = ['EVENTS', 'ÉVÉNEMENTS']
 const press = ['PRESS', 'PRESSE']
 
 const name = ['Name', 'Nom']
-const role = ['Role', 'Rôle']
+const role = ['ROLE', 'RÔLE']
 const org = ['Organizations', 'Organisme']
 const bio = ['Biography', 'Biographie']
 const members = ['TEAM MEMBERS', 'MEMBRES DE L’ÉQUIPE']

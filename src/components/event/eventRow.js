@@ -28,18 +28,22 @@ const EventRow = ({ data }) => {
       </>
     }
     content={
-      <td colSpan='2' className='spaced-content'>
-        {img && <img src={img} />}
-        {link && <div><Anchor to={link}>Event Link</Anchor></div>}
-        {body && <div>{body}</div>}
-        <div className='event-tags'>
-          {demands.map(({ title, field_demand_id }, i) =>
-            <label className={joinClasses(CLS.LABEL_RED, CLS.SMALL)} key={i}>
-              <Anchor className={CLS.TEAM_TITLE} to={`/${lang}/demand/${field_demand_id}`}>{title}</Anchor>
-            </label>
-          )}
-        </div>
-      </td>
+      <>
+        <td colSpan='2' className='spaced-content'>
+          {img && <img src={img} />}
+          {link && <div><Anchor to={link}>Event Link</Anchor></div>}
+          {body && <div>{body}</div>}
+          <div className='event-tags'>
+            {demands.map(({ title, field_demand_id }, i) =>
+              <label className={joinClasses(CLS.LABEL_RED, CLS.SMALL)} key={i}>
+                <Anchor className={CLS.TEAM_TITLE} to={`/${lang}/demand/${field_demand_id}`}>{title}</Anchor>
+              </label>
+            )}
+          </div>
+        </td>
+        <td />
+        <td />
+      </>
     } />
 }
 

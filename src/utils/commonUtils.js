@@ -12,7 +12,6 @@ export const mapObject = (
     const value = object[key]
     newObject[key] = callback(key, value)
   })
-
   return newObject
 }
 

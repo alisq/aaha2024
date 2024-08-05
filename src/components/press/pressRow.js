@@ -21,6 +21,7 @@ const PressRow = ({ data }) => {
             {img && <img src={img} />}
             {body && <div>{body}</div>}
           </td>
+          <td />
         </>
       } />
   )

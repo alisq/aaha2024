@@ -1372,16 +1372,16 @@ table {
     border-bottom: none; }
 
 .committee-table tr > :first-child {
-  width: 15em; }
+  width: 12em; }
 
 .collective-member-table tr > :first-child {
-  width: 15em; }
+  width: 12em; }
 
 .collective-member-table tr > :nth-child(2) {
-  width: 10em; }
+  width: 12em; }
 
 .team-member-table tr > :first-child {
-  width: 15em; }
+  width: 12em; }
 
 .team-member-table tr > :nth-child(2) {
   width: 25em; }
@@ -1402,10 +1402,13 @@ table {
   width: 35em; }
 
 .press-table tr > :nth-child(2) {
-  width: 15em; }
+  width: 17.5em; }
 
 .press-table tr > :nth-child(4) {
-  width: 10em; }
+  width: 12em; }
+
+.press-table tr img {
+  max-width: 80%; }
 
 .event-table tr > :first-child {
   width: 35em; }
@@ -1414,10 +1417,10 @@ table {
   width: 25em; }
 
 .event-table tr > :nth-child(4) {
-  width: 10em; }
+  width: 12em; }
 
 .event-table tr img {
-  max-width: 75%; }
+  max-width: 70%; }
 
 .event-tags > label {
   margin-right: 0.5em; }
