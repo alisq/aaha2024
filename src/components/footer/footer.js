@@ -20,12 +20,10 @@ const Footer = forwardRef(function Footer(_, ref) {
           </div>
           <div className={joinClasses(CLSES.FOUR_COLUMNS, CLS.TEXT_CENTER)}>
             <h3><Anchor to='mailto:info@aaha.ca'>info@aaha.ca</Anchor></h3>
-            <br />
             <div className={CLS.SOCIALS}>
               <Anchor to='https://www.tiktok.com/@aaha.ca' ><i className='fa-brands fa-tiktok' /></Anchor>&nbsp;&nbsp;
               <Anchor to='https://www.instagram.com/aaha.ca' ><i className='fa-brands fa-instagram' /></Anchor>
             </div>
-            <br /><br />
           </div>
           <div className={joinClasses(CLSES.FOUR_COLUMNS, CLS.TEXT_RIGHT)}>
             <span className={joinClasses(CLS.AAHA_TEXT, CLS.BLOCK_CONTAINER)}>
@@ -38,8 +36,7 @@ const Footer = forwardRef(function Footer(_, ref) {
                   {page.title.toLocaleUpperCase()}
                 </Anchor>
               )}
-              <br />
-              2023, Architects Against Housing Alienation
+              <p>2023, Architects Against Housing Alienation</p>
             </span>
           </div>
         </div>

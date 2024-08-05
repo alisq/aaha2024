@@ -12,8 +12,10 @@ export const CLS = {
   FOUR: 'four',
   SIX: 'six',
   THIRDS: 'thirds',
+  SMALL: 'small',
 
   ROW: 'row',
+  ROW_EXPANDED: 'row-expanded',
   COLUMNS: 'columns',
 
   ACTIVE: 'active',
@@ -24,10 +26,10 @@ export const CLS = {
   TITLE_BOTTOM: 'title-bottom',
   TEXT_CENTER: 'text-center',
   TEXT_RIGHT: 'text-right',
-  SMALL_HALF: 'small-half',
   CAPTION: 'caption',
   LABEL: 'label',
-  LABEL_RED: 'label--red',
+  LABEL_RED: 'label-red',
+  LABEL_RED_STATIC: 'label-red-static',
   NO_BREAK: 'no-break',
 
   PAGE: 'page',
@@ -38,6 +40,7 @@ export const CLS = {
   MANIFESTO: 'manifesto',
   INTRO: 'intro',
   FILTER: 'filter',
+  ACTION: 'action',
   ACTIONS: 'actions',
   ACTION_BAR: 'action-bar',
   TEAM_TITLE: 'team-title',
@@ -55,6 +58,7 @@ export const CLS = {
   SLIDE: 'slide',
   IMG: 'img',
 
+
   FOOTER_LOGO: 'footer-logo',
   PARTNERS: 'partners',
   SOCIALS: 'socials',
@@ -66,11 +70,14 @@ export const CLS = {
   CENTER: 'center',
   BOTTOM_LEFT: 'bottom-left',
   BOTTOM_RIGHT: 'bottom-right',
+
+
 }
 
 export const CLSES = {
   CENTER_CAPTION: joinClasses(CLS.CAPTION, CLS.TEXT_CENTER),
-  FOUR_COLUMNS: joinClasses(CLS.FOUR, CLS.COLUMNS)
+  FOUR_COLUMNS: joinClasses(CLS.FOUR, CLS.COLUMNS),
+  SMALL_HEADER: joinClasses(CLS.TEXT_CENTER, 'small-header')
 }
 
 export const CSS_ID = {
@@ -79,5 +86,4 @@ export const CSS_ID = {
   MENU_BUTTON: 'menu-button',
   MENU_FIST: 'menu-fist',
   CONTACT: 'contact'
-
 }

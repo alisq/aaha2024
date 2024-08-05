@@ -6,6 +6,7 @@ const manifesto = ['MANIFESTO', 'MANIFESTE']
 const collective = ['COLLECTIVE', 'COLLECTIF']
 const exhibition = ['EXHIBITIONS', 'EXHIBITIONS']
 const events = ['EVENTS', 'ÉVÉNEMENTS']
+const press = ['PRESS', 'PRESSE']
 
 const name = ['Name', 'Nom']
 const role = ['Role', 'Rôle']
@@ -18,9 +19,9 @@ const team = ['TEAM', 'EQUIPE']
 const title = ['TITLE', 'TITLE']
 const eventTitle = ['EVENT', 'EVENMENT']
 const date = ['DATE', 'DATE']
-const dateTime= ['DATE & TIME', 'DATE ET HEURE']
+const dateTime = ['DATE & TIME', 'DATE ET HEURE']
 const outlet = ['OUTLET', 'OUTLET']
-const locale = ['LOCALE','LIEU']
+const locale = ['LOCALE', 'LIEU']
 
 const activist = ['Activist', 'Activiste']
 const advocate = ['Advocate', 'Défenseur']
@@ -57,7 +58,9 @@ export const COLLECTIVE = {
   memberOrg: org,
   members,
   memberList: _.zip(activist, advocate, architect),
-  team
+  team,
+  studentActivists: ['STUDENT ACTIVISTS', 'ACTIVISTES ÉTUDIANTS']
+
 }
 
 export const FOOTER = {
@@ -85,6 +88,10 @@ export const EXHIBITION = {
 
 export const EVENT = {
   header: events
+}
+
+export const PRESS = {
+  header: press
 }
 
 export const TABLE = {

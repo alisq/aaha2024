@@ -1,5 +1,5 @@
 import { forwardRef, useContext, useEffect, useLayoutEffect, useMemo } from 'react'
-import { CLS } from '../../constants/styleConstants'
+import { CLS, CLSES } from '../../constants/styleConstants'
 import { DEMAND_BODY } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import parserServices from '../../services/parserServices'
@@ -14,6 +14,7 @@ import { GlobalContext } from '../../contexts/contexts'
 import { MEMBER_FIELDS } from '../../constants/apiConstants'
 import TeamMember from '../collective/teamMember'
 import Anchor from '../common/anchor'
+import { joinClasses } from '../../utils/styleUtils'
 
 const DemandBody = forwardRef(function DemandBody({ data }, ref) {
   const { translations } = useLang(DEMAND_BODY)
@@ -67,6 +68,7 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
           <DemandData label={translations.advocate} value={advocate} />
         </>
       }
+      // TODO: sALT
       center={
         <>
           <img src={bannerSrc} alt='' />
@@ -80,21 +82,19 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
           <h3>{translations.takeAction}</h3>
           <ul className={CLS.ACTIONS}>{
             demandActions.map((action, i) => (
-              <li className='action' key={i}>
+              <li key={i}>
                 <Anchor to={action.link}>
                   <label className={CLS.LABEL_RED}>{action.button}</label>
-                </Anchor><br />
-                {action.label}<br />
-                <em><Anchor className='small' to={action.link}>{action.link}</Anchor></em>
+                </Anchor>
+                <p>{action.label}</p>
+                <em><Anchor className={CLS.SMALL} to={action.link}>{action.link}</Anchor></em>
               </li>
             ))
           }</ul>
         </>
       }>
-      <br /><br />
-      <h3 className={CLS.TEXT_CENTER}>{translations.member}</h3>
-      <br />
-      <table className={CLS.MEMBERS}>
+      <h3 className={CLSES.SMALL_HEADER}>{translations.members}</h3>
+      <table className={joinClasses(CLS.MEMBERS, 'team-member-table', 'hide-team')}>
         <TableLabelHead labels={['name', 'org', 'role']} />
         <tbody>
           {teamMembers.map((memberData, i) =>

@@ -124,7 +124,7 @@ h3 {
   font-size: 3rem;
   letter-spacing: 0.02em;
   line-height: 4rem;
-  
+
 
   &.bigTitle {
     font-size: 10rem;
@@ -223,20 +223,23 @@ h5 {
 }
 
 button {
-  background: $red;
-  color: $background;
-  border: 1px solid $red;
-  border-radius: 30px !important;
-}
 
-button:active,
-button:hover,
-button:visited {
-  color: $background;
-  color: $red;
-  background: $background;
-  border: 1px solid $red;
-  border-radius: 30px;
+  &,
+  &:focus {
+    background: $red;
+    color: $background;
+    border: 1px solid $red;
+    border-radius: 30px !important;
+  }
+
+  &:active,
+  &:hover,
+  &:visited {
+    color: $red;
+    background: $background;
+    border: 1px solid $red;
+    border-radius: 30px;
+  }
 }
 
 .small {
@@ -345,7 +348,7 @@ label,
   font-size: 0.8em;
   line-height: 1.2em;
   letter-spacing: 0.1em;
-  color:$red;
+  color: $red;
 }
 
 .label li {
@@ -353,26 +356,28 @@ label,
   margin: 0;
 }
 
-.label--red {
+.label-red {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $foreground;
+  }
+}
+
+.label-red,
+.label-red-static {
   background: $red;
   color: $white;
   padding: 0.4em 1em 0.2em;
   border-radius: 1em;
-  cursor: pointer;
-  transition: background 0.3s;
-  // margin-left:-1em;
+  transition: background-color 0.3s linear; // TODO
 
   &.small {
-    font-size:0.6em;
+    font-size: 0.6em;
 
     & a {
-      color:$background;
+      color: $background;
     }
-  }
-
-
-  &:hover {
-    background: $foreground;
   }
 }
 

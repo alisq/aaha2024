@@ -1,33 +1,29 @@
 import { useContext, useMemo } from 'react'
-import { CLS } from '../../constants/styleConstants'
+import { CLS, CLSES } from '../../constants/styleConstants'
 import { GlobalContext } from '../../contexts/contexts'
 import useLang from '../../hooks/useLang'
-import { EVENT } from '../../data/translations'
+import { EVENT, PRESS } from '../../data/translations'
 import TableLabelHead from '../common/tableLabelHead'
 import parserServices from '../../services/parserServices'
-import PressCell from './pressCell'
-
+import PressRow from './pressRow'
+import { joinClasses } from '../../utils/styleUtils'
 
 
 const Press = () => {
+  const { translations } = useLang(PRESS)
   const { press } = useContext(GlobalContext) ?? {}
-
-
   //  TODO examine other memo deps
   const parsedPress = useMemo(() => parserServices.parsePress(press), [press])
-  console.log(parsedPress)
-
   return (
     press &&
     <>
-      <br /><br />
-      <h3 className={CLS.TEXT_CENTER}>
-        PRESS
-      </h3 >
-      <table className={CLS.MEMBERS}>
+      <h3 className={CLSES.SMALL_HEADER}>
+        {translations.header}
+      </h3>
+      <table className={joinClasses(CLS.MEMBERS, 'press-table')}>
         <TableLabelHead labels={['title', 'date', 'outlet']} />
         <tbody>
-          {parsedPress.map((press, i) => <PressCell key={i} data={press} />)}
+          {parsedPress.map((press, i) => <PressRow key={i} data={press} />)}
         </tbody>
       </table>
     </>

@@ -1,5 +1,4 @@
 import { CLS } from '../../constants/styleConstants'
-import TableHead from '../common/tableHead'
 import Anchor from '../common/anchor'
 import { titleCase } from 'title-case'
 import { updateUrl } from '../../utils/urlUtils'
@@ -17,27 +16,23 @@ const TeamMember = ({ memberData, hideTeam }) => {
 
   const location = useLocation()
   return (
-    <TableHead>
-      <td><strong>{name}</strong></td>
+    <tr>
+      <td><p><strong>{name}</strong></p></td>
       <td>
         <ul className={CLS.ORG_LINKS}>
           {orgs.map((org, i) =>
-            <li key={i}>
-              <Anchor to={org.link}>
-                {org.name}
-              </Anchor>
-            </li>)}
+            <li key={i}><Anchor to={org.link}>{org.name}</Anchor></li>)}
         </ul>
       </td>
       {!hideTeam &&
-        <td className={CLS.SMALL_HALF}>
+        <td>
           <Anchor className={CLS.TEAM_TITLE} to={updateUrl(location, { category: 'demand', content: teamId })}>
             {titleCase(team ?? '')}
           </Anchor>
         </td>
       }
-      <td className={CLS.SMALL_HALF}><label>{role}</label></td>
-    </TableHead>
+      <td><label>{role}</label></td>
+    </tr>
   )
 }
 

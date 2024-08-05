@@ -65,25 +65,24 @@ const carouselImages = [
 
 // TODO Columns
 const Exhibition = () => {
-  
+
   const { lang, translations } = useLang(EXHIBITION)
-  
+
   const isEn = lang === LANGS[0]
   return (
     <div className={CLS.CONTAINER}>
       <div className={CLS.ROW}>
-        <LeftColumn noSticky><br /></LeftColumn>
+        <LeftColumn noSticky />
         <CenterColumn>
-          <br />
-          <h3 className={CLS.TEXT_CENTER}>{translations.notForSale}</h3>
+          <h3 className={CLSES.SMALL_HEADER}>{translations.notForSale}</h3>
         </CenterColumn>
         <Pavilion className={CLS.IMG} />
-        <LeftColumn noSticky><br /></LeftColumn>
+        <LeftColumn noSticky />
         <CenterColumn>
           <p className={CLSES.CENTER_CAPTION}>
             Pavilion layout for Not For Sale exhibition in Venice, Italy.
           </p>
-          <h3 className={CLS.TEXT_CENTER}>{translations.banners}</h3>
+          <h3 className={CLSES.SMALL_HEADER}>{translations.banners}</h3>
           <p>
             {
               isEn ?

@@ -1,10 +1,13 @@
 section {
   background: $background;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100vh; // TODO remove this and use padding
   position: relative;
   padding: 7em 0 0;
-  border-bottom: 1px solid rgba($red, 0.5);
+
+  &#demands {
+    border-bottom: 1px solid rgba($red, 0.5);
+  }
 
   &.inverse {
     background: $foreground;
@@ -22,7 +25,7 @@ section {
 
 p {
   padding: 0;
-  margin-bottom: 0.5em !important;
+  margin-bottom: 0.5em; // TODO: revisit
 }
 
 .sticky {
@@ -597,15 +600,6 @@ table {
     min-height: 50px;
     overflow: hidden;
 
-    &:hover {
-      // background:$foreground!important;
-      // color:$background;
-
-      & h3 {
-        color: $background;
-      }
-    }
-
     & td {
       padding: 0.25em;
     }
@@ -633,7 +627,7 @@ table {
       }
 
       &:first-child {
-        padding-left: 1em;
+        // padding-left: 1em; // TODOs
       }
     }
   }
@@ -932,6 +926,7 @@ table {
     }
   }
 
+  // TODOs
   .members {
     & thead {
       display: none;
@@ -962,16 +957,204 @@ table {
       &:first-child {
         padding: 0;
       }
-
-      // &.small-half {
-      //     width:50%;
-      //     float:left;
-      //     height:1.2em
-      // }
     }
   }
 
   .partners {
     max-width: 100%;
+  }
+}
+
+
+// fixes
+$table-inner-margin: 1.75em;
+$td-xsmall: 5.5em;
+$td-small: 10em;
+$td-medium: 15em;
+$td-large: 25em;
+$td-xlarge: 35em;
+
+$table-side-padding: calc((100vw - #{$max-container-width}) / 2);
+
+table {
+  table-layout: fixed;
+
+  tr {
+    >:first-child {
+      padding-left: $table-side-padding;
+      box-sizing: content-box;
+
+      // TODO: breakpoint
+      @media (min-width: 800px) {
+        >* {
+          margin-left: 2rem;
+          padding-right: 0;
+        }
+      }
+
+    }
+
+    >:last-child {
+      padding-right: $table-side-padding;
+      box-sizing: content-box;
+
+      >* {
+        margin-right: 2rem;
+      }
+    }
+
+    @media (min-width: 800px) {
+
+      >:not(:first-child) {
+        padding-left: 1.75rem;
+      }
+
+      >:not(:last-child) {
+        padding-right: 1.75rem;
+      }
+    }
+  }
+
+  td {
+
+    p,
+    label,
+    h3,
+    h4 {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .row-expanded>td {
+    border-bottom: none;
+  }
+}
+
+.committee-table tr {
+  >:first-child {
+    width: $td-medium;
+  }
+
+}
+
+.collective-member-table tr {
+  >:first-child {
+    width: $td-medium;
+  }
+
+  >:nth-child(2) {
+    width: $td-small;
+  }
+}
+
+.team-member-table {
+  tr {
+    >:first-child {
+      width: $td-medium;
+    }
+
+    >:nth-child(2) {
+      width: $td-large;
+    }
+
+    >:last-child {
+      width: $td-xsmall;
+    }
+  }
+
+  &.hide-team {
+    tr {
+      >:first-child {
+        width: $td-large;
+      }
+
+      >:nth-child(2) {
+        width: initial;
+      }
+
+      >:last-child {
+        width: $td-xsmall;
+      }
+    }
+  }
+}
+
+
+.press-table {
+  tr {
+    >:first-child {
+      width: $td-xlarge;
+    }
+
+    >:nth-child(2) {
+      width: $td-medium;
+    }
+
+    >:nth-child(4) {
+      width: $td-small;
+    }
+  }
+}
+
+.event-table {
+  tr {
+    >:first-child {
+      width: $td-xlarge;
+    }
+
+    >:nth-child(2) {
+      width: $td-large;
+    }
+
+    >:nth-child(4) {
+      width: $td-small;
+    }
+
+    img {
+      max-width: 75%;
+    }
+  }
+}
+
+.event-tags {
+  >label {
+    margin-right: 0.5em;
+  }
+}
+
+.spaced-content {
+  >*:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}
+
+.small-header {
+  margin-top: 2.5em;
+}
+
+.actions li {
+  >a {
+    display: block;
+    height: fit-content;
+  }
+
+  >p {
+    margin: 0.5em 0 0;
+  }
+}
+
+#contact .row {
+  >:nth-child(2) {
+    h3 {
+      margin-bottom: 1em;
+    }
+  }
+
+  >:last-child {
+    p {
+      margin-top: 1em;
+    }
   }
 }

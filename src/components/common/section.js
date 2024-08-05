@@ -5,6 +5,7 @@ import { joinClasses } from '../../utils/styleUtils'
 import CenterColumn from './centerColumn'
 import LeftColumn from './leftColumn'
 import RightColumn from './rightColumn'
+import { validateString } from '../../utils/commonUtils'
 
 const Section = forwardRef(function Section({
   id,

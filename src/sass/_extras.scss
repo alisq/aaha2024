@@ -1,17 +1,18 @@
 #loud-title {
-    font-size:80vh;
-    position:fixed;
-    width:1500vh;
-    top:50%;
-    transform:translateY(-50%);
-    color:$foreground;
-    mix-blend-mode:screen;
-    background-blend-mode: screen;;
-    
+    font-size: 80vh;
+    position: fixed;
+    width: 1500vh;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $foreground;
+    mix-blend-mode: screen;
+    background-blend-mode: screen;
+    ;
+
 }
 
 #section-01:hover #loud-title {
-    animation:moveLoudTitle 20s;
+    animation: moveLoudTitle 20s;
 }
 
 
@@ -20,29 +21,30 @@
 @keyframes moveLoudTitle {
 
     0% {
-        left:0;
+        left: 0;
     }
 
     100% {
-        left:-1500vh;
+        left: -1500vh;
     }
-    
+
 }
 
 #hover-image2 {
-    position:fixed;
-    max-height:80vh;
-    width:auto;
-    bottom:0;
-    right:0;
+    position: fixed;
+    max-height: 80vh;
+    width: auto;
+    bottom: 0;
+    right: 0;
 }
+
 
 // #test-menu {
 //     position:fixed;
-    
+
 //     z-index:200;
 //     height:100vh;
-    
+
 //     transform:translateX(-95%);
 //     transition:all 0.1s;
 
@@ -139,5 +141,5 @@
 //     100% {
 //         left:-2500vh;
 //     }
-    
+
 // }

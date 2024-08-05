@@ -54,16 +54,9 @@ const getBasicConfig = isPage => ({
     domNode.children = trimChildren(domNode)
 
     if (domNode.tagName === 'canada') return <Canada />
-    if (domNode.type === 'text') {
+    if (domNode.type === 'text')
       domNode.data = domNode.data
         .replaceAll(/!!!/g, '\u0778')
-      // .replaceAll(/c\\a\\n\\a\\d\\a/g, '<canada></canada>')
-      // return <>{
-      //   domNode.data
-      //     .split('c\\a\\n\\a\\d\\a')
-      //     .join('canada')
-      // }</>
-    }
 
 
     if (tagName === 'a') return parseAnchor(domNode)
@@ -83,19 +76,14 @@ const hasNoData = data => !data || !Object.keys(data).length
 const parseDemand = demandData => {
   if (hasNoData(demandData)) return {}
   const { body, title } = demandData
-  // const gallerySrcs = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY])
-  // const galleryAlts = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_2])
-  // const galleryCaptions = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_3])
-
-  const gallerySrcs = demandData[DEMAND_FIELDS.IMAGE_GALLERY].split('|')
-  const galleryAlts = demandData[DEMAND_FIELDS.IMAGE_GALLERY_1].split('|')
-  const galleryCaptions = demandData[DEMAND_FIELDS.IMAGE_GALLERY_2].split('|')
-
+  const gallerySrcs = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY])
+  const galleryAlts = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_1])
+  const galleryCaptions = parseMulti(demandData[DEMAND_FIELDS.IMAGE_GALLERY_2])
 
   const gallery = gallerySrcs.map((src, i) => ({
     src: replaceLink(src),
-    alt: galleryAlts[i],
-    caption: galleryCaptions[i]
+    alt: basicParse(galleryAlts[i]),
+    caption: basicParse(galleryCaptions[i])
   }))
 
 

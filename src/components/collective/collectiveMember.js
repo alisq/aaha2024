@@ -1,14 +1,14 @@
 import useLang from '../../hooks/useLang'
 import { CLS } from '../../constants/styleConstants'
-import TableHead from '../common/tableHead'
 import Anchor from '../common/anchor'
 
+// TODO: merge
 const CollectiveMember = ({ member }) => {
   const { lang } = useLang()
   const { title, team, organization, organization_links, role, bio } = member[lang]
   return (
-    <TableHead>
-      <td><strong>{member.name}</strong></td>
+    <tr>
+      <td><p><strong>{member.name}</strong></p></td>
       {member.category === 'collaborator' ?
         <>
           <td><label>{title}</label></td>
@@ -27,16 +27,16 @@ const CollectiveMember = ({ member }) => {
             </ul>
           </td>
           {member.team_id &&
-            <td className={CLS.SMALL_HALF}>
+            <td>
               <Anchor className={CLS.TEAM_TITLE} to={`/${lang}/demand/${member.team_id}`}>
                 {team}
               </Anchor>
             </td>}
-          {role && <td className={CLS.SMALL_HALF}><label>{role}</label></td>}
+          {role && <td><label>{role}</label></td>}
           {bio && <td>{bio}</td>}
         </>
       }
-    </TableHead>
+    </tr>
   )
 }
 
