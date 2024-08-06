@@ -1,4 +1,4 @@
-import { useContext, useLayoutEffect, useRef } from 'react'
+import { useContext, useEffect, useLayoutEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import collaboratorData from '../../collaborators.json'
 import { CLS } from '../../constants/styleConstants'
@@ -44,12 +44,12 @@ const Collective = () => {
     {
       name: 'team-members-role',
       placeholder: translations.memberRole,
-      list: translations.memberList.map(role => role.toLocaleUpperCase())
+      list: translations.memberList
     },
     {
       name: 'team-members-team',
       placeholder: translations.team,
-      list: demands?.map(({ title }) => title.toLocaleUpperCase())
+      list: demands?.map(({ title }) => title)
     }
   ]
   const getTeamMembers = filters => members.teamMembers
@@ -62,6 +62,7 @@ const Collective = () => {
     })
     .map((member, i) => <TeamMember memberData={member} key={i} />)
 
+  useEffect(() => console.log(members), [])
   return (
     members &&
     <>
@@ -76,8 +77,8 @@ const Collective = () => {
         className={CLS.COLLECTIVE_MEMBER_TABLE}
         header={translations.collaborator}
         labels={['name', 'role', 'bio']}
-        rows={collaboratorData.map((member, i) =>
-          <CollectiveMember member={member} key={i} />)} />
+        rows={members.collaborators.map((data, i) =>
+          <CollectiveMember data={data} key={i} />)} />
       <CollectiveTable
         ref={sectionRefs[TEAM_MEMBERS]}
         className={CLS.COLLECTIVE_MEMBER_TABLE}

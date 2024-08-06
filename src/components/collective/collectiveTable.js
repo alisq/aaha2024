@@ -28,7 +28,7 @@ const CollectiveTable = forwardRef(function CollectiveTable({
               key={i}
               name={name}
               placeholder={placeholder}
-              list={list}
+              list={list.map(item => item.toLocaleUpperCase())}
               handleFilter={({ target }) => handleFilter({ [name]: target.value })} />)}
         </div>
       }
