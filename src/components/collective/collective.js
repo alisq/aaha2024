@@ -1,22 +1,20 @@
 import { useContext, useEffect, useLayoutEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
-import collaboratorData from '../../collaborators.json'
 import { CLS } from '../../constants/styleConstants'
 import { GlobalContext } from '../../contexts/contexts'
 import { COLLECTIVE } from '../../data/translations'
 import useLang from '../../hooks/useLang'
 import parserServices from '../../services/parserServices'
-import CollectiveMember from './collectiveMember'
+import CollectiveMember from './collectiveMemberRow'
 import CollectiveTable from './collectiveTable'
-import CommitteeRow from './committeeRow'
-import TeamMember from './teamMember'
+import CommitteeRowMember from './committeeMemberRow'
+import TeamMemberRow from './teamMemberRow'
 
 
-//  TODO
-const ORGANIZING_COMMITTEE = 'collective__organizing-committee'
-const COLLABORATORS = 'collective__collaborators'
-const TEAM_MEMBERS = 'collective__team-members'
-const STUDENT_ACTIVISTS = 'collective__student-activist'
+const ORGANIZING_COMMITTEE = 'collective-organizing-committee'
+const COLLABORATORS = 'collective-collaborators'
+const TEAM_MEMBERS = 'collective-team-members'
+const STUDENT_ACTIVISTS = 'collective-student-activist'
 
 const Collective = () => {
   const location = useLocation()
@@ -55,12 +53,12 @@ const Collective = () => {
   const getTeamMembers = filters => members.teamMembers
     .filter(member => {
       member = parserServices.parseMember(member, demands)
-      const role = filters['team-members-role']
+      const role = filters['team-members-role'] // TODO
       const team = filters['team-members-team']
       return (!role || role.toLocaleLowerCase() === member.role.toLocaleLowerCase()) &&
         (!team || team.toLocaleLowerCase() === member.team?.toLocaleLowerCase())
     })
-    .map((member, i) => <TeamMember memberData={member} key={i} />)
+    .map((member, i) => <TeamMemberRow memberData={member} key={i} />)
 
   useEffect(() => console.log(members), [])
   return (
@@ -71,7 +69,7 @@ const Collective = () => {
         className={CLS.COMMITTEE_TABLE}
         header={translations.header}
         rows={members.committees.map((data, i) =>
-          <CommitteeRow key={i} data={data} />)} />
+          <CommitteeRowMember key={i} data={data} />)} />
       <CollectiveTable
         ref={sectionRefs[COLLABORATORS]}
         className={CLS.COLLECTIVE_MEMBER_TABLE}

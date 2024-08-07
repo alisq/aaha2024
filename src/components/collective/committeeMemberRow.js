@@ -2,10 +2,9 @@ import { useMemo } from 'react'
 import parserServices from '../../services/parserServices'
 import Anchor from '../common/anchor'
 
-const CommitteeRow = ({ data }) => {
+const CommitteeRowMember = ({ data }) => {
   const { name, bio, link } = useMemo(() =>
     parserServices.parseMember(data), [data])
-
   return (
     <tr>
       <td>
@@ -16,4 +15,4 @@ const CommitteeRow = ({ data }) => {
   )
 }
 
-export default CommitteeRow
+export default CommitteeRowMember

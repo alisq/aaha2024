@@ -45,12 +45,12 @@ const Menu = ({ footerRef }) => {
             title={translations.contact}
             handleClick={handleContactClick} />
           <li>
-            <div className='embedContainer'>
+            <div className={CLS.EMBED_CONTAINER}>
               <iframe src='https://www.youtube.com/embed/WW8PxLUfAww' frameBorder='0' allowFullScreen />
             </div>
           </li>
         </ul>
-        <div className='menuRight' />
+        <div className={CLS.MENU_RIGHT} />
       </section>
     </>
   )

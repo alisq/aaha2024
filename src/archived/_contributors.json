@@ -397,9 +397,7 @@
       "bio": "",
       "role": "Activist",
       "organization": ["One House Many Nations"],
-      "organization_links": [
-        "https://idlenomore.ca/one-house-many-nations/"
-      ]
+      "organization_links": ["https://idlenomore.ca/one-house-many-nations/"]
     },
     "fr": {
       "team": "Pavillons pour la construction d’habitations au sein des Premières Nations",
@@ -407,9 +405,7 @@
       "bio": "",
       "role": "Activiste",
       "organization": ["One House Many Nations"],
-      "organization_links": [
-        "https://idlenomore.ca/one-house-many-nations/"
-      ]
+      "organization_links": ["https://idlenomore.ca/one-house-many-nations/"]
     },
 
     "organization 2 (If Relevant)": "Windsor University/Université de Windsor"

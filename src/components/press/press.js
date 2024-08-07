@@ -20,7 +20,7 @@ const Press = () => {
       <h3 className={CLSES.SMALL_HEADER}>
         {translations.header}
       </h3>
-      <table className={joinClasses(CLS.MEMBERS, 'press-table')}>
+      <table className={joinClasses(CLS.MEMBERS, CLS.PRESS_TABLE)}>
         <TableLabelHead labels={['title', 'date', 'outlet']} />
         <tbody>
           {parsedPress.map((press, i) => <PressRow key={i} data={press} />)}

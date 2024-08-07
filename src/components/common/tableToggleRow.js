@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { validateString } from '../../utils/commonUtils'
 import { CLS } from '../../constants/styleConstants'
+import { validateString } from '../../utils/commonUtils'
 
 const TableToggleRow = ({ isHighlighted, summary, content }) => {
   const [isExpanded, setIsExpanded] = useState(isHighlighted)

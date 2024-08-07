@@ -1,14 +1,9 @@
 import { useMemo } from 'react'
-import useLang from '../../hooks/useLang'
 import parserServices from '../../services/parserServices'
 
 const CollectiveMember = ({ data }) => {
-  // const { lang } = useLang()
-  // const { title, bio } = member[lang]
-  console.log(data)
-  const { name, title, bio, ...rest } = useMemo(() =>
+  const { name, title, bio } = useMemo(() =>
     parserServices.parseMember(data), [data])
-
   return (
     <tr>
       <td><p><strong>{name}</strong></p></td>

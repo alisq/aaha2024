@@ -1,20 +1,20 @@
 import { forwardRef, useContext, useEffect, useLayoutEffect, useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
+import { MEMBER_FIELDS } from '../../constants/apiConstants'
 import { CLS, CLSES } from '../../constants/styleConstants'
+import { GlobalContext } from '../../contexts/contexts'
 import { DEMAND_BODY } from '../../data/translations'
 import useLang from '../../hooks/useLang'
-import parserServices from '../../services/parserServices'
-import DemandCarousel from './demandCarousel'
-import DemandData from './demandData'
-import TableLabelHead from '../common/tableLabelHead'
-import Section from '../common/section'
-import { useLocation } from 'react-router-dom'
 import useLocationChange from '../../hooks/useLangChanged'
 import useMergedRef from '../../hooks/useMergedRef'
-import { GlobalContext } from '../../contexts/contexts'
-import { MEMBER_FIELDS } from '../../constants/apiConstants'
-import TeamMember from '../collective/teamMember'
-import Anchor from '../common/anchor'
+import parserServices from '../../services/parserServices'
 import { joinClasses } from '../../utils/styleUtils'
+import TeamMemberRow from '../collective/teamMemberRow'
+import Anchor from '../common/anchor'
+import Section from '../common/section'
+import TableLabelHead from '../common/tableLabelHead'
+import DemandCarousel from './demandCarousel'
+import DemandData from './demandData'
 
 const DemandBody = forwardRef(function DemandBody({ data }, ref) {
   const { translations } = useLang(DEMAND_BODY)
@@ -94,11 +94,11 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
         </>
       }>
       <h3 className={CLSES.SMALL_HEADER}>{translations.members}</h3>
-      <table className={joinClasses(CLS.MEMBERS, 'team-member-table', 'hide-team')}>
+      <table className={joinClasses(CLS.MEMBERS, CLS.TEAM_MEMBER_TABLE, CLS.HIDE_TEAM)}>
         <TableLabelHead labels={['name', 'org', 'role']} />
         <tbody>
           {teamMembers.map((memberData, i) =>
-            <TeamMember key={i} memberData={memberData} hideTeam />)}
+            <TeamMemberRow key={i} memberData={memberData} hideTeam />)}
         </tbody>
       </table>
     </Section>

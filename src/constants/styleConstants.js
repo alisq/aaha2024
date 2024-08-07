@@ -57,24 +57,33 @@ export const CLS = {
   DEMAND_SLIDE: 'demand-slide',
   SLIDE: 'slide',
   IMG: 'img',
-
+  EMBED_CONTAINER: 'embedContainer',
 
   FOOTER_LOGO: 'footer-logo',
   PARTNERS: 'partners',
   SOCIALS: 'socials',
   AAHA_TEXT: 'aaha-text',
 
+  // MENU
   MENU_BUTTON_SQUARE: 'menu-button-square',
+  MENU_RIGHT: 'menu-right',
   TOP_LEFT: 'top-left',
   TOP_RIGHT: 'top-right',
   CENTER: 'center',
   BOTTOM_LEFT: 'bottom-left',
   BOTTOM_RIGHT: 'bottom-right',
 
+  // STYLING
+  SPACED_CONTENT: 'spaced-content',
+
   // TABLE
   COMMITTEE_TABLE: 'committee-table',
   COLLECTIVE_MEMBER_TABLE: 'collective-member-table',
-  TEAM_MEMBER_TABLE: 'team-member-table'
+  TEAM_MEMBER_TABLE: 'team-member-table',
+  HIDE_TEAM: 'hide-team',
+  EVENT_TABLE: 'event-table',
+  EVENT_TAGS: 'event-tags',
+  PRESS_TABLE: 'press-table'
 }
 
 export const CLSES = {
@@ -88,5 +97,14 @@ export const CSS_ID = {
   MENU: 'menu',
   MENU_BUTTON: 'menu-button',
   MENU_FIST: 'menu-fist',
-  CONTACT: 'contact'
+  CONTACT: 'contact',
+  LOGO: {
+    CCA: 'logoCCA',
+    SALA: 'logoSALA',
+    UW: 'logoUW',
+    RAIC: 'logoRAIC',
+    OAA: 'logoOAA',
+    AFBC: 'logoAFBC',
+    FED: 'logoFed'
+  }
 }

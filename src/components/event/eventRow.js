@@ -1,9 +1,9 @@
-import { CLS } from '../../constants/styleConstants'
-import Anchor from '../common/anchor'
 import { useContext } from 'react'
-import useLang from '../../hooks/useLang'
+import { CLS } from '../../constants/styleConstants'
 import { GlobalContext } from '../../contexts/contexts'
+import useLang from '../../hooks/useLang'
 import { joinClasses } from '../../utils/styleUtils'
+import Anchor from '../common/anchor'
 import TableToggleRow from '../common/tableToggleRow'
 
 const EventRow = ({ data }) => {
@@ -29,11 +29,11 @@ const EventRow = ({ data }) => {
     }
     content={
       <>
-        <td colSpan='2' className='spaced-content'>
+        <td colSpan='2' className={CLS.SPACED_CONTENT}>
           {img && <img src={img} />}
           {link && <div><Anchor to={link}>Event Link</Anchor></div>}
           {body && <div>{body}</div>}
-          <div className='event-tags'>
+          <div className={CLS.EVENT_TAGS}>
             {demands.map(({ title, field_demand_id }, i) =>
               <label className={joinClasses(CLS.LABEL_RED, CLS.SMALL)} key={i}>
                 <Anchor className={CLS.TEAM_TITLE} to={`/${lang}/demand/${field_demand_id}`}>{title}</Anchor>
