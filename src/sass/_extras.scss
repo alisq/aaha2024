@@ -1,43 +1,35 @@
 #loud-title {
-    font-size: 80vh;
-    position: fixed;
-    width: 1500vh;
-    top: 50%;
-    transform: translateY(-50%);
-    color: $foreground;
-    mix-blend-mode: screen;
-    background-blend-mode: screen;
-    ;
-
+  font-size: 80vh;
+  position: fixed;
+  width: 1500vh;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $foreground;
+  mix-blend-mode: screen;
+  background-blend-mode: screen;
 }
 
 #section-01:hover #loud-title {
-    animation: moveLoudTitle 20s;
+  animation: move-loud-title 20s;
 }
 
+@keyframes move-loud-title {
+  0% {
+    left: 0;
+  }
 
-
-
-@keyframes moveLoudTitle {
-
-    0% {
-        left: 0;
-    }
-
-    100% {
-        left: -1500vh;
-    }
-
+  100% {
+    left: -1500vh;
+  }
 }
 
 #hover-image2 {
-    position: fixed;
-    max-height: 80vh;
-    width: auto;
-    bottom: 0;
-    right: 0;
+  position: fixed;
+  max-height: 80vh;
+  width: auto;
+  bottom: 0;
+  right: 0;
 }
-
 
 // #test-menu {
 //     position:fixed;
@@ -75,9 +67,6 @@
 
 // }
 
-
-
-
 // #test-layers,
 // #test-statement,
 // #test-purchase {
@@ -87,7 +76,6 @@
 //     pointer-events:none;
 //     display:none;
 // }
-
 
 // #test-statement {
 //     top:30%;
@@ -105,7 +93,6 @@
 // #big-title.active {
 //     display:block;
 // }
-
 
 // #test-grid {
 //  position:fixed;
@@ -128,9 +115,6 @@
 //      display:block;
 //  }
 // }
-
-
-
 
 // @keyframes moveBG {
 

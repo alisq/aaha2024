@@ -125,7 +125,6 @@ h3 {
   letter-spacing: 0.02em;
   line-height: 4rem;
 
-
   &.bigTitle {
     font-size: 10rem;
     line-height: 1;
@@ -146,29 +145,29 @@ h5 {
   margin-bottom: 0;
 }
 
-.exAlt1,
-.exAlt2,
-.exAlt3 {
+.ex-alt-1,
+.ex-alt-2,
+.ex-alt-3 {
   width: 0;
   visibility: hidden;
   overflow: hidden;
 }
 
-.exAlt1:before,
-.exAlt2:before,
-.exAlt3:before {
+.ex-alt-1:before,
+.ex-alt-2:before,
+.ex-alt-3:before {
   visibility: visible;
 }
 
-.exAlt1:before {
+.ex-alt-1:before {
   content: "\0777";
 }
 
-.exAlt2:before {
+.ex-alt-2:before {
   content: "\0776";
 }
 
-.exAlt3:before {
+.ex-alt-3:before {
   content: "\0778";
 }
 
@@ -223,7 +222,6 @@ h5 {
 }
 
 button {
-
   &,
   &:focus {
     background: $red;

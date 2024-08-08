@@ -20,7 +20,7 @@ const Event = () => {
     <>
       <h3 className={CLSES.SMALL_HEADER}>{translations.header}</h3 >
       <table className={CLS.EVENT_TABLE}>
-        <TableLabelHead labels={['eventTitle', 'dateTime', 'locale']} />
+        <TableLabelHead labels={['eventTitle', 'dateTime', 'locale']} hasButton />
         <tbody>
           {parsedEvents.map((event, i) => <EventRow key={i} data={event} />)}
         </tbody>

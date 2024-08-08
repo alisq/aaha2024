@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { ACTION_FIELDS, API_ENDPOINT, API_LANGS, MEMBERS_SECTIONS, MEMBER_FIELDS } from '../constants/apiConstants'
 import httpServices from './httpServices'
 import { joinPaths } from '../utils/urlUtils'
-import { quickArray } from '../utils/commonUtils'
+import { mapObject, quickArray } from '../utils/commonUtils'
 
 const uniqEntry = entries => _.uniqBy(entries, 'nid')
 const langPartition = data => _.partition(data, { langcode: API_LANGS.en })
@@ -36,6 +36,8 @@ const data = (async () => {
     membersCollection.uncategorized.push(entry)
   })
 
+
+
   const { data: actionData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'actions'))) // TODO
   const actionsEn = quickArray(uniqEntry(demandsEn).length)
   const actionsFr = _.cloneDeep(actionsEn)
@@ -63,7 +65,7 @@ const data = (async () => {
   return {
     en: {
       demands: uniqEntry(demandsEn),
-      members: membersEn,
+      members: mapObject(membersEn, (_, collection) => uniqEntry(collection)),
       actions: actionsEn,
       pages: orderPages(pagesEn),
       events: eventsEn,
@@ -71,7 +73,7 @@ const data = (async () => {
     },
     fr: {
       demands: uniqEntry(demandsFr),
-      members: membersFr,
+      members: mapObject(membersFr, (_, collection) => uniqEntry(collection)),
       actions: actionsFr,
       pages: orderPages(pagesFr),
       events: eventsFr,

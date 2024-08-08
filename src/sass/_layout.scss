@@ -95,7 +95,7 @@ h1 {
 }
 
 .block-container {
-  >* {
+  > * {
     display: block;
   }
 }
@@ -125,20 +125,6 @@ h1 {
       background: $red;
     }
   }
-
-  //     &:hover .rect {
-  //         width:40px;
-  //         left:0;
-  //         background:$foreground;
-  //     }
-
-  // & .rect {
-  //     background:$red;
-  //     height:10px;
-  //     position:absolute;
-  //     transition:all $transition-time;
-
-  // }
 }
 
 #mb-2-c {
@@ -265,7 +251,7 @@ h1 {
   font-family: "AAHA-WEB";
   fill: rgb(192, 0, 0);
 
-  & #top_fist {
+  & #top-fist {
     fill: $red;
     transition: fill $transition-time;
 
@@ -281,7 +267,7 @@ h1 {
       content: "\d7";
     }
 
-    & #top_fist {
+    & #top-fist {
       opacity: 0;
     }
   }
@@ -291,11 +277,11 @@ h1 {
   }
 
   &.invert {
-    & #top_fist {
+    & #top-fist {
       fill: $background;
     }
 
-    &.active & #top_fist {
+    &.active & #top-fist {
       fill: $foreground;
     }
   }
@@ -350,26 +336,22 @@ h1 {
       &:nth-child(4) a::after,
       &:nth-child(1) a::after {
         content: "\0776";
-
       }
 
       &:nth-child(8) a::after,
       &:nth-child(6) a::after,
       &:nth-child(2) a::after {
         content: "\0777";
-
       }
 
       &:nth-child(3) a::after {
         content: "!";
-
       }
 
       &:nth-child(10) a::after,
       &:nth-child(5) a::after {
         content: "\0778";
       }
-
 
       & a,
       & a:link,
@@ -398,7 +380,6 @@ h1 {
     overflow: hidden;
     max-width: 100%;
 
-
     & iframe,
     & object,
     & embed {
@@ -408,13 +389,8 @@ h1 {
       width: 100%;
       height: 100%;
     }
-
-
-
-
   }
 }
-
 
 .socials {
   font-size: 4em;
@@ -625,15 +601,10 @@ table {
       &.noborder {
         border-bottom: none;
       }
-
-      &:first-child {
-        // padding-left: 1em; // TODOs
-      }
     }
   }
 
   &.events {
-
     & td,
     th {
       border: none;
@@ -643,11 +614,7 @@ table {
       border-top: 1px solid rgba($foreground, 0.5);
     }
   }
-
 }
-
-
-
 
 .thirds {
   display: grid;
@@ -692,14 +659,10 @@ table {
       height: auto;
     }
 
-    & #logoBiennale {
-      width: 50%;
-    }
-
-    & #logoCCA,
-    & #logoUW,
-    & #logoSALA,
-    & #logoRAIC {
+    & #logo-cca,
+    & #logo-uw,
+    & #logo-sala,
+    & #logo-raic {
       width: 80%;
     }
   }
@@ -722,41 +685,7 @@ table {
     & li {
       margin-bottom: 0;
     }
-
-    & .footerList {
-      font-family: "AAHA-WEB";
-      text-transform: uppercase;
-      // list-style-type: disc;
-      // margin-left: -1.25em;
-    }
   }
-}
-
-// .main-carousel {
-// width:100%;
-// height:auto;
-// max-height:50vh;
-
-//     & button {
-//         padding:0;
-//     }
-//     & .carousel-cell {
-//         width:100%;
-//         height:100%;
-//         & img {
-//             max-width:100%;
-//             max-height:50vh;
-//             display:block;
-//             margin:auto;
-//             width:auto;
-//             height:auto;
-
-//         }
-//     }
-// }
-
-.sidebearing {
-  width: calc(100vw / 2 - 1800px / 2);
 }
 
 @media (max-width: 800px) {
@@ -883,7 +812,8 @@ table {
   h3 {
     padding-top: 1em;
 
-    &.bigTitle {
+    // TODO
+    &.big-title {
       font-size: 3em;
     }
   }
@@ -965,10 +895,9 @@ table {
   }
 }
 
-
 // fixes
 $table-inner-margin: 1.75em;
-$td-xsmall: 5.5em;
+$td-xsmall: 7.5em;
 $td-small: 12em;
 $td-medium: 17.5em;
 $td-large: 25em;
@@ -980,43 +909,41 @@ table {
   table-layout: fixed;
 
   tr {
-    >:first-child {
+    > :first-child {
       padding-left: $table-side-padding;
       box-sizing: content-box;
 
       // TODO: breakpoint
       @media (min-width: 800px) {
-        >* {
-          margin-left: 2rem;
+        > * {
+          padding-left: 2rem;
           padding-right: 0;
         }
       }
-
     }
 
-    >:last-child {
+    > :last-child {
       padding-right: $table-side-padding;
       box-sizing: content-box;
 
-      >* {
-        margin-right: 2rem;
+      // TODO: doesn't work when page-size is small
+      > * {
+        padding-right: 2rem;
       }
     }
 
     @media (min-width: 800px) {
-
-      >:not(:first-child) {
+      > :not(:first-child) {
         padding-left: 1.75rem;
       }
 
-      >:not(:last-child) {
+      > :not(:last-child) {
         padding-right: 1.75rem;
       }
     }
   }
 
   td {
-
     p,
     label,
     h3,
@@ -1027,74 +954,70 @@ table {
     }
   }
 
-  .row-expanded>td {
+  .row-expanded > td {
     border-bottom: none;
   }
 }
 
 .committee-table tr {
-  >:first-child {
+  > :first-child {
     width: $td-small;
   }
-
 }
 
 .collective-member-table tr {
-  >:first-child {
+  > :first-child {
     width: $td-small;
   }
 
-  >:nth-child(2) {
+  > :nth-child(2) {
     width: $td-small;
   }
 }
 
 .team-member-table {
   tr {
-    >:first-child {
+    > :first-child {
       width: $td-small;
     }
 
-    >:nth-child(2) {
+    > :nth-child(2) {
       width: $td-large;
     }
 
-    >:last-child {
+    > :last-child {
       width: $td-xsmall;
     }
   }
 
   &.hide-team {
     tr {
-      >:first-child {
+      > :first-child {
         width: $td-large;
       }
 
-      >:nth-child(2) {
+      > :nth-child(2) {
         width: initial;
       }
 
-      >:last-child {
+      > :last-child {
         width: $td-xsmall;
       }
     }
   }
 }
 
-
 .press-table {
-
-
   tr {
-    >:first-child {
-      width: $td-xlarge;
-    }
-
-    >:nth-child(2) {
+    > :nth-child(2) {
       width: $td-medium;
     }
 
-    >:nth-child(4) {
+    > :nth-child(3) {
+      width: $td-medium;
+    }
+
+    > :nth-child(4) {
       width: $td-small;
     }
 
@@ -1106,16 +1029,16 @@ table {
 
 .event-table {
   tr {
-    >:first-child {
-      width: $td-xlarge;
+    > :nth-child(2) {
+      width: $td-medium;
     }
 
-    >:nth-child(2) {
-      width: $td-large;
+    > :nth-child(3) {
+      width: $td-medium;
     }
 
-    >:nth-child(4) {
-      width: $td-small;
+    > :nth-child(4) {
+      width: $td-xsmall;
     }
 
     img {
@@ -1125,13 +1048,13 @@ table {
 }
 
 .event-tags {
-  >label {
+  > label {
     margin-right: 0.5em;
   }
 }
 
 .spaced-content {
-  >*:not(:last-child) {
+  > *:not(:last-child) {
     margin-bottom: 1em;
   }
 }
@@ -1141,26 +1064,31 @@ table {
 }
 
 .actions li {
-  >a {
+  > a {
     display: block;
     height: fit-content;
   }
 
-  >p {
+  > p {
     margin: 0.5em 0 0;
   }
 }
 
 #contact .row {
-  >:nth-child(2) {
+  > :nth-child(2) {
     h3 {
       margin-bottom: 1em;
     }
   }
 
-  >:last-child {
+  > :last-child {
     p {
       margin-top: 1em;
     }
   }
+}
+
+.button-cell > div {
+  display: flex;
+  justify-content: flex-end;
 }

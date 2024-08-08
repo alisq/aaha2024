@@ -49,8 +49,7 @@ export const CLS = {
 
   CLOSE: 'close',
   NUM: 'num',
-  SIDEBEARING: 'sidebearing',
-  EXALT_2: 'exAlt2',
+  EXALT_2: 'ex-alt-2',
 
   CAROUSEL: 'carousel',
   SLIDE_FULLSCREEN: 'slide-fullscreen',
@@ -83,7 +82,9 @@ export const CLS = {
   HIDE_TEAM: 'hide-team',
   EVENT_TABLE: 'event-table',
   EVENT_TAGS: 'event-tags',
-  PRESS_TABLE: 'press-table'
+  PRESS_TABLE: 'press-table',
+  HAS_BUTTON: 'has-button',
+  BUTTON_CELL: 'button-cell'
 }
 
 export const CLSES = {
@@ -99,10 +100,10 @@ export const CSS_ID = {
   MENU_FIST: 'menu-fist',
   CONTACT: 'contact',
   LOGO: {
-    CCA: 'logoCCA',
-    SALA: 'logoSALA',
-    UW: 'logoUW',
-    RAIC: 'logoRAIC',
+    CCA: 'logo-cca',
+    SALA: 'logo-sala',
+    UW: 'logo-uw',
+    RAIC: 'logo-raic',
     OAA: 'logoOAA',
     AFBC: 'logoAFBC',
     FED: 'logoFed'

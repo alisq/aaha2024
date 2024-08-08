@@ -65,7 +65,7 @@ const getBasicConfig = isPage => ({
     if (tagName === 'a') return parseAnchor(domNode)
     if (isPage && tagName === 'h2')
       return (
-        <h3 className='bigTitle'>
+        <h3 className='big-title'>
           {domToReact(domNode.children, getBasicConfig(isPage))}
         </h3>
       )

@@ -9,10 +9,12 @@ const TableToggleRow = ({ isHighlighted, summary, content }) => {
     <>
       <tr className={validateString(isExpanded, CLS.ROW_EXPANDED)}>
         {summary}
-        <td>
-          <button onClick={() => setIsExpanded(prev => !prev)}>
-            {isExpanded ? 'COLLAPSE' : 'EXPAND'}
-          </button>
+        <td className={CLS.BUTTON_CELL}>
+          <div>
+            <button onClick={() => setIsExpanded(prev => !prev)}>
+              {isExpanded ? 'COLLAPSE' : 'EXPAND'}
+            </button>
+          </div>
         </td>
       </tr>
       {isExpanded && <tr>{content}</tr>}
