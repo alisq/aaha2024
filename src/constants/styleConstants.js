@@ -13,6 +13,7 @@ export const CLS = {
   SIX: 'six',
   THIRDS: 'thirds',
   SMALL: 'small',
+  BIG_TITLE: 'big-title',
 
   ROW: 'row',
   ROW_EXPANDED: 'row-expanded',

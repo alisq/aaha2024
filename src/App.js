@@ -13,7 +13,7 @@ import apiServices from './services/apiServices'
 import { getBrowserLang } from './utils/languageUtils'
 import { getUrlParts } from './utils/urlUtils'
 import useLang from './hooks/useLang'
-import { DEMAND_FIELDS } from './constants/apiConstants'
+import { DEMAND_FIELDS, PAGE_FIELDS } from './constants/apiConstants'
 import Page from './components/page'
 import { toTop } from './utils/commonUtils'
 
@@ -73,15 +73,15 @@ const App = () => {
               .map((page, i) =>
                 <Route
                   key={i}
-                  path={`page/${page.field_id}`}
+                  path={`page/${page[PAGE_FIELDS.ID]}`}
                   element={
                     <Page
                       ref={sectionRef}
-                      id={page.field_id}
+                      id={page[PAGE_FIELDS.ID]}
                       title={page.title}
                       body={page.body}
                       data={page}
-                      subpage={pages[page.field_id]} />
+                      subpage={pages[page[PAGE_FIELDS.ID]]} />
                   } />)}
           </Route>
         )}

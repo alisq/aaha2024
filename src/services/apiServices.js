@@ -1,85 +1,69 @@
 import _ from 'lodash'
-import { ACTION_FIELDS, API_ENDPOINT, API_LANGS, MEMBERS_SECTIONS, MEMBER_FIELDS } from '../constants/apiConstants'
+import { ACTION_FIELDS, API_ENDPOINT, API_LANGS, API_SUB_ENDPOINTS, MEMBERS_SECTIONS, MEMBER_FIELDS, PAGE_FIELDS } from '../constants/apiConstants'
 import httpServices from './httpServices'
 import { joinPaths } from '../utils/urlUtils'
-import { mapObject, quickArray } from '../utils/commonUtils'
-
-const uniqEntry = entries => _.uniqBy(entries, 'nid')
-const langPartition = data => _.partition(data, { langcode: API_LANGS.en })
+import { mapObject } from '../utils/commonUtils'
 
 const JSON_ENDPOINT = joinPaths(API_ENDPOINT, 'JSON')
 
+const uniqEntry = entries => _.uniqWith(entries, (a, b) =>
+  a.nid === b.nid && a.langcode === b.langcode)
+const langPartition = data => _.partition(data, { langcode: API_LANGS.EN })
+
+const fetchEndpoint = async endpoint => {
+  const data = uniqEntry(
+    (await httpServices.get(joinPaths(JSON_ENDPOINT, endpoint)))?.data)
+  return langPartition(data)
+}
+
 const data = (async () => {
-  const { data: demandData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'demands')))
-  const [demandsEn, demandsFr] = langPartition(demandData)
+  const results = {}
+  results.demands = await fetchEndpoint(API_SUB_ENDPOINTS.DEMANDS)
 
-  const { data: memberData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'members')))
-  const membersEn = {
-    orgs: [],
-    committees: [],
-    collaborators: [],
-    teamMembers: [],
-    uncategorized: []
-  }
-  const membersFr = _.cloneDeep(membersEn)
+  const allMembersData = await fetchEndpoint(API_SUB_ENDPOINTS.MEMBERS)
+  results.members = allMembersData.map(membersData => {
+    const members = {
+      orgs: [],
+      committees: [],
+      collaborators: [],
+      teamMembers: [],
+      uncategorized: []
+    }
 
-  memberData.forEach(entry => {
-    const collectiveSection = entry[MEMBER_FIELDS.COLLECTIVE_SECTION].toLocaleLowerCase()
-    const membersCollection = entry.langcode === API_LANGS.en ? membersEn : membersFr
+    membersData.forEach(entry => {
+      const collectiveSection = entry[MEMBER_FIELDS.COLLECTIVE_SECTION].toLocaleLowerCase()
+      if (collectiveSection === MEMBERS_SECTIONS.COMMITTEE)
+        return members.committees.push(entry)
+      if (collectiveSection === MEMBERS_SECTIONS.COLLABORATORS)
+        return members.collaborators.push(entry)
+      if (collectiveSection === MEMBERS_SECTIONS.TEAM_MEMBERS)
+        return members.teamMembers.push(entry)
+      members.uncategorized.push(entry)
+    })
 
-    if (collectiveSection === MEMBERS_SECTIONS.COMMITTEE)
-      return membersCollection.committees.push(entry)
-    if (collectiveSection === MEMBERS_SECTIONS.COLLABORATORS)
-      return membersCollection.collaborators.push(entry)
-    if (collectiveSection === MEMBERS_SECTIONS.TEAM_MEMBERS)
-      return membersCollection.teamMembers.push(entry)
-    membersCollection.uncategorized.push(entry)
+    return members
   })
 
-
-
-  const { data: actionData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'actions'))) // TODO
-  const actionsEn = quickArray(uniqEntry(demandsEn).length)
-  const actionsFr = _.cloneDeep(actionsEn)
-
-  const { data: pageData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'pages')))
-  const [pagesEn, pagesFr] = langPartition(pageData)
-
-  const { data: eventData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'events')))
-  const [eventsEn, eventsFr] = langPartition(eventData)
-
-  const { data: pressData } = (await httpServices.get(joinPaths(JSON_ENDPOINT, 'press')))
-  const [pressEn, pressFr] = langPartition(pressData)
-
-  uniqEntry(demandsEn).forEach(({ nid }, i) => {
-    const demandActions = actionData.filter(action => action[ACTION_FIELDS.DEMAND] === nid)
-    const actions = langPartition(demandActions)
-    actionsEn[i] = actions[0]
-    actionsFr[i] = actions[1]
-  })
+  const actionsData = await fetchEndpoint(API_SUB_ENDPOINTS.ACTIONS)
+  results.actions = _.zip(
+    ...results.demands[0].reduce((prev, { nid }) => {
+      prev.push(
+        actionsData.map(action =>
+          action.filter(action => action[ACTION_FIELDS.DEMAND] === nid)))
+      return prev
+    }, []))
 
   const orderPages = pages => pages.sort((a, b) =>
-    parseInt(a.field_page_weight_value) - parseInt(b.field_page_weight_value))
+    parseInt(a[PAGE_FIELDS.WEIGHT]) - parseInt(b[PAGE_FIELDS.WEIGHT]))
+  results.pages = (await fetchEndpoint(API_SUB_ENDPOINTS.PAGES))
+    .map(page => orderPages(page))
+  results.events = await fetchEndpoint(API_SUB_ENDPOINTS.EVENTS)
+  results.press = await fetchEndpoint(API_SUB_ENDPOINTS.PRESS)
 
-  console.log(orderPages(pagesEn))
-  return {
-    en: {
-      demands: uniqEntry(demandsEn),
-      members: mapObject(membersEn, (_, collection) => uniqEntry(collection)),
-      actions: actionsEn,
-      pages: orderPages(pagesEn),
-      events: eventsEn,
-      press: pressEn
-    },
-    fr: {
-      demands: uniqEntry(demandsFr),
-      members: mapObject(membersFr, (_, collection) => uniqEntry(collection)),
-      actions: actionsFr,
-      pages: orderPages(pagesFr),
-      events: eventsFr,
-      press: pressFr
-    }
-  }
+  const partionedResults = {};
+  ['en', 'fr'].forEach((lang, i) =>
+    partionedResults[lang] = mapObject(results, (_, data) => data[i]))
+  return partionedResults
 })()
 
 const apiServices = {

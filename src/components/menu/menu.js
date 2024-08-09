@@ -6,6 +6,7 @@ import useLang from '../../hooks/useLang'
 import { validateString } from '../../utils/commonUtils'
 import MenuLink from './menuLink'
 import MenuSquares from './menuSquares'
+import { PAGE_FIELDS } from '../../constants/apiConstants'
 
 const Menu = ({ footerRef }) => {
   const [visibility, setVisibility] = useState(false)
@@ -34,11 +35,11 @@ const Menu = ({ footerRef }) => {
           {pages?.map((page, i) =>
             <MenuLink
               key={i}
-              to={`page/${page.field_id}`}
+              to={`page/${page[PAGE_FIELDS.ID]}`}
               title={page.title}
               handleClick={() => {
                 setVisibility(false)
-                scrollToSection(page.field_id)
+                scrollToSection(page[PAGE_FIELDS.ID])
               }} />
           )}
           <MenuLink

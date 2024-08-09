@@ -4,7 +4,8 @@ import parse, { domToReact } from 'html-react-parser'
 import { titleCase } from 'title-case'
 import Anchor from '../components/common/anchor'
 import Canada from '../components/common/canada'
-import { ACTION_FIELDS, API_ENDPOINT, DEMAND_FIELDS, MEMBER_FIELDS } from '../constants/apiConstants'
+import { ACTION_FIELDS, API_ENDPOINT, DEMAND_FIELDS, EVENT_FIELDS, MEMBER_FIELDS, PAGE_FIELDS, PRESS_FIELDS } from '../constants/apiConstants'
+import { CLS } from '../constants/styleConstants'
 
 
 const replaceLink = src => `${API_ENDPOINT}/${src}`
@@ -17,19 +18,16 @@ const trimChildren = ({ children }) => {
   return isEmpty ? [] : children
 }
 
-
 const getLink = html => {
   html = he.decode(html)
   const name = html.replaceAll(/\n/g, '').match(/.*(?=<a href=")/m)?.[0].trim()
   const link = html.match(/(?<=href=").*(?=")/)?.[0]
-  const text = html
-    //.replaceAll(/\n/g, '')
-    .match(/(?<=>).+?(?=<\/a>)/m)?.[0].trim()
+  const text = html.match(/(?<=>).+?(?=<\/a>)/m)?.[0].trim()
   return {
     name: basicParse(name),
     link,
     text
-  } // TODO
+  }
 }
 
 const parseAnchor = domNode => {
@@ -65,7 +63,7 @@ const getBasicConfig = isPage => ({
     if (tagName === 'a') return parseAnchor(domNode)
     if (isPage && tagName === 'h2')
       return (
-        <h3 className='big-title'>
+        <h3 className={CLS.BIG_TITLE}>
           {domToReact(domNode.children, getBasicConfig(isPage))}
         </h3>
       )
@@ -142,7 +140,7 @@ const parseMember = (memberData, allDemands) => {
   if (hasNoData(memberData)) return {}
   const { body, title } = memberData
 
-  const orgs = parseMulti(memberData.field_affiliate_organization).map(getLink)
+  const orgs = parseMulti(memberData[MEMBER_FIELDS.ORG]).map(getLink)
 
   return {
     name: basicParse(title),
@@ -150,8 +148,8 @@ const parseMember = (memberData, allDemands) => {
     link: getLink(memberData[MEMBER_FIELDS.ORG])?.link,
     orgs,
     team: basicParse(allDemands?.[memberData[MEMBER_FIELDS.DEMAND]]?.title),
-    teamId: basicParse(allDemands?.[memberData[MEMBER_FIELDS.DEMAND]]?.field_demand_id),
-    role: basicParse(memberData.field_role)
+    teamId: basicParse(allDemands?.[memberData[MEMBER_FIELDS.DEMAND]]?.[DEMAND_FIELDS.ID]),
+    role: basicParse(memberData[MEMBER_FIELDS.ROLE])
   }
 }
 
@@ -160,12 +158,12 @@ const parseEvents = eventData =>
   eventData.map(event => {
     return {
       title: basicParse(event.title),
-      img: event.field_image && replaceLink(event.field_image),
+      img: event[PAGE_FIELDS.IMG] && replaceLink(event[PAGE_FIELDS.IMG]),
       body: basicParse(event.body),
-      link: basicParse(event.field_event_link),
-      date: basicParse(event.field_event_date),
-      locale: basicParse(event.field_locale),
-      demands: parseMulti(event.field_demand).map(demand => getLink(demand)?.text)
+      link: basicParse(event[EVENT_FIELDS.LINK]),
+      date: basicParse(event[EVENT_FIELDS.DATE]),
+      locale: basicParse(event[EVENT_FIELDS.LOCALE]),
+      demands: parseMulti(event[EVENT_FIELDS.DEMAND]).map(demand => getLink(demand)?.text)
     }
   })
 
@@ -173,12 +171,12 @@ const parsePress = pressData =>
   pressData.map(press => {
     return {
       title: basicParse(press.title),
-      img: press.field_image && replaceLink(press.field_image),
+      img: press[PAGE_FIELDS.IMG] && replaceLink(press[PAGE_FIELDS.IMG]),
       body: basicParse(press.body),
-      link: basicParse(press.field_press_item_link),
-      date: basicParse(press.field_date),
-      outlet: basicParse(press.field_outlet),
-      isHighlighted: press.field_highlighted === 'Highlighted'
+      link: basicParse(press[PRESS_FIELDS.LINK]),
+      date: basicParse(press[PRESS_FIELDS.DATE]),
+      outlet: basicParse(press[PRESS_FIELDS.OUTLET]),
+      isHighlighted: press[PRESS_FIELDS.HIGHLIGHTED] === 'Highlighted'
     }
   })
 

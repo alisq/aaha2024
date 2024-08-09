@@ -1,7 +1,16 @@
 export const API_ENDPOINT = 'https://aaha-db.iamasq.works'
 export const API_LANGS = {
-  en: 'English',
-  fr: 'French'
+  EN: 'English',
+  FR: 'French'
+}
+
+export const API_SUB_ENDPOINTS = {
+  DEMANDS: 'demands',
+  MEMBERS: 'members',
+  ACTIONS: 'actions',
+  PAGES: 'pages',
+  EVENTS: 'events',
+  PRESS: 'press'
 }
 
 export const DEMAND_FIELDS = {
@@ -31,12 +40,30 @@ export const MEMBER_FIELDS = {
 }
 
 
- 
-
 export const ACTION_FIELDS = {
   DEMAND: 'field_demand',
   LABEL: 'field_action_label',
   LINK: 'field_action_link',
+}
+
+export const PAGE_FIELDS = {
+  ID: 'field_id',
+  WEIGHT: 'field_page_weight_value',
+  IMG: 'field_image'
+}
+
+export const EVENT_FIELDS = {
+  DEMAND: 'field_demand',
+  LINK: 'field_event_link',
+  DATE: 'field_event_date',
+  LOCALE: 'field_locale'
+}
+
+export const PRESS_FIELDS = {
+  LINK: 'field_press_item_link',
+  DATE: 'field_date',
+  OUTLET: 'field_outlet',
+  HIGHLIGHTED: 'field_highlighted'
 }
 
 export const MEMBERS_SECTIONS = {
@@ -50,3 +77,4 @@ export const MEMBER_ROLES = {
   ADVOCATE: 'advocate',
   ARCHITECT: 'architect'
 }
+

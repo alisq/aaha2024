@@ -1,16 +1,18 @@
 import { useContext } from 'react'
 import { CLS } from '../../constants/styleConstants'
 import { GlobalContext } from '../../contexts/contexts'
-import useLang from '../../hooks/useLang'
 import { joinClasses } from '../../utils/styleUtils'
 import Anchor from '../common/anchor'
 import TableToggleRow from '../common/tableToggleRow'
+import { DEMAND_FIELDS } from '../../constants/apiConstants'
+import { updateUrl } from '../../utils/urlUtils'
+import { useLocation } from 'react-router-dom'
 
 const EventRow = ({ data }) => {
-  const { lang } = useLang() // TODO
   const { title, date, demands: demandTitles, body, link, locale, img } = data
   const { demands: allDemands } = useContext(GlobalContext) ?? {}
 
+  const location = useLocation()
   const demands = allDemands ? demandTitles.map(demand =>
     allDemands.find(dm =>
       dm.title.toLocaleLowerCase() === demand.toLocaleLowerCase())) : undefined
@@ -34,9 +36,9 @@ const EventRow = ({ data }) => {
           {link && <div><Anchor to={link}>Event Link</Anchor></div>}
           {body && <div>{body}</div>}
           <div className={CLS.EVENT_TAGS}>
-            {demands.map(({ title, field_demand_id }, i) =>
+            {demands.map(({ title, ...rest }, i) =>
               <label className={joinClasses(CLS.LABEL_RED, CLS.SMALL)} key={i}>
-                <Anchor className={CLS.TEAM_TITLE} to={`/${lang}/demand/${field_demand_id}`}>{title}</Anchor>
+                <Anchor className={CLS.TEAM_TITLE} to={updateUrl(location, { category: 'demand', content: rest[DEMAND_FIELDS.ID] })}>{title}</Anchor>
               </label>
             )}
           </div>
