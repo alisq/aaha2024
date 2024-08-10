@@ -5,17 +5,17 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import DemandBody from './components/demand/demandBody'
 import Main from './components/main'
+import Page from './components/page'
+import { DEMAND_FIELDS, PAGE_FIELDS } from './constants/apiConstants'
 import { LANGS } from './constants/commonConstants'
 import { GlobalContext } from './contexts/contexts'
 import pages from './data/pages'
+import useLang from './hooks/useLang'
 import useLocationChange from './hooks/useLangChanged'
 import apiServices from './services/apiServices'
+import { toTop } from './utils/commonUtils'
 import { getBrowserLang } from './utils/languageUtils'
 import { getUrlParts } from './utils/urlUtils'
-import useLang from './hooks/useLang'
-import { DEMAND_FIELDS, PAGE_FIELDS } from './constants/apiConstants'
-import Page from './components/page'
-import { toTop } from './utils/commonUtils'
 
 
 const OUR_TRACKING_ID = 'G-8JJ40D5L38'
@@ -78,8 +78,6 @@ const App = () => {
                     <Page
                       ref={sectionRef}
                       id={page[PAGE_FIELDS.ID]}
-                      title={page.title}
-                      body={page.body}
                       data={page}
                       subpage={pages[page[PAGE_FIELDS.ID]]} />
                   } />)}

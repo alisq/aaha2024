@@ -21,8 +21,8 @@ const Footer = forwardRef(function Footer(_, ref) {
           <div className={joinClasses(CLSES.FOUR_COLUMNS, CLS.TEXT_CENTER)}>
             <h3><Anchor to='mailto:info@aaha.ca'>info@aaha.ca</Anchor></h3>
             <div className={CLS.SOCIALS}>
-              <Anchor to='https://www.tiktok.com/@aaha.ca' ><i className='fa-brands fa-tiktok' /></Anchor>&nbsp;&nbsp;
-              <Anchor to='https://www.instagram.com/aaha.ca' ><i className='fa-brands fa-instagram' /></Anchor>
+              <Anchor to='https://www.tiktok.com/@aaha.ca'><i className='fa-brands fa-tiktok' /></Anchor>
+              <Anchor to='https://www.instagram.com/aaha.ca'><i className='fa-brands fa-instagram' /></Anchor>
             </div>
           </div>
           <div className={joinClasses(CLSES.FOUR_COLUMNS, CLS.TEXT_RIGHT)}>

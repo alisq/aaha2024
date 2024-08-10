@@ -30,6 +30,7 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
     architect,
     advocate,
     bannerSrc,
+    bannerAlt,
     bannerCaption,
     gallery,
   } = useMemo(() => parserServices.parseDemand(data), [data])
@@ -68,11 +69,10 @@ const DemandBody = forwardRef(function DemandBody({ data }, ref) {
           <DemandData label={translations.advocate} value={advocate} />
         </>
       }
-      // TODO: sALT
       center={
         <>
-          <img src={bannerSrc} alt='' />
-          <p className={CLS.CAPTION}>{bannerCaption}</p>
+          <img src={bannerSrc} alt={bannerAlt} />
+          <div className={CLS.CAPTION}>{bannerCaption}</div>
           <div>{body}</div>
           <div><DemandCarousel data={gallery} /></div>
         </>

@@ -16,7 +16,8 @@ const Pavilion = () => {
         <img src='/img/pavilion.png' alt='' /> :
         <Svg className={CLS.MULTIPLY} />}
       <p className={CLSES.CENTER_CAPTION}>
-        Pavilion layout for Not For Sale exhibition in Venice, Italy. {/* TODO: translate */}
+        {/* ALI-TODO: translate this */}
+        Pavilion layout for Not For Sale exhibition in Venice, Italy.
       </p>
     </>
   )

@@ -24,7 +24,7 @@ const Exhibition = () => {
           <h3 className={CLSES.SMALL_HEADER}>{translations.bannerHeader}</h3>
           <p>{translations.bannersDesc}</p>
           <ExhibitionCarousel />
-          <p className={CLS.CAPTION}>{translations.caption}</p>
+          <div className={CLS.CAPTION}>{translations.caption}</div>
           <SponsorLogos />
           <h4>{translations.gratitude}</h4>
           <div className={CLS.BLOCK_CONTAINER}>
@@ -38,7 +38,6 @@ const Exhibition = () => {
             <span>Chinook Song Catchers</span>
             <span>Robyn Adams</span>
           </div>
-          <br />
         </CenterColumn>
       </div>
     </div>

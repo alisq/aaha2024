@@ -18,7 +18,13 @@ const trimChildren = ({ children }) => {
   return isEmpty ? [] : children
 }
 
-const getLink = html => {
+const parseImg = img => {
+  const match = img.match(/img.+?src="(.+?)".+?alt="(.+?)"/)
+  if (!match) return {}
+  return { src: replaceLink(match[1]), alt: match[2] }
+}
+
+const parseLink = html => {
   html = he.decode(html)
   const name = html.replaceAll(/\n/g, '').match(/.*(?=<a href=")/m)?.[0].trim()
   const link = html.match(/(?<=href=").*(?=")/)?.[0]
@@ -55,6 +61,11 @@ const getBasicConfig = isPage => ({
     const { tagName } = domNode
     domNode.children = trimChildren(domNode)
 
+    if (
+      domNode.tagName?.match(/^(b|p|h[0-9]|em|i|div|blockquote|ol|ul)$/) &&
+      !domNode.children.length
+    ) return <></>
+
     if (domNode.tagName === 'canada') return <Canada />
     if (domNode.type === 'text')
       domNode.data = domNode.data
@@ -87,6 +98,7 @@ const parseDemand = demandData => {
     caption: galleryCaptions[i]
   }))
 
+  const { src, alt } = parseImg(demandData[DEMAND_FIELDS.BANNER])
 
   return {
     id: demandData[DEMAND_FIELDS.ID],
@@ -98,7 +110,8 @@ const parseDemand = demandData => {
     architect: basicParse(demandData[DEMAND_FIELDS.ARCHITECT]),
     advocate: basicParse(demandData[DEMAND_FIELDS.ADVOCATE]),
     gallery,
-    bannerSrc: replaceLink(demandData[DEMAND_FIELDS.BANNER]),
+    bannerSrc: src,
+    bannerAlt: alt,
     bannerCaption: basicParse(demandData[DEMAND_FIELDS.BANNER_CAPTION]),
   }
 }
@@ -117,7 +130,7 @@ const parsePage = pageData => {
       /&quot;<a\s*?href=".+?">.+?<\/a>;/gm,
       text => {
         text = text.replaceAll(/"/g, '\'')
-        const result = `'${getLink(text).text.replace(/&quot$/, '')}'`
+        const result = `'${parseLink(text).text.replace(/&quot$/, '')}'`
         return result
       }
     )
@@ -132,7 +145,7 @@ const parseActions = actionData =>
   actionData.map(action => ({
     button: basicParse(action.title).toLocaleUpperCase(),
     label: he.decode(action[ACTION_FIELDS.LABEL]),
-    link: getLink(action[ACTION_FIELDS.LINK])?.link,
+    link: parseLink(action[ACTION_FIELDS.LINK])?.link,
   }))
 
 
@@ -140,12 +153,12 @@ const parseMember = (memberData, allDemands) => {
   if (hasNoData(memberData)) return {}
   const { body, title } = memberData
 
-  const orgs = parseMulti(memberData[MEMBER_FIELDS.ORG]).map(getLink)
+  const orgs = parseMulti(memberData[MEMBER_FIELDS.ORG]).map(parseLink)
 
   return {
     name: basicParse(title),
     bio: basicParse(body),
-    link: getLink(memberData[MEMBER_FIELDS.ORG])?.link,
+    link: parseLink(memberData[MEMBER_FIELDS.ORG])?.link,
     orgs,
     team: basicParse(allDemands?.[memberData[MEMBER_FIELDS.DEMAND]]?.title),
     teamId: basicParse(allDemands?.[memberData[MEMBER_FIELDS.DEMAND]]?.[DEMAND_FIELDS.ID]),
@@ -163,7 +176,7 @@ const parseEvents = (eventData, allDemands) =>
       date: basicParse(event[EVENT_FIELDS.DATE]),
       locale: basicParse(event[EVENT_FIELDS.LOCALE]),
       demands: parseMulti(event[EVENT_FIELDS.DEMAND]).map(demand => allDemands.find(
-        dm => dm.title.toLocaleLowerCase() === getLink(demand)?.text.toLocaleLowerCase()
+        dm => dm.title.toLocaleLowerCase() === parseLink(demand)?.text.toLocaleLowerCase()
       ))
     }
   })

@@ -89,15 +89,19 @@ h1 {
   }
 }
 
+h3 {}
+
 .title-top.invert,
 .title-bottom.invert {
   color: $background !important;
 }
 
 .block-container {
-  > * {
+  >* {
     display: block;
   }
+
+  padding-bottom: 1em;
 }
 
 #lang {
@@ -405,6 +409,10 @@ h1 {
       color: $red;
     }
   }
+
+  >a:not(:last-child) {
+    padding-right: 5rem;
+  }
 }
 
 .filter {
@@ -605,6 +613,7 @@ table {
   }
 
   &.events {
+
     & td,
     th {
       border: none;
@@ -914,7 +923,7 @@ table {
 
       // TODO: breakpoint
       @media (min-width: 800px) {
-        > * {
+        >* {
           padding-left: 2rem;
           padding-right: 0;
         }
@@ -926,7 +935,7 @@ table {
       box-sizing: content-box;
 
       // TODO: doesn't work when page-size is small
-      > * {
+      >* {
         padding-right: 2rem;
       }
     }
@@ -943,6 +952,7 @@ table {
   }
 
   td {
+
     p,
     label,
     h3,
@@ -953,7 +963,7 @@ table {
     }
   }
 
-  .row-expanded > td {
+  .row-expanded>td {
     border-bottom: none;
   }
 }
@@ -1047,13 +1057,13 @@ table {
 }
 
 .event-tags {
-  > label {
+  >label {
     margin-right: 0.5em;
   }
 }
 
 .spaced-content {
-  > *:not(:last-child) {
+  >*:not(:last-child) {
     margin-bottom: 1em;
   }
 }
@@ -1063,12 +1073,12 @@ table {
 }
 
 .actions li {
-  > a {
+  >a {
     display: block;
     height: fit-content;
   }
 
-  > p {
+  >p {
     margin: 0.5em 0 0;
   }
 }
@@ -1087,7 +1097,7 @@ table {
   }
 }
 
-.button-cell > div {
+.button-cell>div {
   display: flex;
   justify-content: flex-end;
 }

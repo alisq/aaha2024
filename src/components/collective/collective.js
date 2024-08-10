@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useRef } from 'react'
+import { useContext, useLayoutEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { CLS } from '../../constants/styleConstants'
 import { GlobalContext } from '../../contexts/contexts'
@@ -64,7 +64,6 @@ const Collective = () => {
     })
     .map((member, i) => <TeamMemberRow memberData={member} key={i} />)
 
-  useEffect(() => console.log(members), [])
   return (
     members &&
     <>

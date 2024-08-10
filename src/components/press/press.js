@@ -12,7 +12,6 @@ import { joinClasses } from '../../utils/styleUtils'
 const Press = () => {
   const { translations } = useLang(PRESS)
   const { press } = useContext(GlobalContext) ?? {}
-  //  TODO examine other memo deps
   const parsedPress = useMemo(() => parserServices.parsePress(press), [press])
   return (
     press &&

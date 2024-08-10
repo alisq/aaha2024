@@ -21,7 +21,6 @@ const Main = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-
   const footerRef = useRef()
   const { lang: currentLang, translations } = useLang(MAIN)
   const isEn = currentLang === LANGS[0]
@@ -33,7 +32,6 @@ const Main = () => {
 
   const handleHeaderClick = id =>
     navigate(`demand/${id}`, { replace: id === getUrlParts(location).content })
-
 
   return (
     demands &&

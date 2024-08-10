@@ -1,6 +1,4 @@
-import { useContext } from 'react'
 import { CLS } from '../../constants/styleConstants'
-import { GlobalContext } from '../../contexts/contexts'
 import { joinClasses } from '../../utils/styleUtils'
 import Anchor from '../common/anchor'
 import TableToggleRow from '../common/tableToggleRow'

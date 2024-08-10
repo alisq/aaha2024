@@ -16,8 +16,7 @@ const bio = ['Biography', 'Biographie']
 const members = ['TEAM MEMBERS', 'MEMBRES DE L’ÉQUIPE']
 const team = ['TEAM', 'EQUIPE']
 
-// TODO
-const title = ['TITLE', 'TITLE']
+const title = ['TITLE', 'TITRE']
 const eventTitle = ['EVENT', 'EVENMENT']
 const date = ['DATE', 'DATE']
 const dateTime = ['DATE & TIME', 'DATE ET HEURE']
@@ -91,23 +90,31 @@ export const EXHIBITION = {
   layout: ['Pavilion layout for Not For Sale exhibition in Venice, Italy.', 'Pavilion layout for Not For Sale exhibition in Venice, Italy.'],
   caption: [
     <>
-      Caitlan Secondcost, Hannah Genosko, Pamela Stone Steph Rybcyn and Emily Davidson
-      were Other Hands, aiding as studio assistants, who brought their presence and
-      critical minds into the work.<br /><br />Robert Wright, Chris Webb, Wren Tian,
-      Sally Wolchyn-Raab, Vie, Robin, Henny, Lux, Gabrielle, Catriona, Aislinn,
-      Heather, Melissa, Leesa, Brody, Kate G., Tayla, Rob and Simon are also sewn in:
-      They responded to various requests for help in preparing these banners and
-      their Other Energies are also acknowledged.
+      <p>
+        Caitlan Secondcost, Hannah Genosko, Pamela Stone Steph Rybcyn and Emily Davidson
+        were Other Hands, aiding as studio assistants, who brought their presence and
+        critical minds into the work.
+      </p>
+      <p>Robert Wright, Chris Webb, Wren Tian,
+        Sally Wolchyn-Raab, Vie, Robin, Henny, Lux, Gabrielle, Catriona, Aislinn,
+        Heather, Melissa, Leesa, Brody, Kate G., Tayla, Rob and Simon are also sewn in:
+        They responded to various requests for help in preparing these banners and
+        their Other Energies are also acknowledged.
+      </p>
     </>,
     <>
-      Caitlan Secondcost, Hannah Genosko, Pamela Stone, Steph Rybcyn et Emily Davidson
-      J étaient D’autres Mains, aidant en tant qu’assistants de studio, qui ont
-      apporté leur présence et leur esprit critique dans le travail.<br /><br />
-      Robert Wright, Chris Webb, Wren Tian, Sally Wolchyn-Raab, Vie, Robin, Henny,
-      Lux, Gabrielle, Catriona, Aislinn, Heather, Melissa, Leesa, Brody, Kate G.,Tayla,
-      Rob, et Simon sont également cousus dans: ils ont répondu à diverses demandes
-      d’aide dans la préparation de ces bannières et leurs autres énergies sont
-      également reconnues.
+      <p>
+        Caitlan Secondcost, Hannah Genosko, Pamela Stone, Steph Rybcyn et Emily Davidson
+        J étaient D’autres Mains, aidant en tant qu’assistants de studio, qui ont
+        apporté leur présence et leur esprit critique dans le travail.
+      </p>
+      <p>
+        Robert Wright, Chris Webb, Wren Tian, Sally Wolchyn-Raab, Vie, Robin, Henny,
+        Lux, Gabrielle, Catriona, Aislinn, Heather, Melissa, Leesa, Brody, Kate G.,Tayla,
+        Rob, et Simon sont également cousus dans: ils ont répondu à diverses demandes
+        d’aide dans la préparation de ces bannières et leurs autres énergies sont
+        également reconnues.
+      </p>
     </>
   ],
   carouselAlts: [

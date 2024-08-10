@@ -126,7 +126,7 @@ h3 {
   letter-spacing: 0.02em;
   line-height: 4rem;
 
-  &.bigTitle {
+  &.big-title {
     font-size: 10rem;
     line-height: 1;
     padding-bottom: 1rem;
@@ -223,6 +223,7 @@ h5 {
 }
 
 button {
+
   &,
   &:focus {
     background: $red;
@@ -384,7 +385,6 @@ ol {
   list-style: decimal;
 }
 
-//
 .temp-filter-header,
 .temp-filter-item {
   font-family: aaha-web, monospace;

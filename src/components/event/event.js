@@ -13,8 +13,7 @@ const Event = () => {
   const { translations } = useLang(EVENT)
   const { events, demands } = useContext(GlobalContext) ?? {}
 
-  //  TODO examine other memo deps
-  const parsedEvents = useMemo(() => parserServices.parseEvents(events, demands), [events])
+  const parsedEvents = useMemo(() => parserServices.parseEvents(events, demands), [events, demands])
   return (
     events &&
     <>

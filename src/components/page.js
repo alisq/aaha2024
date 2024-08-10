@@ -4,7 +4,6 @@ import Section from './common/section'
 import useLang from '../hooks/useLang'
 
 
-// TODO trims
 const Page = forwardRef(function Page({ id, subpage, data }, ref) {
   const { lang } = useLang()
   const { title, body } = useMemo(() => parserServices.parsePage(data), [id, lang])
