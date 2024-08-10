@@ -153,8 +153,7 @@ const parseMember = (memberData, allDemands) => {
   }
 }
 
-
-const parseEvents = eventData =>
+const parseEvents = (eventData, allDemands) =>
   eventData.map(event => {
     return {
       title: basicParse(event.title),
@@ -163,7 +162,9 @@ const parseEvents = eventData =>
       link: basicParse(event[EVENT_FIELDS.LINK]),
       date: basicParse(event[EVENT_FIELDS.DATE]),
       locale: basicParse(event[EVENT_FIELDS.LOCALE]),
-      demands: parseMulti(event[EVENT_FIELDS.DEMAND]).map(demand => getLink(demand)?.text)
+      demands: parseMulti(event[EVENT_FIELDS.DEMAND]).map(demand => allDemands.find(
+        dm => dm.title.toLocaleLowerCase() === getLink(demand)?.text.toLocaleLowerCase()
+      ))
     }
   })
 

@@ -11,10 +11,10 @@ import EventRow from './eventRow'
 
 const Event = () => {
   const { translations } = useLang(EVENT)
-  const { events } = useContext(GlobalContext) ?? {}
+  const { events, demands } = useContext(GlobalContext) ?? {}
 
   //  TODO examine other memo deps
-  const parsedEvents = useMemo(() => parserServices.parseEvents(events), [events])
+  const parsedEvents = useMemo(() => parserServices.parseEvents(events, demands), [events])
   return (
     events &&
     <>

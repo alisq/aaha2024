@@ -612,6 +612,7 @@ a:visited {
   color: #c00000;
   text-decoration-color: #c00000 !important;
   text-decoration: underline;
+  word-break: break-word;
 }
 
 a:hover,

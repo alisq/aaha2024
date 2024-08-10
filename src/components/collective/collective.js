@@ -16,6 +16,9 @@ const COLLABORATORS = 'collective-collaborators'
 const TEAM_MEMBERS = 'collective-team-members'
 const STUDENT_ACTIVISTS = 'collective-student-activist'
 
+const ROLE_FILTER = 'team-members-role'
+const TEAM_FILTER = 'team-members-team'
+
 const Collective = () => {
   const location = useLocation()
   const { translations } = useLang(COLLECTIVE)
@@ -38,14 +41,15 @@ const Collective = () => {
     })
   }, [location.hash])
 
+
   const teamFilters = [
     {
-      name: 'team-members-role',
+      name: ROLE_FILTER,
       placeholder: translations.memberRole,
       list: translations.memberList
     },
     {
-      name: 'team-members-team',
+      name: TEAM_FILTER,
       placeholder: translations.team,
       list: demands?.map(({ title }) => title)
     }
@@ -53,8 +57,8 @@ const Collective = () => {
   const getTeamMembers = filters => members.teamMembers
     .filter(member => {
       member = parserServices.parseMember(member, demands)
-      const role = filters['team-members-role'] // TODO
-      const team = filters['team-members-team']
+      const role = filters[ROLE_FILTER]
+      const team = filters[TEAM_FILTER]
       return (!role || role.toLocaleLowerCase() === member.role.toLocaleLowerCase()) &&
         (!team || team.toLocaleLowerCase() === member.team?.toLocaleLowerCase())
     })

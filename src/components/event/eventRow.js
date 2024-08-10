@@ -9,15 +9,11 @@ import { updateUrl } from '../../utils/urlUtils'
 import { useLocation } from 'react-router-dom'
 
 const EventRow = ({ data }) => {
-  const { title, date, demands: demandTitles, body, link, locale, img } = data
-  const { demands: allDemands } = useContext(GlobalContext) ?? {}
+  const { title, date, demands, body, link, locale, img } = data
 
   const location = useLocation()
-  const demands = allDemands ? demandTitles.map(demand =>
-    allDemands.find(dm =>
-      dm.title.toLocaleLowerCase() === demand.toLocaleLowerCase())) : undefined
-
   const dateLabelClass = joinClasses(CLS.LABEL_RED_STATIC, CLS.SMALL)
+
   return <TableToggleRow
     summary={
       <>
