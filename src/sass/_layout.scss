@@ -568,6 +568,15 @@ ul.actions {
   li {
     margin-bottom: 1em;
     padding-bottom: 1em;
+
+    >a {
+      display: block;
+      height: fit-content;
+    }
+
+    >p {
+      margin: 0.5em 0 0;
+    }
   }
 }
 
@@ -590,8 +599,58 @@ table {
     min-height: 50px;
     overflow: hidden;
 
+    > :first-child {
+      padding-left: $table-side-padding;
+      box-sizing: content-box;
+
+      // TODO: breakpoint
+      @media (min-width: 800px) {
+        >* {
+          padding-left: 2rem;
+          padding-right: 0;
+        }
+      }
+    }
+
+    > :last-child {
+      padding-right: $table-side-padding;
+      box-sizing: content-box;
+
+      // TODO: doesn't work when page-size is small
+      >* {
+        padding-right: 2rem;
+      }
+    }
+
+    @media (min-width: 800px) {
+      > :not(:first-child) {
+        padding-left: 1.75rem;
+      }
+
+      > :not(:last-child) {
+        padding-right: 1.75rem;
+      }
+    }
+
     td {
       padding: 0.25em;
+      margin: 0;
+      padding: 0.5em;
+      border-bottom: 1px solid rgba($foreground, 0.3);
+
+      &.noborder {
+        border-bottom: none;
+      }
+
+
+      p,
+      label,
+      h3,
+      h4 {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
     }
 
     &.hide {
@@ -602,19 +661,6 @@ table {
 
     &:first-child td {
       border-top: 1px solid rgba($foreground, 0.3);
-    }
-
-    // &:nth-child(odd) {background: rgba($foreground,0.02)}
-    // background:red;
-
-    td {
-      margin: 0;
-      padding: 0.5em;
-      border-bottom: 1px solid rgba($foreground, 0.3);
-
-      &.noborder {
-        border-bottom: none;
-      }
     }
   }
 
@@ -628,6 +674,10 @@ table {
     .borderTop {
       border-top: 1px solid rgba($foreground, 0.5);
     }
+  }
+
+  .row-expanded>td {
+    border-bottom: none;
   }
 }
 
@@ -652,6 +702,18 @@ table {
 
     top: 50vh;
     transform: translateY(-50%);
+
+    > :nth-child(2) {
+      h3 {
+        margin-bottom: 1em;
+      }
+    }
+
+    > :last-child {
+      p {
+        margin-top: 1em;
+      }
+    }
   }
 }
 
@@ -909,70 +971,14 @@ table {
   }
 }
 
-// fixes
+
 $table-inner-margin: 1.75em;
 $td-xsmall: 7.5em;
 $td-small: 12em;
 $td-medium: 17.5em;
 $td-large: 25em;
 $td-xlarge: 35em;
-
 $table-side-padding: calc((100vw - #{$max-container-width}) / 2);
-
-table {
-
-
-  tr {
-    > :first-child {
-      padding-left: $table-side-padding;
-      box-sizing: content-box;
-
-      // TODO: breakpoint
-      @media (min-width: 800px) {
-        >* {
-          padding-left: 2rem;
-          padding-right: 0;
-        }
-      }
-    }
-
-    > :last-child {
-      padding-right: $table-side-padding;
-      box-sizing: content-box;
-
-      // TODO: doesn't work when page-size is small
-      >* {
-        padding-right: 2rem;
-      }
-    }
-
-    @media (min-width: 800px) {
-      > :not(:first-child) {
-        padding-left: 1.75rem;
-      }
-
-      > :not(:last-child) {
-        padding-right: 1.75rem;
-      }
-    }
-  }
-
-  td {
-
-    p,
-    label,
-    h3,
-    h4 {
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  .row-expanded>td {
-    border-bottom: none;
-  }
-}
 
 .committee-table tr {
   > :first-child {
@@ -1076,31 +1082,6 @@ table {
 
 .small-header {
   margin-top: 2.5em;
-}
-
-.actions li {
-  >a {
-    display: block;
-    height: fit-content;
-  }
-
-  >p {
-    margin: 0.5em 0 0;
-  }
-}
-
-#contact .row {
-  > :nth-child(2) {
-    h3 {
-      margin-bottom: 1em;
-    }
-  }
-
-  > :last-child {
-    p {
-      margin-top: 1em;
-    }
-  }
 }
 
 .button-cell>div {
