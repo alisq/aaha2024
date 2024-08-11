@@ -211,12 +211,12 @@ h5 {
   margin: 0;
   padding: 0;
 
-  & li {
+  li {
     margin: 0;
     padding: 0;
 
-    & a:link,
-    & a:visited {
+    a:link,
+    a:visited {
       color: $foreground;
     }
   }
@@ -283,7 +283,7 @@ button {
     &:hover {
       color: $red;
 
-      & span.num {
+      span.num {
         color: $red;
       }
     }
@@ -323,7 +323,7 @@ button {
     &:hover {
       color: $red;
 
-      & span.num {
+      span.num {
         color: $red;
       }
     }
@@ -375,7 +375,7 @@ label,
   &.small {
     font-size: 0.6em;
 
-    & a {
+    a {
       color: $background;
     }
   }

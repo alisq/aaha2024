@@ -83,7 +83,7 @@ h1 {
     letter-spacing: 0.05em;
     pointer-events: all;
 
-    & a:link {
+    a:link {
       text-decoration: none;
     }
   }
@@ -115,7 +115,7 @@ h3 {}
   transform-origin: 50% 50%;
   transition: all $transition-time;
 
-  & div {
+  div {
     display: inline-block;
     border-radius: 2px;
     transition: all $transition-time;
@@ -132,19 +132,19 @@ h3 {}
 }
 
 #mb-2-c {
-  & .rect1 {
+  .rect1 {
     width: 30px;
     top: 0;
     left: 5px;
   }
 
-  & .rect2 {
+  .rect2 {
     width: 20px;
     top: 20px;
     left: 10px;
   }
 
-  & .rect3 {
+  .rect3 {
     width: 40px;
     top: 40px;
     left: 0;
@@ -152,19 +152,19 @@ h3 {}
 }
 
 #mb-2-l {
-  & .rect1 {
+  .rect1 {
     width: 30px;
     top: 0;
     left: 0;
   }
 
-  & .rect2 {
+  .rect2 {
     width: 20px;
     top: 20px;
     left: 0;
   }
 
-  & .rect3 {
+  .rect3 {
     width: 40px;
     top: 40px;
     left: 0;
@@ -181,7 +181,7 @@ h3 {}
   left: 1em;
   transform-origin: 50% 50%;
 
-  & .menu-button-square {
+  .menu-button-square {
     background: $red;
     width: 10px;
     height: 10px;
@@ -228,7 +228,7 @@ h3 {}
   }
 
   &.invert {
-    & .menu-button-square {
+    .menu-button-square {
       background: $background;
     }
 
@@ -255,7 +255,7 @@ h3 {}
   font-family: "AAHA-WEB";
   fill: rgb(192, 0, 0);
 
-  & #top-fist {
+  #top-fist {
     fill: $red;
     transition: fill $transition-time;
 
@@ -271,7 +271,7 @@ h3 {}
       content: "\d7";
     }
 
-    & #top-fist {
+    #top-fist {
       opacity: 0;
     }
   }
@@ -280,8 +280,9 @@ h3 {}
     background: $foreground;
   }
 
+  // TODO: not in use
   &.invert {
-    & #top-fist {
+    #top-fist {
       fill: $background;
     }
 
@@ -309,13 +310,13 @@ h3 {}
     pointer-events: initial;
   }
 
-  & ul {
+  ul {
     list-style-type: none;
     margin-top: 5em;
     margin-left: 0.5em;
     column-count: 2;
 
-    & li {
+    li {
       font-family: "AAHA-WEB";
       color: $background;
       font-size: 12vh;
@@ -357,15 +358,15 @@ h3 {}
         content: "\0778";
       }
 
-      & a,
-      & a:link,
-      & a:visited {
+      a,
+      a:link,
+      a:visited {
         color: $background;
         text-decoration: none;
         transition: color 0.4s;
       }
 
-      & a:hover {
+      a:hover {
         color: $foreground;
       }
     }
@@ -384,9 +385,9 @@ h3 {}
     overflow: hidden;
     max-width: 100%;
 
-    & iframe,
-    & object,
-    & embed {
+    iframe,
+    object,
+    embed {
       position: absolute;
       top: 0;
       left: 0;
@@ -401,7 +402,7 @@ h3 {}
   letter-spacing: 0.05em;
   padding-bottom: 0.5em;
 
-  & i {
+  i {
     cursor: pointer;
     transition: color $transition-time;
 
@@ -428,7 +429,7 @@ h3 {}
   margin: 0 0.5em;
   padding-top: 0.5em;
 
-  & option {
+  option {
     font-family: "AAHA-WEB";
   }
 }
@@ -447,7 +448,7 @@ h3 {}
   background-color: rgba($background, 0.9);
   // padding:4vw;
 
-  & img {
+  img {
     width: 100%;
     height: 100%;
     padding-top: 3vw;
@@ -464,12 +465,12 @@ h3 {}
     }
   }
 
-  & .caption {
+  .caption {
     padding: 1em;
     text-align: center;
   }
 
-  & .close {
+  .close {
     font-family: "AAHA-WEB";
     font-size: 7.5rem;
     color: $red;
@@ -488,17 +489,17 @@ h3 {}
 .flickity-viewport {
   overflow: visible;
 
-  & .slide {
+  .slide {
     border-right: 3px solid rgba($foreground, 0);
     width: 100%;
 
-    & .demand-slide {
+    .demand-slide {
       width: 100%;
       height: 80vh;
       overflow: hidden;
       position: relative;
 
-      & img {
+      img {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -513,17 +514,17 @@ h3 {}
       }
     }
 
-    & .caption {
+    .caption {
       opacity: 0;
       transition: 0.4s;
     }
 
     &.is-selected {
-      & .caption {
+      .caption {
         opacity: 1;
       }
 
-      & img {
+      img {
         filter: grayscale(0) contrast(100%);
         opacity: 1;
       }
@@ -537,14 +538,14 @@ button.flickity-button {
   background: none;
   z-index: 10000;
 
-  & svg {
+  svg {
     fill: $red;
   }
 
   &:hover {
     border: 1px solid $red;
 
-    & svg {
+    svg {
       fill: $red;
     }
   }
@@ -564,7 +565,7 @@ ul.actions {
   list-style-type: none;
   padding-top: 1em;
 
-  & li {
+  li {
     margin-bottom: 1em;
     padding-bottom: 1em;
   }
@@ -576,12 +577,12 @@ table {
   margin-bottom: 0;
   table-layout: fixed;
 
-  & thead tr td {
+  thead tr td {
     border-top: none !important;
     border-bottom: none;
   }
 
-  & tr {
+  tr {
     padding: 0;
     margin: 0;
     visibility: visible;
@@ -589,7 +590,7 @@ table {
     min-height: 50px;
     overflow: hidden;
 
-    & td {
+    td {
       padding: 0.25em;
     }
 
@@ -606,7 +607,7 @@ table {
     // &:nth-child(odd) {background: rgba($foreground,0.02)}
     // background:red;
 
-    & td {
+    td {
       margin: 0;
       padding: 0.5em;
       border-bottom: 1px solid rgba($foreground, 0.3);
@@ -619,12 +620,12 @@ table {
 
   &.events {
 
-    & td,
+    td,
     th {
       border: none;
     }
 
-    & .borderTop {
+    .borderTop {
       border-top: 1px solid rgba($foreground, 0.5);
     }
   }
@@ -635,7 +636,7 @@ table {
   grid-template-columns: 1.5fr 1fr 1fr;
   grid-column-gap: 1em;
 
-  & svg {
+  svg {
     width: 100%;
     height: auto;
   }
@@ -645,7 +646,7 @@ table {
   position: relative;
   padding: 0;
 
-  & .row {
+  .row {
     // padding:0 2em ;
     position: absolute;
 
@@ -658,7 +659,7 @@ table {
   margin-top: 2em;
   max-width: 40%;
 
-  & .footer-logo {
+  .footer-logo {
     fill: rgba($foreground, 1);
     width: 100%;
     transition: fill 0.4s;
@@ -669,14 +670,14 @@ table {
       fill: $red;
     }
 
-    & svg {
+    svg {
       height: auto;
     }
 
-    & #logo-cca,
-    & #logo-uw,
-    & #logo-sala,
-    & #logo-raic {
+    #logo-cca,
+    #logo-uw,
+    #logo-sala,
+    #logo-raic {
       width: 80%;
     }
   }
@@ -684,7 +685,7 @@ table {
   #contact {
     position: relative;
 
-    & .row {
+    .row {
       padding: 0 2em;
       position: absolute;
       background: red;
@@ -692,11 +693,11 @@ table {
       transform: translateY(-50%);
     }
 
-    & h5 {
+    h5 {
       color: rgba($background, 1);
     }
 
-    & li {
+    li {
       margin-bottom: 0;
     }
   }
@@ -728,17 +729,17 @@ table {
     text-align: center;
     position: relative;
 
-    & .socials {
+    .socials {
       padding-bottom: 0.5rem;
     }
 
-    & .row {
+    .row {
       padding: 0 2em;
       position: absolute;
       top: 50vh;
       transform: translateY(-50%);
 
-      & .text-right {
+      .text-right {
         text-align: center;
         padding-right: 0;
       }
@@ -751,14 +752,14 @@ table {
     position: static;
     transform: translateY(0);
 
-    & .intro {
+    .intro {
       display: block;
       padding: 0.5em 0.2em;
       color: $red;
       text-align: center;
     }
 
-    & .num {
+    .num {
       width: 0.3em;
       text-align: right;
     }
@@ -767,7 +768,7 @@ table {
       font-size: 1.5em;
     }
 
-    & h2 {
+    h2 {
       text-align: left;
       display: block;
       padding: 0 0 0.3em 0.3em;
@@ -808,11 +809,11 @@ table {
     &.fr {
       transform: rotate(0);
 
-      & .title-bottom {
+      .title-bottom {
         display: block;
       }
 
-      & .title-top {
+      .title-top {
         display: none;
       }
     }
@@ -856,10 +857,10 @@ table {
   #menu {
     padding: 1em;
 
-    & ul {
+    ul {
       column-count: 1;
 
-      & li {
+      li {
         font-size: 5rem;
       }
     }
@@ -871,11 +872,11 @@ table {
 
   // TODOs
   .members {
-    & thead {
+    thead {
       display: none;
     }
 
-    & tr {
+    tr {
       display: block;
       padding: 1em 0;
       border-bottom: 1px solid rgba($foreground, 0.3);
@@ -890,7 +891,7 @@ table {
       }
     }
 
-    & td {
+    td {
       display: block;
       margin: 0;
       padding: 0;
