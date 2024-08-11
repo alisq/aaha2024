@@ -1127,6 +1127,9 @@ button.flickity-button {
     button.flickity-button:hover svg {
       fill: #c00000; }
 
+.highlighted {
+  color: #c00000; }
+
 #bottom_fist {
   display: inline-block;
   fill: #eeeed7;
@@ -1142,7 +1145,8 @@ ul.actions {
 table {
   width: 100%;
   border-spacing: 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  table-layout: fixed; }
   table thead tr td {
     border-top: none !important;
     border-bottom: none; }
@@ -1342,32 +1346,34 @@ table {
   .partners {
     max-width: 100%; } }
 
-table {
-  table-layout: fixed; }
-  table tr > :first-child {
-    padding-left: calc((100vw - 1700px) / 2);
-    box-sizing: content-box; }
-    @media (min-width: 800px) {
-      table tr > :first-child > * {
-        padding-left: 2rem;
-        padding-right: 0; } }
-  table tr > :last-child {
-    padding-right: calc((100vw - 1700px) / 2);
-    box-sizing: content-box; }
-    table tr > :last-child > * {
-      padding-right: 2rem; }
+table tr > :first-child {
+  padding-left: calc((100vw - 1700px) / 2);
+  box-sizing: content-box; }
   @media (min-width: 800px) {
-    table tr > :not(:first-child) {
-      padding-left: 1.75rem; }
-    table tr > :not(:last-child) {
-      padding-right: 1.75rem; } }
-  table td p:last-child,
-  table td label:last-child,
-  table td h3:last-child,
-  table td h4:last-child {
-    margin-bottom: 0; }
-  table .row-expanded > td {
-    border-bottom: none; }
+    table tr > :first-child > * {
+      padding-left: 2rem;
+      padding-right: 0; } }
+
+table tr > :last-child {
+  padding-right: calc((100vw - 1700px) / 2);
+  box-sizing: content-box; }
+  table tr > :last-child > * {
+    padding-right: 2rem; }
+
+@media (min-width: 800px) {
+  table tr > :not(:first-child) {
+    padding-left: 1.75rem; }
+  table tr > :not(:last-child) {
+    padding-right: 1.75rem; } }
+
+table td p:last-child,
+table td label:last-child,
+table td h3:last-child,
+table td h4:last-child {
+  margin-bottom: 0; }
+
+table .row-expanded > td {
+  border-bottom: none; }
 
 .committee-table tr > :first-child {
   width: 12em; }
@@ -1497,6 +1503,3 @@ table {
 @media (max-width: 800px) {
   #switches {
     display: none; } }
-
-.highlighted {
-  color: #c00000; }
